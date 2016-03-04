@@ -1,11 +1,13 @@
-<?php //pr($comentarios); ?>
+<?php //pr($categoria); ?>
 <div style="clear: both;">
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
-		<span style="float: left;font-weight: bold;font-size: 1.1em;"><?php echo $this->Html->link(__('Inicio'), array('controller' => 'foroCategorias', 'action' => 'index')); ?></span>
-		<span style="float: left;font-weight: bold;font-size: 1.1em;"><?php echo "- >> ".$this->Html->link(__($foro), array('action' => 'index',h($foroTema['ForoTema']['id_subforo']))); ?></span>
-		<span style="float: left;font-weight: bold;font-size: 1.1em;"><?php echo "- >> ".h($foroTema['ForoTema']['titulo']); ?></span>
+		<!-- IR A UNA CATEGORIA -->
+		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo $this->Html->link(__($categoria), array('controller' => 'foroCategorias', 'action' => 'index')); ?></span>
+		<!-- IR A INICIO - CATEGORIAS -->
+		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".$this->Html->link(__($foro), array('controller' => 'foroTemas','action' => 'index',h($categoria),h($foroTema['ForoTema']['id_subforo']))); ?></span>
+		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".h($foroTema['ForoTema']['titulo']); ?></span>
 		<?php if ($logged_in): ?>
-			<span style="float: right;font-weight: bold;font-size: 1.1em;">
+			<span style="float: right;font-weight: bold;font-size: 1em;">
 				<?php echo $this->Html->link(__('Responder al Tema'), array('controller' => 'comentarioForos', 'action' => 'add',h($foroTema['ForoTema']['id']),h($foroTema['ForoTema']['titulo']),$foro)); ?>
 			</span>
 		<?php endif; ?>
@@ -94,7 +96,7 @@
 </div>
 <div style="clear: both;"> <!--  class="actions"> -->
 	<?php if ($logged_in): ?>
-	<span style="float: right;font-weight: bold;font-size: 1.1em;">
+	<span style="float: right;font-weight: bold;font-size: 1em;">
 		<?php echo $this->Html->link(__('Responder al Tema'), array('controller' => 'comentarioForos', 'action' => 'add',h($foroTema['ForoTema']['id']),h($foroTema['ForoTema']['titulo']),$foro)); ?>
 	</span>
 	<?php endif; ?>

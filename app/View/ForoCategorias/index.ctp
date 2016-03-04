@@ -1,7 +1,6 @@
+<?php //pr($subforos); ?>
 <div style="clear: both;">
-	<span style="text-align: left;"><h3><?php echo __('Foro'); ?></h3></span>
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
-		<?php //pr($subforos1); ?>
 		<table cellpadding="0" cellspacing="0">
 			<thead >
 				<tr>
@@ -16,17 +15,21 @@
 			<tbody>
 				<tr>
 					<tbody>
-					<?php foreach ($subforos1 as $foroSubforo): ?>
+					<?php $i=0; ?>
+					<?php foreach ($subforos as $foroSubforo): ?>
 						<tr>
-							<td colspan="2" width="80%">
-								<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroSubforo['ForoSubforo']['id']))); ?><br />
-								<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
-							</td>
-							<td class="actions">
-								<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
-								<!-- < ?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $foroSubforo['ForoSubforo']['id'])); ? >
-								< ?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $foroSubforo['ForoSubforo']['id']), array(), __('Are you sure you want to delete # %s?', $foroSubforo['ForoSubforo']['id'])); ? > -->
-							</td>
+							<?php if($subforos[$i]['ForoSubforo']['id_foro_categoria']==1): ?>
+								<td colspan="2" width="80%">
+									<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroCategorias[0]['ForoCategoria']['categoria']),h($foroSubforo['ForoSubforo']['id']))); ?><br />
+									<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
+								</td>
+								<td class="actions">
+									<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
+								</td>
+							<?php
+								endif;
+								$i++; 
+							?>
 						</tr>
 					<?php endforeach; ?>
 					</tbody>
@@ -43,17 +46,21 @@
 				</thead>
 				<tr>
 					<tbody>
-					<?php foreach ($subforos2 as $foroSubforo): ?>
+					<?php $i=0;
+						foreach ($subforos as $foroSubforo): ?>						
 						<tr>
-							<td colspan="2" width="80%">
-								<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroSubforo['ForoSubforo']['id']))); ?><br />
-								<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
-							</td>
-							<td class="actions">
-								<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
-								<!-- < ?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $foroSubforo['ForoSubforo']['id'])); ? >
-								< ?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $foroSubforo['ForoSubforo']['id']), array(), __('Are you sure you want to delete # %s?', $foroSubforo['ForoSubforo']['id'])); ? > -->
-							</td>
+							<?php if($subforos[$i]['ForoSubforo']['id_foro_categoria']==2): ?>
+								<td colspan="2" width="80%">
+									<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroCategorias[1]['ForoCategoria']['categoria']),h($foroSubforo['ForoSubforo']['id']))); ?><br />
+									<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
+								</td>
+								<td class="actions">
+									<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
+								</td>
+							<?php
+								endif;
+								$i++; 
+							?>
 						</tr>
 					<?php endforeach; ?>
 					</tbody>
@@ -70,6 +77,27 @@
 						<?php endif; ?>&nbsp;</td>
 					</tr>
 				</thead>
+				<tr>
+					<tbody>
+					<?php $i=0; ?>
+					<?php foreach ($subforos as $foroSubforo): ?>
+						<tr>
+							<?php if($subforos[$i]['ForoSubforo']['id_foro_categoria']==3): ?>
+								<td colspan="2" width="80%">
+									<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroCategorias[2]['ForoCategoria']['categoria']),h($foroSubforo['ForoSubforo']['id']))); ?><br />
+									<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
+								</td>
+								<td class="actions">
+									<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
+								</td>
+							<?php
+								endif;
+								$i++; 
+							?>							
+						</tr>
+					<?php endforeach; ?>
+					</tbody>
+				</tr>
 			</tbody>
 		</table>
 	</div>

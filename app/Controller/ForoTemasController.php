@@ -46,25 +46,21 @@ class ForoTemasController extends AppController {
  *
  * @return void
  */
-	public function index($id = null) {
+	public function index($categoria = null,$id = null) {
 		if($id!=NULL) {
 			$this->ForoTema->recursive = 0;
 			$this->Paginator->settings = array('conditions' => array('ForoTema.id_subforo' => $id));
 			$foroTemas = $this->Paginator->paginate('ForoTema');
-			
-			if($foroTemas) {
-				$this->set('foro',$id);
-				$this->set(compact('foroTemas'));
-			} else {
-				$this->set('foro',$id);
-				$this->set(compact('foroTemas'));
-			}
+			$this->set('foro',$id);
+			$this->set(compact('foroTemas'));
 
 			// Buscamos el tema
 			$this->loadModel('ForoSubforo');
 			$options = array('conditions' => array( 'ForoSubforo.id' => $id));
 			$subforo = $this->ForoSubforo->find('first', $options);
 			$this->set('subforo', $subforo);
+
+			$this->set('categoria',$categoria);
 
 		} else {
 			$this->ForoTema->recursive = 0;
@@ -106,7 +102,7 @@ class ForoTemasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null,$foro = null) {
+	public function view($id = null,$categoria = null,$foro = null) {
 		if (!$this->ForoTema->exists($id)) {
 			throw new NotFoundException(__('Invalid foro tema'));
 		}
@@ -138,6 +134,8 @@ class ForoTemasController extends AppController {
 		);
 		$this->set('comentarios', $comentarios);
 		$this->set('foro', $foro);
+
+		$this->set('categoria',$categoria);
 		// Buscamos el comentario
 		/*$this->loadModel('ForoSubforo');
 		$options = array('conditions' => array( 'ForoSubforo.id' => $id));

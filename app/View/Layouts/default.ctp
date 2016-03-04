@@ -75,6 +75,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					</li>					
 				<?php endif; ?>
 			</article>
+			<article style="clear: both;text-align: center;">
+				<span style="font-weight: bold;"><?php echo __('Foro (Pagina en construccion)'); ?></span>
+			</article>
 		</div>
 		<div id="content">
 		
