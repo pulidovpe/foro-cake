@@ -79,7 +79,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<span style="font-weight: bold;"><?php echo __('Foro (Pagina en construccion)'); ?></span>
 			</article>
 		</div>
-		<div id="content">
+		<div id="content" style="font-size: 1em;">
 		
 			<?php echo $this->Session->flash(); ?>
 

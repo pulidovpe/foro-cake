@@ -58,13 +58,18 @@ class ComentarioForosController extends AppController {
  *
  * @return void
  */
-	public function add($id = null,$titulo = null,$foro = null) {
+	public function add($categoria,$titulo = null,$foro = null,$id = null) {
 		if(!$this->Auth->login()) {
             $this->Session->setFlash(__($msg_conectate), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
         }
+        $this->set('categoria',$categoria);
         $this->set('titulo',$titulo);
+        $this->loadModel('ForoSubforo');
+        $subforo = $this->ForoSubforo->find('first',array('conditions'=>array('ForoSubforo.id' => $foro)));
+		$this->set('subforo',$subforo);
         if($id!=NULL) {
+        	$this->set('id_tema',$id);
         	$usuario = $this->Session->read('Auth.User.id');
         	$this->loadModel('ForoTema');
         	$id_comentario = $this->ForoTema->find('first',array('conditions' => array('ForoTema.id' => $id)));

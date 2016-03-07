@@ -1,3 +1,10 @@
+<?php //pr($id_tema); ?>
+<div style="text-align: center;margin: 0 auto;width: 98%;">
+	<!-- IR A INICIO - CATEGORIAS -->
+	<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo $this->Html->link(__($categoria), array('controller' => 'foroCategorias', 'action' => 'index')); ?></span>
+	<!-- IR AL SUBFORO DE DONDE VINO -->
+	<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".$this->Html->link(__(h($id_tema['ForoSubforo']['subforo'])), array('controller' => 'foroTemas','action' => 'index',h($categoria),h($id_tema['ForoSubforo']['id']))); ?></span>
+</div>
 <div class="foroTemas form">
 <?php echo $this->Form->create('ForoTema'); ?>
 	<fieldset>

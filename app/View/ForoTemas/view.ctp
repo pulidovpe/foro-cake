@@ -1,14 +1,21 @@
-<?php //pr($categoria); ?>
+<?php //pr($foroTema); ?>
 <div style="clear: both;">
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
-		<!-- IR A UNA CATEGORIA -->
+		<!-- IR A INICIO - CATEGORIA -->
 		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo $this->Html->link(__($categoria), array('controller' => 'foroCategorias', 'action' => 'index')); ?></span>
-		<!-- IR A INICIO - CATEGORIAS -->
+		<!-- IR AL SUBFORO DE DONDE VENIMOS -->
 		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".$this->Html->link(__($foro), array('controller' => 'foroTemas','action' => 'index',h($categoria),h($foroTema['ForoTema']['id_subforo']))); ?></span>
+		<!-- EL TEMA ACTUAL -->
 		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".h($foroTema['ForoTema']['titulo']); ?></span>
 		<?php if ($logged_in): ?>
 			<span style="float: right;font-weight: bold;font-size: 1em;">
-				<?php echo $this->Html->link(__('Responder al Tema'), array('controller' => 'comentarioForos', 'action' => 'add',h($foroTema['ForoTema']['id']),h($foroTema['ForoTema']['titulo']),$foro)); ?>
+				<?php echo $this->Html->link(__('Responder al Tema'), array(
+					'controller' => 'comentarioForos', 'action' => 'add',
+					h($categoria),
+					h($foroTema['ForoTema']['titulo']),
+					h($foroTema['ForoTema']['id_subforo']),
+					h($foroTema['ForoTema']['id'])
+				)); ?>
 			</span>
 		<?php endif; ?>
 		<table>
@@ -96,9 +103,15 @@
 </div>
 <div style="clear: both;"> <!--  class="actions"> -->
 	<?php if ($logged_in): ?>
-	<span style="float: right;font-weight: bold;font-size: 1em;">
-		<?php echo $this->Html->link(__('Responder al Tema'), array('controller' => 'comentarioForos', 'action' => 'add',h($foroTema['ForoTema']['id']),h($foroTema['ForoTema']['titulo']),$foro)); ?>
-	</span>
+		<span style="float: right;font-weight: bold;font-size: 1em;">
+			<?php echo $this->Html->link(__('Responder al Tema'), array(
+				'controller' => 'comentarioForos', 'action' => 'add',
+				h($categoria),
+				h($foroTema['ForoTema']['titulo']),
+				h($foroTema['ForoTema']['id_subforo']),
+				h($foroTema['ForoTema']['id'])
+			)); ?>
+		</span>
 	<?php endif; ?>
 	<!-- <p>
 		< ?php

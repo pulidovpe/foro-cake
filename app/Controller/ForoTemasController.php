@@ -53,46 +53,16 @@ class ForoTemasController extends AppController {
 			$foroTemas = $this->Paginator->paginate('ForoTema');
 			$this->set('foro',$id);
 			$this->set(compact('foroTemas'));
-
 			// Buscamos el tema
 			$this->loadModel('ForoSubforo');
 			$options = array('conditions' => array( 'ForoSubforo.id' => $id));
 			$subforo = $this->ForoSubforo->find('first', $options);
 			$this->set('subforo', $subforo);
-
 			$this->set('categoria',$categoria);
-
 		} else {
 			$this->ForoTema->recursive = 0;
 			$this->set('foroTemas', $this->Paginator->paginate());
 		}
-		/*
-		if (!$this->ForoTema->exists($id)) {
-			throw new NotFoundException(__('Invalid foro tema'));
-		}
-		// Buscamos el tema
-		$options = array('conditions' => array('ForoTema.id' => $id));
-		$foroTema = $this->ForoTema->find('first', $options);
-		$this->set('foroTema', $foroTema);
-		// Obtener los datos del usuario que creo el tema
-		$this->loadModel('User');
-		$this->User->recursive = 0;
-		$usuario = $this->User->find('first', array(
-			'conditions' => array('User.id' => $foroTema['ForoTema']['id_usuario'])));
-		$this->set('usuario', $usuario);
-		// Cargar los comentarios del tema
-		//$this->ComentarioForo->recursive = 0;
-		$this->loadModel('ComentarioForo');
-		$idtema = $foroTema['ForoTema']['id'];
-		$idusuario = $foroTema['ForoTema']['id_usuario'];
-		$comentarios = $this->ComentarioForo->query(
-			"SELECT comentario_foro.*,users.id,users.username,users.role,users.fecharegistro,users.mensajes,users.avatar
-			 FROM comentario_foro JOIN users ON 
-			comentario_foro.id_usuario = users.id AND 
-			comentario_foro.id_tema = '$idtema'; "
-		);
-		$this->set('comentarios', $comentarios);
-		*/
 	}
 
 /**
@@ -102,7 +72,7 @@ class ForoTemasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null,$categoria = null,$foro = null) {
+	public function view($categoria = null,$foro = null,$id = null) {
 		if (!$this->ForoTema->exists($id)) {
 			throw new NotFoundException(__('Invalid foro tema'));
 		}
@@ -118,12 +88,7 @@ class ForoTemasController extends AppController {
 		$this->set('usuario', $usuario);
 		//pr($usuario);echo "Buscamos el usuario con el id de tema";
 		// Cargar los comentarios del tema
-		//$this->ComentarioForo->recursive = 0;
-		$this->loadModel('ComentarioForo');
-		/*$this->Paginator->settings = array(
-			'conditions' => array('ComentarioForo.id_tema' => $foroTema['ForoTema']['id']));
-		$comentarios = $this->Paginator->paginate('ComentarioForo');
-		$this->set(compact('comentarios'));*/
+		$this->loadModel('ComentarioForo');		
 		$idtema = $foroTema['ForoTema']['id'];
 		$idusuario = $foroTema['ForoTema']['id_usuario'];
 		$comentarios = $this->ComentarioForo->query(
@@ -132,9 +97,28 @@ class ForoTemasController extends AppController {
 			comentario_foro.id_usuario = users.id AND 
 			comentario_foro.id_tema = '$idtema'; "
 		);
+		/*// Limit widgets shown to only those owned by the user.
+		SELECT comentario_foro.* FROM comentario_foro 
+		INNER JOIN users ON ComentarioForo.id_usuario = users.id 
+		WHERE users.id = {current user id}
+		$this->paginate = array(
+		    'conditions' => array('User.id' => $idusuario),
+		    'joins' => array(
+		        array(
+		            'alias' => 'User',
+		            'table' => 'users',
+		            'type' => 'INNER',
+		            'conditions' => '`User`.`id` = `ComentarioForo`.`id_usuario`'
+		        )
+		    ),
+		    'limit' => 20,
+		    'order' => array(
+		        'created' => 'desc'
+		    )
+		);
+		$this->set( 'comentarios', $this->paginate( $this->ComentarioForo ) );*/
 		$this->set('comentarios', $comentarios);
 		$this->set('foro', $foro);
-
 		$this->set('categoria',$categoria);
 		// Buscamos el comentario
 		/*$this->loadModel('ForoSubforo');
@@ -148,7 +132,7 @@ class ForoTemasController extends AppController {
  *
  * @return void
  */
-	public function add($id = null) {
+	public function add($categoria = null,$foro = null,$id = null) {
 		if(!$this->Auth->login()) {
             $this->Session->setFlash(__($msg_conectate), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
@@ -159,7 +143,9 @@ class ForoTemasController extends AppController {
         	$id_tema = $this->ForoSubforo->find('first',array('conditions' => array('ForoSubforo.id' => $id)));
 			$this->set('id_tema',$id_tema);
 			$this->set('usuario',$usuario);
-		} 
+		}
+		$this->set('foro', $foro);
+		$this->set('categoria',$categoria); 
 		if ($this->request->is('post')) {
 			$this->ForoTema->create();
 			if ($this->ForoTema->save($this->request->data)) {
