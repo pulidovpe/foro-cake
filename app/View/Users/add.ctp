@@ -1,7 +1,7 @@
 <div class="usuarios form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Usuario'); ?></legend>
+		<legend><?php echo __('Registro de Usuario'); ?></legend>
 	<?php
 		echo $this->Form->input('username', array('type'=>'text','maxlength'=>'50','style'=>'width:175px; ','label' => 'Nickname'));
 		echo $this->Form->input('password', array('type'=>'password','maxlength'=>'40','style'=>'width:400px; ','label' => 'Clave'));
@@ -17,9 +17,16 @@
 		echo $this->Form->input('facebook', array('maxlength'=>'50','style'=>'width:350px;'));
 		echo $this->Form->input('google', array('maxlength'=>'50','style'=>'width:350px;'));
 		echo $this->Form->input('twitter', array('maxlength'=>'50','style'=>'width:350px;'));
-		echo $this->Form->input('fecharegistro', array('value' => date("Y-m-d")));
-		echo $this->Form->input('ultimoacceso', array('value' => date("Y-m-d")));
-		echo $this->Form->input('activo',array('label'=>'Usuario activo','options' => array( 'N' => 'Desactivado', 'S' => 'Activado')));
+		echo $this->Form->input('fecharegistro', array(
+			'type' => 'text',
+			'value' => date("Y-m-d"),
+			'readonly' => 'readonly',
+			'style'=>'width:110px;'
+		));
+		echo $this->Form->input('activo',array('label'=>'Usuario activo','options' => array( 
+			'N' => 'Desactivado', 
+			'S' => 'Activado'
+		)));
 		echo $this->Form->input('avatar', array('maxlength'=>'50','style'=>'width:350px;'));
 	?>
 	</fieldset>

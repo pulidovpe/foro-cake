@@ -1,5 +1,5 @@
 <div class="users index">
-	<h2><?php echo __('Usuarios'); ?></h2>
+	<h2><?php echo __('Administración de Usuarios'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
@@ -68,12 +68,12 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Nuevo Usuario'), array('controller' => 'users', 'action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('Listar Foro Temas'), array('controller' => 'foroTemas', 'action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('Listar Subforos'), array('controller' => 'foroSubforos', 'action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Nueva Categoria'), array('controller' => 'foroCategorias','action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Nuevo Subforo'), array('controller' => 'foroSubforos','action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Listar Categorias'), array('controller' => 'foroCategorias', 'action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('Listar Comentarios'), array('controller' => 'comentarioForos', 'action' => 'index')); ?></li>
+		
 	</ul>
 </div>

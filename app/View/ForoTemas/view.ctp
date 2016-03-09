@@ -1,4 +1,4 @@
-<?php //pr($foroTema); ?>
+<?php //pr($foro); ?>
 <div style="clear: both;">
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
 		<!-- IR A INICIO - CATEGORIA -->
@@ -7,30 +7,34 @@
 		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".$this->Html->link(__($foro), array('controller' => 'foroTemas','action' => 'index',h($categoria),h($foroTema['ForoTema']['id_subforo']))); ?></span>
 		<!-- EL TEMA ACTUAL -->
 		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".h($foroTema['ForoTema']['titulo']); ?></span>
-		<?php if ($logged_in): ?>
-			<span style="float: right;font-weight: bold;font-size: 1em;">
-				<?php echo $this->Html->link(__('Responder al Tema'), array(
-					'controller' => 'comentarioForos', 'action' => 'add',
-					h($categoria),
-					h($foroTema['ForoTema']['titulo']),
-					h($foroTema['ForoTema']['id_subforo']),
-					h($foroTema['ForoTema']['id'])
-				)); ?>
-			</span>
-		<?php endif; ?>
 		<table>
 			<tr>
-				<th style="background-color: lightgray;">
+				<th colspan="3" style="background-color: lightgray;">
+					<?php if ($logged_in): ?>
+						<span style="float: right;font-weight: bold;font-size: 1em;">
+							<?php echo $this->Html->link(__('Responder al Tema'), array(
+								'controller' => 'comentarioForos', 'action' => 'add',
+								h($categoria),
+								h($foroTema['ForoTema']['titulo']),
+								h($foroTema['ForoTema']['id_subforo']),
+								h($foroTema['ForoTema']['id'])
+							)); ?>
+						</span>
+					<?php endif; ?>
+				</th>
+			</tr>
+			<tr>
+				<th style="background-color: orange;">
 					<span style="float: left;display: inline-block;font-size: 1em;">
 						<?php echo h($usuario['User']['username']);?>
 					</span>				
 					<span style="float: left;display: inline-block;font-size: 1em;">
 					</span>
-				</th><th style="background-color: lightgray;">
+				</th><th style="background-color: orange;">
 					<span style="float: left;display: inline-block;font-size: 1em;">
 						<?php echo h($foroTema['ForoTema']['created']); ?>
 					</span>
-				</th><th style="background-color: lightgray;">
+				</th><th style="background-color: orange;">
 					<span style="float: right;font-size: 1em;">
 						<?php echo h($foroTema['ForoTema']['created']); ?>
 					</span>
@@ -54,12 +58,17 @@
 					</span><br />
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>
 					<?php echo h($usuario['User']['fecharegistro']);?><br />
-					<span style='font-weight: bold;'>Mensajes:&nbsp;</span>
-					<?php echo h($usuario['User']['mensajes']);?>
+					<span style='font-weight: bold;'>Temas:&nbsp;</span>
+					<?php echo h($usuario['User']['temas']);?><br />
+					<span style='font-weight: bold;'>Comentarios:&nbsp;</span>
+					<?php echo h($usuario['User']['comentarios']);?>
 				</td>
 				<td colspan="2" style="border-color: black;">
 					<?php echo h($foroTema['ForoTema']['contenido']);?>
 				</td>
+			</tr>
+			<tr>
+				<th colspan="3" style="background-color: orange;">&nbsp;</th>
 			</tr>
 			<?php 
 				$i = 0;
@@ -89,30 +98,36 @@
 					</span><br />
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>
 					<?php echo h($comenta['users']['fecharegistro']);?><br />
-					<span style='font-weight: bold;'>Mensajes:&nbsp;</span>
-					<?php echo h($comenta['users']['mensajes']);?>
+					<span style='font-weight: bold;'>Temas:&nbsp;</span>
+					<?php echo h($usuario['User']['temas']);?><br />
+					<span style='font-weight: bold;'>Comentarios:&nbsp;</span>
+					<?php echo h($usuario['User']['comentarios']);?>
 				</td>
 				<td colspan="2">
 					<?php echo h($comenta['comentario_foro']['comentario']);?>
 				</td>
 			</tr>
 			<?php endforeach; ?>
+			<tr>
+				<th colspan="3" style="background-color: lightgray;">
+					<?php if ($logged_in): ?>
+						<span style="float: right;font-weight: bold;font-size: 1em;">
+							<?php echo $this->Html->link(__('Responder al Tema'), array(
+								'controller' => 'comentarioForos', 'action' => 'add',
+								h($categoria),
+								h($foroTema['ForoTema']['titulo']),
+								h($foroTema['ForoTema']['id_subforo']),
+								h($foroTema['ForoTema']['id'])
+							)); ?>
+						</span>
+					<?php endif; ?>
+				</th>
+			</tr>
 		</table>
 
 	</div>
 </div>
 <div style="clear: both;"> <!--  class="actions"> -->
-	<?php if ($logged_in): ?>
-		<span style="float: right;font-weight: bold;font-size: 1em;">
-			<?php echo $this->Html->link(__('Responder al Tema'), array(
-				'controller' => 'comentarioForos', 'action' => 'add',
-				h($categoria),
-				h($foroTema['ForoTema']['titulo']),
-				h($foroTema['ForoTema']['id_subforo']),
-				h($foroTema['ForoTema']['id'])
-			)); ?>
-		</span>
-	<?php endif; ?>
 	<!-- <p>
 		< ?php
 			echo $this->Paginator->counter(array(

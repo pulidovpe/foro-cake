@@ -1,79 +1,104 @@
-<?php //pr($subforo); ?>
-<div style="clear: both;">  
-	<div style="text-align: center;margin: 0 auto;width: 98%;">	
+<?php //pr($subforos); ?>
+<div style="clear: both;">
+	<div style="text-align: center;margin: 0 auto;width: 98%;">
 		<table cellpadding="0" cellspacing="0">
-		<thead>
-		<tr>
-			<th colspan="6" >
-				<div style="text-align: center;">
-					<!-- IR A INICIO - CATEGORIAS -->
-					<span style="float: left;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__($categoria), array('controller' => 'foroCategorias', 'action' => 'index')); ?></span>
-					<!-- IR A UN FORO - FOROTEMAS -->
-					<span style="float: left;font-weight: bold;font-size: 0.9em;"><?php echo "- -> ".$subforo['ForoSubforo']['subforo']; ?></span>
-					<!-- <span style="float: left;font-weight: bold;font-size: 1.0.9em;">< ?php echo "- -> ".h($foroTema['0']['ForoTema']['titulo']); ? ></span> -->
-					<?php if($logged_in): ?>
-						<?php if(isset($foroTema)): ?>
-							<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$subforo['ForoSubforo']['id'])); ?></li>
-						<?php else: ?>
-							<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$foro)); ?></li>
-						<?php endif; ?>
-					<?php endif; ?>
-				</div>
-			</th>
-		</tr>
-		<tr>
-			<th style="width: 40%"><?php echo $this->Paginator->sort('titulo'); ?></th>
-			<th><?php echo $this->Paginator->sort('fecha'); ?></th>
-			<th><?php echo $this->Paginator->sort('activo'); ?></th>
-			<th class="actions"  style="width: 30%">
-				<span style="font-size: 0.9em;">
-					<?php echo __('Respuestas - Visitas - Último mensaje'); ?>
-				</span>
-			</th>
-		</tr>
-		</thead>
-		<tbody>
-		<?php
-			foreach ($foroTemas as $foroTema): ?>
-			<tr>
-				<td>
-					<?php echo $this->Html->link(__(h($foroTema['ForoTema']['titulo'])), array('action' => 'view',h($categoria),h($subforo['ForoSubforo']['subforo']),h($foroTema['ForoTema']['id']))); ?>			
-				</td>
-				<td><?php echo h($foroTema['ForoTema']['fecha']); ?>&nbsp;</td>
-				<td><?php echo h($foroTema['ForoTema']['activo']); ?>&nbsp;</td>
-				<td class="actions">
-
-				</td>
-			</tr>
-		<?php endforeach; ?>
-			<tr>
-				<th colspan="6" >
-					<div style="text-align: center;">
+			<thead >
+				<tr>
+					<th colspan="2"><?php echo h($foroCategorias[0]['ForoCategoria']['categoria']);?>&nbsp;</td></th>
+					<th>
+						<span style="font-size: 0.8em;">
+						<?php echo "Temas - Mensajes - Último mensaje" ?>
+						</span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<tbody>
+					<?php $i=0; ?>
+					<?php foreach ($subforos as $foroSubforo): ?>
+						<tr>
+							<?php if($subforos[$i]['ForoSubforo']['id_foro_categoria']==1): ?>
+								<td colspan="2" width="80%">
+									<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroCategorias[0]['ForoCategoria']['categoria']),h($foroSubforo['ForoSubforo']['id']))); ?><br />
+									<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
+								</td>
+								<td class="actions">
+									<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
+								</td>
+							<?php
+								endif;
+								$i++; 
+							?>
+						</tr>
+					<?php endforeach; ?>
+					</tbody>
+				</tr>
+				<thead>
+					<tr>
+						<th colspan="2"><?php echo h($foroCategorias[1]['ForoCategoria']['categoria']); ?>&nbsp;</th>
+						<th>
+							<span style="font-size: 0.8em;">
+							<?php echo "Temas - Mensajes - Último mensaje" ?>
+							</span>
+						</th>
+					</tr>
+				</thead>
+				<tr>
+					<tbody>
+					<?php $i=0;
+						foreach ($subforos as $foroSubforo): ?>						
+						<tr>
+							<?php if($subforos[$i]['ForoSubforo']['id_foro_categoria']==2): ?>
+								<td colspan="2" width="80%">
+									<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroCategorias[1]['ForoCategoria']['categoria']),h($foroSubforo['ForoSubforo']['id']))); ?><br />
+									<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
+								</td>
+								<td class="actions">
+									<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
+								</td>
+							<?php
+								endif;
+								$i++; 
+							?>
+						</tr>
+					<?php endforeach; ?>
+					</tbody>
+				</tr>
+				<thead>
+					<tr>
 						<?php if($logged_in): ?>
-							<?php if(isset($foroTema)): ?>
-								<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$subforo['ForoSubforo']['id'])); ?></li>
-							<?php else: ?>
-								<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$foro)); ?></li>
-							<?php endif; ?>
-						<?php endif; ?>
-					</div>
-				</th>
-			</tr>
-		</tbody>
+							<th colspan="2"><?php echo h($foroCategorias[2]['ForoCategoria']['categoria']); ?>&nbsp;</th>
+							<th>
+								<span style="font-size: 0.8em;">
+								<?php echo "Temas - Mensajes - Último mensaje" ?>
+								</span>
+							</th>
+						<?php endif; ?>&nbsp;</td>
+					</tr>
+				</thead>
+				<tr>
+					<tbody>
+					<?php $i=0; ?>
+					<?php foreach ($subforos as $foroSubforo): ?>
+						<tr>
+							<?php if($subforos[$i]['ForoSubforo']['id_foro_categoria']==3): ?>
+								<td colspan="2" width="80%">
+									<?php echo $this->Html->link(h($foroSubforo['ForoSubforo']['subforo']), array('controller' => 'foroTemas','action' => 'index',h($foroCategorias[2]['ForoCategoria']['categoria']),h($foroSubforo['ForoSubforo']['id']))); ?><br />
+									<span style="font-size: 0.8em;"><?php echo h($foroSubforo['ForoSubforo']['descripcion']); ?></span>
+								</td>
+								<td class="actions">
+									<?php echo $foroSubforo['ForoSubforo']['temas']; ?>
+								</td>
+							<?php
+								endif;
+								$i++; 
+							?>							
+						</tr>
+					<?php endforeach; ?>
+					</tbody>
+				</tr>
+			</tbody>
 		</table>
-		<p>
-			<?php
-			echo $this->Paginator->counter(array(
-			'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-			));
-			?>
-		</p>
-		<div class="paging">
-		<?php
-			echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-			echo $this->Paginator->numbers(array('separator' => ''));
-			echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-		?>
-		</div>
 	</div>
 </div>

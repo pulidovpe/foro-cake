@@ -41,12 +41,6 @@ class ForoCategoriasController extends AppController {
 	public function index() {
 		$this->loadModel('ForoSubforo');
 		$this->ForoSubforo->recursive = 0;
-		
-		//$total = $this->Article->find('count');
-		/*$this->Paginator->settings = array(
-			'conditions' => array('ForoSubforo.id_foro_categoria' => 1));
-		$subforos1 = $this->Paginator->paginate('ForoSubforo');
-		$this->set(compact('subforos1'));*/
 
 		$this->set('subforos', $this->ForoSubforo->find('all'));
 

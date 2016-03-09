@@ -73,14 +73,34 @@ class ForoSubforosController extends AppController {
             $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
             $this->redirect(array('controller' => 'users', 'action' => 'index'));
         }
+        $this->loadModel('ForoCategoria');
+		$this->ForoCategoria->recursive = 0;
+		$this->set('ForoCategoria', $this->ForoCategoria->find('all'));
 
 		if ($this->request->is('post')) {
 			$this->ForoSubforo->create();
 			if ($this->ForoSubforo->save($this->request->data)) {
-				$this->Session->setFlash(__('The foro subforo has been saved.'));
-				return $this->redirect(array('controller'=>'foroTemas','action' => 'view'));
+				
+				/*$idtema = $this->ForoTema->getLastInsertId();			
+				// Se incrementa el contador de mensajes en la tabla forotemas y en user
+				$temas = $this->request->data['ForoTema']['temas'];
+				$this->loadModel('ForoSubforo');
+				$this->ForoSubforo->id = $this->request->data['ForoTema']['id_subforo'];
+				$this->ForoSubforo->saveField('temas', $temas);
+				$this->loadModel('User');
+				$this->User->id = $this->Session->read('Auth.User.id');
+				$this->User->saveField('temas', $temas);*/
+				
+				$this->Session->setFlash(__('El nuevo foro ha sido agregado'));
+				return $this->redirect(array('controller'=>'foroCategorias','action' => 'index'));
+				/*return $this->redirect(array(
+					'action' => 'view',
+					$categoria,
+					$foro,
+					$idtema
+				));*/
 			} else {
-				$this->Session->setFlash(__('The foro subforo could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('El foro no pudo grabarse'));
 			}
 		}
 	}

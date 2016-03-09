@@ -77,15 +77,26 @@ class ComentarioForosController extends AppController {
 			$this->set('usuario',$usuario);
 			if ($this->request->is('post')&&(!empty($this->request->data['ComentarioForo']['comentario']))) {
 				$this->ComentarioForo->create();
-
 				if ($this->ComentarioForo->save($this->request->data)) {
-					$n_mensajes = $this->Session->read('Auth.User.mensajes') + 1;
+					
+					$idcomenta = $this->ComentarioForo->getLastInsertId();			
+					// Se incrementa el contador de mensajes en la tabla forotemas y en user
+					$comentarios = $this->request->data['ComentarioForo']['comentarios'];
+					$this->loadModel('ForoTema');
+					$this->ForoTema->id = $this->request->data['ComentarioForo']['id_tema'];
+					$this->ForoTema->saveField('comentarios', $comentarios);
 					$this->loadModel('User');
 					$this->User->id = $this->Session->read('Auth.User.id');
-					$this->User->saveField('mensajes', $n_mensajes);
+					$this->User->saveField('comentarios', $comentarios);
 
 					$this->Session->setFlash(__('El nuevo comentario ha sido publicado'),'msg',array('type' => 'success'));
-					return $this->redirect(array('controller' => 'foroTemas','action' => 'view', $id, $foro));
+					return $this->redirect(array(
+						'controller' => 'foroTemas',
+						'action' => 'view',
+						$categoria,
+						$subforo['ForoSubforo']['subforo'],
+						$id
+					));
 				} else {
 					$this->Session->setFlash(__('No se pudo realizar la publicacion'),'msg',array('type'=>'danger'));
 				}

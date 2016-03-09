@@ -1,13 +1,13 @@
 <div class="foroCategorias form">
 <?php echo $this->Form->create('ForoCategoria'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Foro Categoria'); ?></legend>
+		<legend><?php echo __('Agregar Nueva Categoria'); ?></legend>
 	<?php
 		echo $this->Form->input('categoria');
 		echo $this->Form->input('descripcion', array('type' => 'textarea', 'label' => 'Descripción'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Aceptar')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

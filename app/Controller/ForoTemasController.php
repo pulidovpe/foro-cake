@@ -92,7 +92,7 @@ class ForoTemasController extends AppController {
 		$idtema = $foroTema['ForoTema']['id'];
 		$idusuario = $foroTema['ForoTema']['id_usuario'];
 		$comentarios = $this->ComentarioForo->query(
-			"SELECT comentario_foro.*,users.id,users.username,users.role,users.fecharegistro,users.mensajes,users.avatar
+			"SELECT comentario_foro.*,users.id,users.username,users.role,users.fecharegistro,users.temas,users.comentarios,users.avatar
 			 FROM comentario_foro JOIN users ON 
 			comentario_foro.id_usuario = users.id AND 
 			comentario_foro.id_tema = '$idtema'; "
@@ -149,13 +149,17 @@ class ForoTemasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->ForoTema->create();
 			if ($this->ForoTema->save($this->request->data)) {
-				$contenido = $this->request->data['ForoTema']['contenido'];	
-				$id_subforo = $this->request->data['ForoTema']['id_subforo'];			
-				// Se incrementa el contador de mensajes en la tabla User
-				$n_mensajes = $this->Session->read('Auth.User.mensajes') + 1;
+				
+				$idtema = $this->ForoTema->getLastInsertId();			
+				// Se incrementa el contador de mensajes en la tabla forotemas y en user
+				$temas = $this->request->data['ForoTema']['temas'];
+				$this->loadModel('ForoSubforo');
+				$this->ForoSubforo->id = $this->request->data['ForoTema']['id_subforo'];
+				$this->ForoSubforo->saveField('temas', $temas);
 				$this->loadModel('User');
 				$this->User->id = $this->Session->read('Auth.User.id');
-				$this->User->saveField('mensajes', $n_mensajes);
+				$this->User->saveField('temas', $temas);
+				
 				// Se copia el tema en la tabla comentarios
 				/*$this->loadModel('ComentarioForo');
 				$this->request->data['ComentarioForo']['id_tema']    = $this->ForoTema->getLastInsertId();
@@ -166,7 +170,12 @@ class ForoTemasController extends AppController {
 				$this->ComentarioForo->saveAll($this->request->data);*/
 				//
 				$this->Session->setFlash(__('El nuevo tema ha sido publicado'),'msg',array('type' => 'success'));
-				return $this->redirect(array('action' => 'view',$id_subforo));
+				return $this->redirect(array(
+					'action' => 'view',
+					$categoria,
+					$foro,
+					$idtema
+				));
 			} else {
 				$this->Session->setFlash(__('No se pudo realizar la publicacion'),'msg',array('type' => 'danger'));
 			}
