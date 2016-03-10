@@ -47,7 +47,7 @@ class ComentarioForosController extends AppController {
  */
 	public function view($id = null) {
 		if (!$this->ComentarioForo->exists($id)) {
-			throw new NotFoundException(__('Invalid comentario foro'));
+			throw new NotFoundException(__('Comentario del foro incorrecto'));
 		}
 		$options = array('conditions' => array('ComentarioForo.' . $this->ComentarioForo->primaryKey => $id));
 		$this->set('comentarioForo', $this->ComentarioForo->find('first', $options));
@@ -128,20 +128,67 @@ class ComentarioForosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function edit($categoria = null,$idtema = null,$id = null) {
 		if (!$this->ComentarioForo->exists($id)) {
-			throw new NotFoundException(__('Invalid comentario foro'));
+			throw new NotFoundException(__('Comentario del foro incorrecto'));
 		}
+		if(!$this->Auth->login()) {
+            $this->Session->setFlash(__($msg_conectate), 'msg', array('type' => 'warning'));
+            $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
+        }
+        
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->ComentarioForo->save($this->request->data)) {
+				// actualizar el contador de comentarios en ForoTema
+				$this->loadModel('ForoTema');				
+				$tema1 = $this->ForoTema->find('first', array(
+					'conditions' => array(
+						'ForoTema.id' => $idtema
+				)));
+				//pr($idforo);die();
+				if($tema1['ForoTema']['id'] != $this->request->data['ComentarioForo']['id_tema']):
+					$this->ForoTema->id = $tema1['ForoTema']['id'];
+					$comenta1 = $tema1['ForoTema']['comentarios'] - 1;
+					$this->ForoTema->saveField('comentarios',$comenta1);
+					$tema2 = $this->ForoTema->find('first', array(
+						'conditions' => array(
+							'ForoTema.id' => $this->request->data['ComentarioForo']['id_tema']
+					)));
+					$this->ForoTema->id = $this->request->data['ComentarioForo']['id_tema'];
+					$comenta2 = $tema2['ForoTema']['comentarios'] + 1;
+					$this->ForoTema->saveField('comentarios',$comenta2);
+				endif;
+				if(($this->Session->read('Auth.User.role') != 3) && ($this->Session->read('Auth.User.id') != $this->request->data['ComentarioForo']['id_usuario'])):
+					$comentario = $this->request->data['ComentarioForo']['comentario']."\n\n".
+								"<---Este comentario ha sido moderado--->";
+					$this->ForoTema->saveField('comentario',$comentario);
+				endif;
+
 				$this->Session->setFlash(__('La publicacion fue actualizada'),'msg',array('type'=>'success'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array(
+					'controller' => 'foroTemas',
+					'action' => 'view',
+					$categoria,
+					$tema2['ForoTema']['titulo'],
+					$idtema
+				));
 			} else {
 				$this->Session->setFlash(__('No se pudo actualizar la publicacion'),'msg',array('type'=>'danger'));
 			}
 		} else {
 			$options = array('conditions' => array('ComentarioForo.' . $this->ComentarioForo->primaryKey => $id));
 			$this->request->data = $this->ComentarioForo->find('first', $options);
+
+			$this->loadModel('ForoTema');
+	    	$forotema = $this->ForoTema->find('all');
+			$this->set('forotema',$forotema);
+			$id_usuario = $this->ComentarioForo->find('first', array('conditions' => array('ComentarioForo.id' => $id)));
+			$this->loadModel('User');
+			$usuario = $this->User->find('first', array(
+				'conditions' => array(
+					'User.id' => $id_usuario['ComentarioForo']['id_usuario']
+			)));
+			$this->set('n_usuario', $usuario['User']['username']);
 		}
 	}
 

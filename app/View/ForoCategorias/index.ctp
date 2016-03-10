@@ -6,8 +6,8 @@
 				<tr>
 					<th colspan="2"><?php echo h($foroCategorias[0]['ForoCategoria']['categoria']);?>&nbsp;</td></th>
 					<th>
-						<span style="font-size: 0.8em;">
-						<?php echo "Temas - Mensajes - Último mensaje" ?>
+						<span style="text-align: center;margin: 0 auto;font-size: 0.8em;background-color: lightgray;">
+							<?php echo __('- Temas - '); /*Mensajes - Último mensaje');*/ ?>
 						</span>
 					</th>
 				</tr>
@@ -38,8 +38,8 @@
 					<tr>
 						<th colspan="2"><?php echo h($foroCategorias[1]['ForoCategoria']['categoria']); ?>&nbsp;</th>
 						<th>
-							<span style="font-size: 0.8em;">
-							<?php echo "Temas - Mensajes - Último mensaje" ?>
+							<span style="text-align: center;margin: 0 auto;font-size: 0.8em;background-color: lightgray;">
+								<?php echo __('- Temas - '); /*Mensajes - Último mensaje');*/ ?>
 							</span>
 						</th>
 					</tr>
@@ -70,8 +70,8 @@
 						<?php if($logged_in): ?>
 							<th colspan="2"><?php echo h($foroCategorias[2]['ForoCategoria']['categoria']); ?>&nbsp;</th>
 							<th>
-								<span style="font-size: 0.8em;">
-								<?php echo "Temas - Mensajes - Último mensaje" ?>
+								<span style="text-align: center;margin: 0 auto;font-size: 0.8em;background-color: lightgray;">
+									<?php echo __('- Temas - '); /*Mensajes - Último mensaje');*/ ?>
 								</span>
 							</th>
 						<?php endif; ?>&nbsp;</td>

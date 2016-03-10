@@ -1,4 +1,4 @@
-<?php echo $this->html->charset();
+<?php
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -40,7 +40,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<div id="container">
 		<div id="header">
 			<?php echo $this->Html->link(
-					$this->Html->image('titulo.jpg', array('alt' => 'BANNER', 'border' => '0', 'width' => '100%', 'height' => '150px')), '', array('target' => '', 'escape' => false));
+					$this->Html->image('titulo.jpg', array('alt' => 'BANNER', 'border' => '0', 'width' => '100%', 'height' => '150px')), '', array('target' => '', 'escape' => false),'http://quiensoy-pulidovpe.c9.io');
 			?>
 			<!-- <h1>< ?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ? ></h1> -->
 		</div>

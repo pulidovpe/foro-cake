@@ -1,15 +1,33 @@
 <div class="foroTemas form">
 <?php echo $this->Form->create('ForoTema'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Foro Tema'); ?></legend>
+		<legend><?php echo __('Editar un Tema'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('id_subforo');
-		echo $this->Form->input('titulo');
-		echo $this->Form->input('contenido');
-		echo $this->Form->input('fecha');
-		echo $this->Form->input('id_usuario');
-		echo $this->Form->input('activo');
+		foreach ($subforos as $foro):
+			$opciones[$foro['ForoSubforo']['id']] = $foro['ForoSubforo']['subforo'];
+		endforeach;
+		//pr($opciones);
+		echo $this->Form->input('id', array('type'=>'hidden'));
+		// Si es moderador se habilita para moverlo a otro foro
+		if($current_user['role'] != 3):
+			echo $this->Form->input('id_subforo', array('label'=>'Mover al Foro','options'=>array($opciones)));
+		else:
+			echo $this->Form->input('id_subforo', array('type'=>'hidden'));
+		endif;
+		echo $this->Form->input('titulo', array('label' => 'Titulo: '));
+		echo $this->Form->input('contenido', array('type' => 'textarea', 'label' => 'Contenido: '));
+		echo $this->Form->input('fecha', array('type'=>'text','readonly'=>'readonly', 'label' => 'Fecha de Creacion: '));
+		echo $this->Form->input('id_usuario', array('type'=>'hidden'));
+		// Si es moderador puede desactivar el tema y muestra el username		
+		if($current_user['role'] != 3):
+			echo $this->Form->input('usuario', array('readonly'=>'readonly','value' => $n_usuario));
+			echo $this->Form->input('activo', array(
+					'label'=>'Activar/Desactivar: ',
+					'options'=>array(
+						'S'=>'Activar',
+						'N'=>'Desactivar'
+				)));
+		endif;
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

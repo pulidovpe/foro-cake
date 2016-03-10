@@ -1,4 +1,11 @@
-<?php //pr($foro); ?>
+<?php 
+/*echo "comentarios <br />";
+pr($comentarios[0]);
+echo "usuario <br />";
+pr($usuario);
+echo "foroTema <br />";
+pr($foroTema);*/
+?>
 <div style="clear: both;">
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
 		<!-- IR A INICIO - CATEGORIA -->
@@ -64,11 +71,52 @@
 					<?php echo h($usuario['User']['comentarios']);?>
 				</td>
 				<td colspan="2" style="border-color: black;">
-					<?php echo h($foroTema['ForoTema']['contenido']);?>
+					<?php echo nl2br(h($foroTema['ForoTema']['contenido']));?>
+					<br /><br /><hr />
+					<?php echo h($usuario['User']['firma']);?>
 				</td>
 			</tr>
 			<tr>
-				<th colspan="3" style="background-color: orange;">&nbsp;</th>
+				<th colspan="3" style="background-color: orange;">
+					<?php if ($logged_in): ?>
+						<?php
+							switch (h($current_user['role'])) {
+								case 1:
+									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+									echo $this->Html->link(__('| Eliminar |'), array(
+										'controller' => 'foroTemas', 'action' => 'delete',
+										h($foroTema['ForoTema']['id'])
+									));
+									echo "</span>";
+									
+								case 2:
+									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+									echo $this->Html->link(__('| Moderar |'), array(
+										'controller' => 'foroTemas', 
+										'action' => 'edit',
+										h($categoria),
+										h($foroTema['ForoTema']['id_subforo']),
+										h($foroTema['ForoTema']['id'])
+									));
+									echo "</span>";
+									break;
+								case 3:
+									if(h($usuario['User']['id'])==$current_user['id']):
+										echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+										echo $this->Html->link(__('| Editar |'), array(
+											'controller' => 'foroTemas', 
+											'action' => 'edit',
+											h($categoria),
+											h($foroTema['ForoTema']['id_subforo']),
+											h($foroTema['ForoTema']['id'])
+										));
+										echo "</span>";
+									endif;
+									break;								
+							}
+						?>		
+					<?php endif; ?>
+				</th>
 			</tr>
 			<?php 
 				$i = 0;
@@ -99,13 +147,59 @@
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>
 					<?php echo h($comenta['users']['fecharegistro']);?><br />
 					<span style='font-weight: bold;'>Temas:&nbsp;</span>
-					<?php echo h($usuario['User']['temas']);?><br />
+					<?php echo h($comenta['users']['temas']);?><br />
 					<span style='font-weight: bold;'>Comentarios:&nbsp;</span>
-					<?php echo h($usuario['User']['comentarios']);?>
+					<?php echo h($comenta['users']['comentarios']);?>
 				</td>
 				<td colspan="2">
-					<?php echo h($comenta['comentario_foro']['comentario']);?>
+					<?php echo nl2br(h($comenta['comentario_foro']['comentario']));?>
+					<br /><br /><hr />
+					<?php echo h($usuario['User']['firma']);?>
 				</td>
+			</tr>
+			<tr>
+				<th colspan="3" style="background-color: lightgray;">
+					<?php if ($logged_in): ?>
+						<?php
+							switch (h($current_user['role'])) {
+								case 1:
+									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+									echo $this->Html->link(__('| Eliminar |'), array(
+										'controller' => 'comentarioForos', 'action' => 'delete',
+										h($comenta['comentario_foro']['id'])
+									));
+									echo "</span>";
+									
+								case 2:
+									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+									echo $this->Html->link(__('| Moderar |'), array(
+										'controller' => 'comentarioForos', 
+										'action' => 'edit',
+										h($categoria),
+										h($comenta['comentario_foro']['id_tema']),
+										h($comenta['comentario_foro']['id'])
+									));
+									echo "</span>";
+									break;
+								case 3:
+									if(h($comenta['users']['id'])==$current_user['id']):
+										echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+										echo $this->Html->link(__('| Editar |'), array(
+											'controller' => 'comentarioForos', 
+											'action' => 'edit',
+											h($categoria),
+											h($comenta['comentario_foro']['id_tema']),
+											h($comenta['comentario_foro']['id'])
+										));
+										echo "</span>";
+									endif;
+									break;								
+							}
+							/*echo "comenta[users][id]: ".h($comenta['users']['id']). "<br />";
+							echo "current_user[id]: ".$current_user['id'];*/
+						?>		
+					<?php endif; ?>
+				</th>
 			</tr>
 			<?php endforeach; ?>
 			<tr>

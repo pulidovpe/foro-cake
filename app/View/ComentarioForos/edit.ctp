@@ -3,11 +3,28 @@
 	<fieldset>
 		<legend><?php echo __('Editar Comentario'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('id_tema');
-		echo $this->Form->input('id_usuario');
-		echo $this->Form->input('comentario');
-		echo $this->Form->input('activo');
+		foreach ($forotema as $tema):
+			$opciones[$tema['ForoTema']['id']] = $tema['ForoTema']['titulo'];
+		endforeach;
+		//pr($opciones);
+		echo $this->Form->input('id', array('type'=>'hidden'));
+		// Si es moderador se habilita para moverlo a otro foro
+		if($current_user['role'] != 3):
+			echo $this->Form->input('id_tema', array('label'=>'Mover al Tema','options'=>array($opciones)));
+		endif;
+		echo $this->Form->input('id_usuario', array('type'=>'hidden'));
+		echo $this->Form->input('comentario', array('type' => 'textarea', 'label' => 'Comentario'));
+		echo $this->Form->input('created', array('readonly'=>'readonly','label' => 'Fecha de Creacion'));
+		// Si es moderador puede desactivar el tema y muestra el username		
+		if($current_user['role'] != 3):
+			echo $this->Form->input('usuario', array('readonly'=>'readonly','value' => $n_usuario));
+			echo $this->Form->input('activo', array(
+					'label'=>'Activar/Desactivar',
+					'options'=>array(
+						'S'=>'Activar',
+						'N'=>'Desactivar'
+				)));
+		endif;
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

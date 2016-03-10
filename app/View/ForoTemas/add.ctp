@@ -15,7 +15,7 @@
 		echo $this->Form->input('id_subforo', array('type'=>'hidden', 'value' => $id_tema['ForoSubforo']['id'], 'style'=>'width:70px;'));
 		echo $this->Form->input('titulo');
 		echo $this->Form->input('contenido', array('type' => 'textarea', 'label' => 'Contenido'));
-		echo $this->Form->input('fecha', array('readonly'=>'readonly', 'label' => ''));
+		echo $this->Form->input('fecha', array('type'=>'text','readonly'=>'readonly', 'label' => 'Fecha de Creacion'));
 		echo $this->Form->input('id_usuario', array('type'=>'hidden','value' => $usuario));
 		echo $this->Form->input('activo', array('type'=>'hidden','value' => 'S'));
 		echo $this->Form->input('temas', array('type'=>'hidden','value' => $temas));

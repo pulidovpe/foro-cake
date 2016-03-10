@@ -97,6 +97,9 @@ class ForoTemasController extends AppController {
 			comentario_foro.id_usuario = users.id AND 
 			comentario_foro.id_tema = '$idtema'; "
 		);
+		$this->set('comentarios', $comentarios);
+		$this->set('foro', $foro);
+		$this->set('categoria',$categoria);
 		/*// Limit widgets shown to only those owned by the user.
 		SELECT comentario_foro.* FROM comentario_foro 
 		INNER JOIN users ON ComentarioForo.id_usuario = users.id 
@@ -117,14 +120,6 @@ class ForoTemasController extends AppController {
 		    )
 		);
 		$this->set( 'comentarios', $this->paginate( $this->ComentarioForo ) );*/
-		$this->set('comentarios', $comentarios);
-		$this->set('foro', $foro);
-		$this->set('categoria',$categoria);
-		// Buscamos el comentario
-		/*$this->loadModel('ForoSubforo');
-		$options = array('conditions' => array( 'ForoSubforo.id' => $id));
-		$subforo = $this->ForoSubforo->find('first', $options);
-		$this->set('subforo', $subforo);*/
 	}
 
 /**
@@ -189,24 +184,70 @@ class ForoTemasController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function edit($categoria = null,$idforo = null, $id = null) {
 		if (!$this->ForoTema->exists($id)) {
-			throw new NotFoundException(__('Invalid foro tema'));
+			throw new NotFoundException(__('Tema incorrecto'));
 		}
 		if(!$this->Auth->login()) {
             $this->Session->setFlash(__($msg_conectate), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
-        }
+        }        
+
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->ForoTema->save($this->request->data)) {
+				// actualizar el contador de temas en SubForo
+				$this->loadModel('ForoSubforo');				
+				$subforo1 = $this->ForoSubforo->find('first', array(
+					'conditions' => array(
+						'ForoSubforo.id' => $idforo
+				)));
+				//pr($idforo);die();
+				if($subforo1['ForoSubforo']['id'] != $this->request->data['ForoTema']['id_subforo']):
+					$this->ForoSubforo->id = $subforo1['ForoSubforo']['id'];
+					$temas1 = $subforo1['ForoSubforo']['temas'] - 1;
+					$this->ForoSubforo->saveField('temas',$temas1);
+					$subforo2 = $this->ForoSubforo->find('first', array(
+						'conditions' => array(
+							'ForoSubforo.id' => $this->request->data['ForoTema']['id_subforo']
+					)));
+					$this->ForoSubforo->id = $this->request->data['ForoTema']['id_subforo'];
+					$temas2 = $subforo2['ForoSubforo']['temas'] + 1;
+					$this->ForoSubforo->saveField('temas',$temas2);
+				endif;
+				if(($this->Session->read('Auth.User.role') != 3) && ($this->Session->read('Auth.User.id') != $this->request->data['ForoTema']['id_usuario'])):
+					$contenido = $this->request->data['ForoTema']['contenido']."\n\n".
+								"<---Este tema ha sido moderado--->";
+					$this->ForoTema->saveField('contenido',$contenido);
+				endif;
+				
 				$this->Session->setFlash(__('La publicacion fue actualizada'),'msg',array('type' => 'success'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array(
+					'controller' => 'foroTemas',
+					'action' => 'index',
+					$categoria,
+					$this->request->data['ForoTema']['id_subforo'],
+					$idtema
+				));
 			} else {
 				$this->Session->setFlash(__('No se pudo actualizar la publicacion'),'msg',array('type' => 'danger'));
 			}
 		} else {
 			$options = array('conditions' => array('ForoTema.' . $this->ForoTema->primaryKey => $id));
 			$this->request->data = $this->ForoTema->find('first', $options);
+
+			$this->loadModel('ForoSubforo');
+	    	$subforos = $this->ForoSubforo->find('all');
+			$this->set('subforos',$subforos);
+			$id_usuario = $this->ForoTema->find('first', array(
+				'conditions' => array(
+					'ForoTema.id' => $id
+			)));
+			$this->loadModel('User');
+			$usuario = $this->User->find('first', array(
+				'conditions' => array(
+					'User.id' => $id_usuario['ForoTema']['id_usuario']
+			)));
+			$this->set('n_usuario', $usuario['User']['username']);
 		}
 	}
 
