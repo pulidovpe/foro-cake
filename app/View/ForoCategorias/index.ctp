@@ -4,9 +4,9 @@
 		<table cellpadding="0" cellspacing="0">
 			<thead >
 				<tr>
-					<th colspan="2"><?php echo h($foroCategorias[0]['ForoCategoria']['categoria']);?>&nbsp;</td></th>
-					<th>
-						<span style="text-align: center;margin: 0 auto;font-size: 0.8em;background-color: lightgray;">
+					<th colspan="2" style="background: orange;"><?php echo h($foroCategorias[0]['ForoCategoria']['categoria']);?>&nbsp;</td></th>
+					<th style="text-align: center;margin: 0 auto;background: orange;">
+						<span style="font-size: 0.8em;">
 							<?php echo __('- Temas - '); /*Mensajes - Último mensaje');*/ ?>
 						</span>
 					</th>
@@ -36,9 +36,9 @@
 				</tr>
 				<thead>
 					<tr>
-						<th colspan="2"><?php echo h($foroCategorias[1]['ForoCategoria']['categoria']); ?>&nbsp;</th>
-						<th>
-							<span style="text-align: center;margin: 0 auto;font-size: 0.8em;background-color: lightgray;">
+						<th colspan="2" style="background: orange;"><?php echo h($foroCategorias[1]['ForoCategoria']['categoria']); ?>&nbsp;</th>
+						<th style="text-align: center;margin: 0 auto;background: orange;">
+							<span style="font-size: 0.8em;">
 								<?php echo __('- Temas - '); /*Mensajes - Último mensaje');*/ ?>
 							</span>
 						</th>
@@ -68,9 +68,9 @@
 				<thead>
 					<tr>
 						<?php if($logged_in): ?>
-							<th colspan="2"><?php echo h($foroCategorias[2]['ForoCategoria']['categoria']); ?>&nbsp;</th>
-							<th>
-								<span style="text-align: center;margin: 0 auto;font-size: 0.8em;background-color: lightgray;">
+							<th colspan="2" style="background: orange;"><?php echo h($foroCategorias[2]['ForoCategoria']['categoria']); ?>&nbsp;</th>
+							<th style="text-align: center;margin: 0 auto;background: orange;">
+								<span style="font-size: 0.8em;">
 									<?php echo __('- Temas - '); /*Mensajes - Último mensaje');*/ ?>
 								</span>
 							</th>

@@ -108,7 +108,7 @@ class ComentarioForosController extends AppController {
 		
 	}
 
-	public function add2() {
+	/*public function add2() {
 		//$comentario = http_build_query($this->request->params['named']['comentario']);
 		$this->request->data['ComentarioForo']['id_tema'] 	= $this->request->params['named']['id_tema'];
         $this->request->data['ComentarioForo']['id_usuario']= $this->request->params['named']['id_usuario'];
@@ -119,7 +119,7 @@ class ComentarioForosController extends AppController {
         //pr($this->request->params['named']);exit();
         
     	$this->ComentarioForo->saveAll($this->request->data);
-	}
+	}*/
 
 /**
  * edit method
@@ -136,6 +136,12 @@ class ComentarioForosController extends AppController {
             $this->Session->setFlash(__($msg_conectate), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
         }
+        $this->loadModel('ForoTema');
+        $id_tema = $this->ForoTema->find('first',array('conditions' => array('ForoTema.id'=>$idtema)));
+		$this->set('id_tema',$id_tema);
+		$this->loadModel('ForoSubforo');
+        $subforo = $this->ForoSubforo->find('first',array('conditions'=>array('ForoSubforo.id' => $id_tema['ForoTema']['id_subforo'])));
+		$this->set('subforo',$subforo);
         
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->ComentarioForo->save($this->request->data)) {
@@ -158,7 +164,7 @@ class ComentarioForosController extends AppController {
 					$comenta2 = $tema2['ForoTema']['comentarios'] + 1;
 					$this->ForoTema->saveField('comentarios',$comenta2);
 				endif;
-				if(($this->Session->read('Auth.User.role') != 3) && ($this->Session->read('Auth.User.id') != $this->request->data['ComentarioForo']['id_usuario'])):
+				if(($this->Session->read('Auth.User.role') < 3) && ($this->Session->read('Auth.User.id') != $this->request->data['ComentarioForo']['id_usuario'])):
 					$comentario = $this->request->data['ComentarioForo']['comentario']."\n\n".
 								"<---Este comentario ha sido moderado--->";
 					$this->ForoTema->saveField('comentario',$comentario);
@@ -169,7 +175,7 @@ class ComentarioForosController extends AppController {
 					'controller' => 'foroTemas',
 					'action' => 'view',
 					$categoria,
-					$tema2['ForoTema']['titulo'],
+					$subforo['ForoSubforo']['subforo'],
 					$idtema
 				));
 			} else {
@@ -178,10 +184,11 @@ class ComentarioForosController extends AppController {
 		} else {
 			$options = array('conditions' => array('ComentarioForo.' . $this->ComentarioForo->primaryKey => $id));
 			$this->request->data = $this->ComentarioForo->find('first', $options);
-
+			
 			$this->loadModel('ForoTema');
 	    	$forotema = $this->ForoTema->find('all');
 			$this->set('forotema',$forotema);
+			
 			$id_usuario = $this->ComentarioForo->find('first', array('conditions' => array('ComentarioForo.id' => $id)));
 			$this->loadModel('User');
 			$usuario = $this->User->find('first', array(
@@ -189,6 +196,7 @@ class ComentarioForosController extends AppController {
 					'User.id' => $id_usuario['ComentarioForo']['id_usuario']
 			)));
 			$this->set('n_usuario', $usuario['User']['username']);
+			$this->set('categoria',$categoria);
 		}
 	}
 

@@ -74,7 +74,7 @@ class ForoTemasController extends AppController {
  */
 	public function view($categoria = null,$foro = null,$id = null) {
 		if (!$this->ForoTema->exists($id)) {
-			throw new NotFoundException(__('Invalid foro tema'));
+			throw new NotFoundException(__('Tema Incorrecto'));
 		}
 		// Buscamos el tema
 		$options = array('conditions' => array('ForoTema.id' => $id));
@@ -191,12 +191,20 @@ class ForoTemasController extends AppController {
 		if(!$this->Auth->login()) {
             $this->Session->setFlash(__($msg_conectate), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
-        }        
+        }
+        $this->loadModel('ForoSubforo');
+        $id_foro = $this->ForoSubforo->find('first',array('conditions' => array('ForoSubforo.id' => $idforo)));
+		$this->set('id_foro',$id_foro);
+		$id_usuario = $this->ForoTema->find('first', array(
+				'conditions' => array(
+					'ForoTema.id' => $id
+			)));
+		$this->set('id_usuario',$id_usuario);
 
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->ForoTema->save($this->request->data)) {
 				// actualizar el contador de temas en SubForo
-				$this->loadModel('ForoSubforo');				
+				$this->loadModel('ForoSubforo');
 				$subforo1 = $this->ForoSubforo->find('first', array(
 					'conditions' => array(
 						'ForoSubforo.id' => $idforo
@@ -214,7 +222,7 @@ class ForoTemasController extends AppController {
 					$temas2 = $subforo2['ForoSubforo']['temas'] + 1;
 					$this->ForoSubforo->saveField('temas',$temas2);
 				endif;
-				if(($this->Session->read('Auth.User.role') != 3) && ($this->Session->read('Auth.User.id') != $this->request->data['ForoTema']['id_usuario'])):
+				if(($this->Session->read('Auth.User.role') < 3) && ($this->Session->read('Auth.User.id') != $this->request->data['ForoTema']['id_usuario'])):
 					$contenido = $this->request->data['ForoTema']['contenido']."\n\n".
 								"<---Este tema ha sido moderado--->";
 					$this->ForoTema->saveField('contenido',$contenido);
@@ -226,7 +234,7 @@ class ForoTemasController extends AppController {
 					'action' => 'index',
 					$categoria,
 					$this->request->data['ForoTema']['id_subforo'],
-					$idtema
+					$idforo
 				));
 			} else {
 				$this->Session->setFlash(__('No se pudo actualizar la publicacion'),'msg',array('type' => 'danger'));
@@ -237,17 +245,15 @@ class ForoTemasController extends AppController {
 
 			$this->loadModel('ForoSubforo');
 	    	$subforos = $this->ForoSubforo->find('all');
-			$this->set('subforos',$subforos);
-			$id_usuario = $this->ForoTema->find('first', array(
-				'conditions' => array(
-					'ForoTema.id' => $id
-			)));
+	    	$this->set('subforos',$subforos);
+			
 			$this->loadModel('User');
 			$usuario = $this->User->find('first', array(
 				'conditions' => array(
 					'User.id' => $id_usuario['ForoTema']['id_usuario']
 			)));
 			$this->set('n_usuario', $usuario['User']['username']);
+			$this->set('categoria',$categoria);
 		}
 	}
 

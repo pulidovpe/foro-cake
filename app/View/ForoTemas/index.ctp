@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<th colspan="4" style="background-color: lightgray;">
-				<?php if($logged_in): ?>
+				<?php if(($logged_in)&&($current_user['role']<3)&&($subforo['ForoSubforo']['id']>1)): ?>
 					<?php if(isset($foroTema)): ?>
 						<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$subforo['ForoSubforo']['id'])); ?></li>
 					<?php else: ?>
@@ -26,11 +26,11 @@
 			</th>
 		</tr>
 		<tr>
-			<th style="width: 40%"><?php echo $this->Paginator->sort('titulo'); ?></th>
-			<th><?php echo $this->Paginator->sort('fecha'); ?></th>
-			<th><?php echo $this->Paginator->sort('activo'); ?></th>
-			<th class="actions"  style="width: 30%">
-				<span style="text-align: center;margin: 0 auto;font-size: 0.9em;background-color: lightgray;">
+			<th style="width: 40%;background: orange;"><?php echo $this->Paginator->sort('titulo'); ?></th>
+			<th style="background: orange;"><?php echo $this->Paginator->sort('fecha'); ?></th>
+			<th style="background: orange;"><?php echo $this->Paginator->sort('activo'); ?></th>
+			<th style="text-align: center;margin: 0 auto;background: orange;width: 30%;">
+				<span style="font-size: 0.8em;">
 					<?php echo __('- Respuestas - '); /*Visitas - Último mensaje');*/ ?>
 				</span>
 			</th>
@@ -52,7 +52,7 @@
 		<?php endforeach; ?>
 			<tr>
 				<th colspan="4" style="background-color: lightgray;">
-					<?php if($logged_in): ?>
+					<?php if(($logged_in)&&($current_user['role']<3)&&($subforo['ForoSubforo']['id']>1)): ?>
 						<?php if(isset($foroTema)): ?>
 							<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;">
 								<?php 

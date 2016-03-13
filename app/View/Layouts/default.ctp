@@ -75,10 +75,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					</li>					
 				<?php endif; ?>
 			</article>
-			<article style="clear: both;text-align: center;">
-				<span style="font-weight: bold;"><?php echo __('Foro (Pagina en construccion)'); ?></span>
-			</article>
+			
 		</div>
+		<article style="clear: both;text-align: center;background: orange;margin: 0 auto;width: 98%">
+			<span style="font-weight: bold;"><?php echo __('Foro (Pagina en construccion)'); ?></span>
+		</article>
 		<div id="content" style="font-size: 1em;">
 		
 			<?php echo $this->Session->flash(); ?>
@@ -88,6 +89,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
+			<article style="clear: both;text-align: center;background: orange;margin: 0 auto;width: 98%">
+				<span style="font-weight: bold;"><?php echo __('Foro (Pagina en construccion)'); ?></span>
+			</article>
 			<?php echo $this->Html->link(
 					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
 					'http://www.cakephp.org/',

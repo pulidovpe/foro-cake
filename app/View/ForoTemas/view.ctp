@@ -17,16 +17,34 @@ pr($foroTema);*/
 		<table>
 			<tr>
 				<th colspan="3" style="background-color: lightgray;">
-					<?php if ($logged_in): ?>
-						<span style="float: right;font-weight: bold;font-size: 1em;">
-							<?php echo $this->Html->link(__('Responder al Tema'), array(
-								'controller' => 'comentarioForos', 'action' => 'add',
-								h($categoria),
-								h($foroTema['ForoTema']['titulo']),
-								h($foroTema['ForoTema']['id_subforo']),
-								h($foroTema['ForoTema']['id'])
-							)); ?>
-						</span>
+					<?php if($logged_in): ?>
+						<?php if($foroTema['ForoTema']['activo']=='S'): ?>
+							<span style="float: right;font-weight: bold;font-size: 1em;">
+								<?php echo $this->Html->link(__('Responder al Tema'), array(
+									'controller' => 'comentarioForos', 'action' => 'add',
+									h($categoria),
+									h($foroTema['ForoTema']['titulo']),
+									h($foroTema['ForoTema']['id_subforo']),
+									h($foroTema['ForoTema']['id'])
+								)); ?>
+							</span>
+						<?php else: ?>
+							<?php if($current_user['role']>2): ?>
+								<span style="float: right;font-weight: bold;font-size: 1em;">
+									<?php echo "Tema Bloqueado"; ?>
+								</span>
+							<?php else: ?>
+								<span style="float: right;font-weight: bold;font-size: 1em;">
+									<?php echo $this->Html->link(__('Responder al Tema'), array(
+										'controller' => 'comentarioForos', 'action' => 'add',
+										h($categoria),
+										h($foroTema['ForoTema']['titulo']),
+										h($foroTema['ForoTema']['id_subforo']),
+										h($foroTema['ForoTema']['id'])
+									)); ?>
+								</span>
+							<?php endif; ?>
+						<?php endif; ?>
 					<?php endif; ?>
 				</th>
 			</tr>
@@ -204,16 +222,34 @@ pr($foroTema);*/
 			<?php endforeach; ?>
 			<tr>
 				<th colspan="3" style="background-color: lightgray;">
-					<?php if ($logged_in): ?>
-						<span style="float: right;font-weight: bold;font-size: 1em;">
-							<?php echo $this->Html->link(__('Responder al Tema'), array(
-								'controller' => 'comentarioForos', 'action' => 'add',
-								h($categoria),
-								h($foroTema['ForoTema']['titulo']),
-								h($foroTema['ForoTema']['id_subforo']),
-								h($foroTema['ForoTema']['id'])
-							)); ?>
-						</span>
+					<?php if($logged_in): ?>
+						<?php if($foroTema['ForoTema']['activo']=='S'): ?>
+							<span style="float: right;font-weight: bold;font-size: 1em;">
+								<?php echo $this->Html->link(__('Responder al Tema'), array(
+									'controller' => 'comentarioForos', 'action' => 'add',
+									h($categoria),
+									h($foroTema['ForoTema']['titulo']),
+									h($foroTema['ForoTema']['id_subforo']),
+									h($foroTema['ForoTema']['id'])
+								)); ?>
+							</span>
+						<?php else: ?>
+							<?php if($current_user['role']>2): ?>
+								<span style="float: right;font-weight: bold;font-size: 1em;">
+									<?php echo "Tema Bloqueado"; ?>
+								</span>
+							<?php else: ?>
+								<span style="float: right;font-weight: bold;font-size: 1em;">
+									<?php echo $this->Html->link(__('Responder al Tema'), array(
+										'controller' => 'comentarioForos', 'action' => 'add',
+										h($categoria),
+										h($foroTema['ForoTema']['titulo']),
+										h($foroTema['ForoTema']['id_subforo']),
+										h($foroTema['ForoTema']['id'])
+									)); ?>
+								</span>
+							<?php endif; ?>
+						<?php endif; ?>
 					<?php endif; ?>
 				</th>
 			</tr>
