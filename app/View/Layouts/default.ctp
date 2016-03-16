@@ -29,7 +29,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css(array('cake.generic','bootstrap.min','jquery.toastmessage'));
-		echo $this->Html->script(array('jquery.min','bootstrap.min','jquery.toastmessage','funciones'));
+		echo $this->Html->script(array('jquery.min','bootstrap.min','jquery.toastmessage','funciones','ckeditor/ckeditor','ckeditor/samples/js/sample'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -61,6 +61,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<article style="float: right;display: inline-block;text-align: right;">
 				<?php if ($logged_in): ?>
 					<li style='display: inline-block;text-decoration:none;'>
+						<span><b style="color:red;"><?php echo $this->Html->link('Perfil', array('controller' => 'users', 'action' => 'view',h($current_user['id']))); ?></b></span>
+					</li>
+					<li style='display: inline-block;text-decoration:none;'>
 						<span><b style="color:red;"><?php echo $current_user['username']; ?></b></span>
 					</li>
 					<li style='display: inline-block;text-decoration:none;'>
@@ -80,7 +83,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<article style="clear: both;text-align: center;background: orange;margin: 0 auto;width: 98%">
 			<span style="font-weight: bold;"><?php echo __('Foro (Pagina en construccion)'); ?></span>
 		</article>
-		<div id="content" style="font-size: 1em;">
+		<div id="content" style="font-size: 1em;margin: 0 auto;width: 98%">
 		
 			<?php echo $this->Session->flash(); ?>
 
@@ -89,7 +92,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
-			<article style="clear: both;text-align: center;background: orange;margin: 0 auto;width: 98%">
+			<article style="clear: both;text-align: center;background: orange;margin: 0 auto;width: 100%">
 				<span style="font-weight: bold;"><?php echo __('Foro (Pagina en construccion)'); ?></span>
 			</article>
 			<?php echo $this->Html->link(

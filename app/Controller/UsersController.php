@@ -52,7 +52,7 @@ class UsersController extends AppController {
  */
 	public function index() {
         if($this->Session->read('Auth.User.role')==3) {
-            $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
+            //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
             //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
         }
@@ -71,7 +71,7 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid usuario'));
 		}
-        if($this->Session->read('Auth.User.role')==3) {
+        if(($this->Session->read('Auth.User.role')!=1)&&($this->Session->read('Auth.User.id')!=$id)) {
             $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
             //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
@@ -79,6 +79,7 @@ class UsersController extends AppController {
         
 		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 		$this->set('users', $this->User->find('first', $options));
+        //$this->set('foto', $foto);
 	}
 
 /**
@@ -94,6 +95,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('El usuario fue grabado'),'msg',array('type'=>'success'));
 				return $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
 			} else {
+                //pr($this->data);die();
 				$this->Session->setFlash(__('El usuario no se pudo grabar'),'msg',array('type'=>'danger'));
 			}
 		}
@@ -110,23 +112,24 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Usuario incorrecto'));
 		}
-        if($this->Session->read('Auth.User.role')!=1) {
-            $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
-            //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
+        /*if(($this->Session->read('Auth.User.role')<2)||($this->Session->read('Auth.User.id')!=$id)) {
+            //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
+            $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
-        }
-        
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('El usuario fue modificado'),'msg',array('type'=>'success'));;
-				return $this->redirect(array('controller' => 'users', 'action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('El usuario no pudo modificarse'),'msg',array('type'=>'danger'));
-			}
-		} else {
-			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-			$this->request->data = $this->User->find('first', $options);
-		}
+        } else { */  
+    		if ($this->request->is(array('post', 'put'))) {
+    			if ($this->User->save($this->request->data)) {
+    				$this->Session->setFlash(__('El usuario fue modificado'),'msg',array('type'=>'success'));;
+    				return $this->redirect(array('controller' => 'users', 'action' => 'index'));
+    			} else {
+    				$this->Session->setFlash(__('El usuario no pudo modificarse'),'msg',array('type'=>'danger'));
+    			}
+    		} else {
+    			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+    			$foto = $this->request->data = $this->User->find('first', $options);
+                $this->set('foto', $foto);
+    		}
+        //}
 	}
 
 /**
@@ -139,21 +142,22 @@ class UsersController extends AppController {
 	public function delete($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid usuario'));
+			throw new NotFoundException(__('Usuario incorrecto'));
 		}
+        //pr($this->Session->read('Auth.User.role'));//die();
         if($this->Session->read('Auth.User.role')!=1) {
             $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
             //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
+        } else {
+            $this->request->allowMethod('post', 'delete');
+            if ($this->User->delete()) {
+                $this->Session->setFlash(__('El usuario fue borrado'),'msg',array('type'=>'success'));
+            } else {
+                $this->Session->setFlash(__('El usuario no pudo borrarse'),'msg',array('type'=>'danger'));
+            }
+            return $this->redirect(array('controller' => 'users', 'action' => 'index'));
         }
-        
-		$this->request->allowMethod('post', 'delete');
-		if ($this->User->delete()) {
-			$this->Session->setFlash(__('El usuario fue borrado'),'msg',array('type'=>'success'));
-		} else {
-			$this->Session->setFlash(__('El usuario no pudo borrarse'),'msg',array('type'=>'danger'));
-		}
-		return $this->redirect(array('controller' => 'users', 'action' => 'index'));
 	}
 
 	public function login() {
@@ -199,6 +203,8 @@ class UsersController extends AppController {
                         if ($this->User->saveField('ip_cliente', $this->request->data['User']['ip_cliente'])) {
                             $this->Session->setFlash(__($mensaje), 'msg', array('type' => 'success'));
                             //$this->Session->setFlash(__('Bienvenido #%s', $nueva_conexion));
+                            // Para el KCFINDER
+                            //$_SESSION['KCEDITOR']['disabled']=false;
                             return $this->redirect($this->Auth->redirect());
                         } else {
                             $this->Session->setFlash(__('Error al iniciar sesión'),'msg',array('type'=>'danger'));
@@ -245,43 +251,36 @@ class UsersController extends AppController {
 
     public function edit_clave($id = null) {
 
-        if($this->Session->read('Auth.User.role')!=1) {
-            $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
-            //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
-            $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
-        } else {
-
-            $this->User->id = $id;
-            //pr($id);
-            if (!$this->User->exists()) {
-                throw new NotFoundException(__('Usuario incorrecto'));
-            }
-            // Instanciar otro encriptado de clave
-            $claveHasher = new SimplePasswordHasher();
-
-            $this->Auth->authorize = 'actions';
-            if ($this->request->is('post') || $this->request->is('put')) {
-
-                // Encriptar de nuevo las claves
-                $this->request->data['User']['password'] = $claveHasher->hash($this->request->data['User']['password']);
-               // $this->request->data['User']['password_confirmation'] = $claveHasher->hash($this->request->data['User']['password_confirmation']);
-
-                if ($this->User->saveField('password',$this->request->data['User']['password'])) {
-                    
-                    $this->Session->setFlash(__('Clave ha sido cambiada'));
-                    return $this->redirect(array('controller'=>'users','action' => 'index'));
-                } else {
-                    
-                    $this->Session->setFlash(__('EL USUARIO NO SE PUDO MODIFICAR, INTENTE DE NUEVO.'));
-                    $this->request->data['User']['password'] = '';
-                    //$this->request->data['User']['password_confirmation'] = '';
-                }                
-            } else {
-                $this->request->data = $this->User->read(null, $id);
-                unset($this->request->data['User']['password']);
-            }
-            $this->set('user', $this->User->read());
+        $this->User->id = $id;
+        //pr($id);
+        if (!$this->User->exists()) {
+            throw new NotFoundException(__('Usuario incorrecto'));
         }
+        // Instanciar otro encriptado de clave
+        $claveHasher = new SimplePasswordHasher();
+
+        //$this->request->allowMethod('edit_clave');
+        if ($this->request->is('post') || $this->request->is('put')) {
+
+            // Encriptar de nuevo las claves
+            $this->request->data['User']['password'] = $claveHasher->hash($this->request->data['User']['password']);
+            $this->request->data['User']['password_confirmation'] = $claveHasher->hash($this->request->data['User']['password_confirmation']);
+
+            if ($this->User->saveField('password',$this->request->data['User']['password'])) {
+                
+                $this->Session->setFlash(__('Clave ha sido cambiada'), 'msg', array('type' => 'success'));
+                return $this->redirect(array('controller'=>'users','action' => 'index'));
+            } else {
+                
+                $this->Session->setFlash(__('EL USUARIO NO SE PUDO MODIFICAR, INTENTE DE NUEVO.'), 'msg', array('type' => 'danger'));
+                $this->request->data['User']['password'] = '';
+                $this->request->data['User']['password_confirmation'] = '';
+            }                
+        } else {
+            $this->request->data = $this->User->read(null, $id);
+            unset($this->request->data['User']['password']);
+        }
+        $this->set('user', $this->User->read());
     }
 
     /*public function edit_clave2($id = null) {

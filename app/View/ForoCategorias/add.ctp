@@ -4,7 +4,7 @@
 		<legend><?php echo __('Agregar Nueva Categoria'); ?></legend>
 	<?php
 		echo $this->Form->input('categoria');
-		echo $this->Form->input('descripcion', array('type' => 'textarea', 'label' => 'Descripción'));
+		echo $this->Form->input('descripcion', array('type' => 'textarea','class'=>'ckeditor', 'label' => 'Descripción'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Aceptar')); ?>

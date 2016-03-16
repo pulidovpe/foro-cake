@@ -67,8 +67,8 @@ pr($foroTema);*/
 			</tr>
 			<tr class="altrow">
 				<td width="20%" style="border-color: black;">
-					<div style="background-color: gray;width: 100px;height: 100px;">
-						<?php echo h($usuario['User']['avatar']);?>
+					<div style="background-color: gray;width: 150px;height: 150px;">
+						<?php echo $this->Html->Image('../files/user/foto/' . $usuario['User']['foto_dir'] . '/' . 'thumb_' . $usuario['User']['foto']); ?>
 					</div>
 					<span style="font-weight: bold;">
 						<?php
@@ -89,9 +89,9 @@ pr($foroTema);*/
 					<?php echo h($usuario['User']['comentarios']);?>
 				</td>
 				<td colspan="2" style="border-color: black;">
-					<?php echo nl2br(h($foroTema['ForoTema']['contenido']));?>
+					<?php echo $foroTema['ForoTema']['contenido'];?>
 					<br /><br /><hr />
-					<?php echo h($usuario['User']['firma']);?>
+					<?php echo $usuario['User']['firma'];?>
 				</td>
 			</tr>
 			<tr>
@@ -101,7 +101,7 @@ pr($foroTema);*/
 							switch (h($current_user['role'])) {
 								case 1:
 									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
-									echo $this->Html->link(__('| Eliminar |'), array(
+									echo $this->Form->postLink(__('| Eliminar |'), array(
 										'controller' => 'foroTemas', 'action' => 'delete',
 										h($foroTema['ForoTema']['id'])
 									));
@@ -148,8 +148,8 @@ pr($foroTema);*/
 			<tr<?php echo $class; ?>>
 				<td>
 					<span style="font-weight: bold;"><?php echo h($comenta['users']['username']);?></span><br />
-					<div style="background-color: gray;width: 100px;height: 100px;">
-						<?php echo h($comenta['users']['avatar']);?>
+					<div style="background-color: gray;width: 150px;height: 150px;">
+						<?php echo $this->Html->Image('../files/user/foto/' . $comenta['users']['foto_dir'] . '/' . 'thumb_' . $comenta['users']['foto']); ?>
 					</div>
 					<span style="font-weight: bold;">
 						<?php
@@ -169,10 +169,10 @@ pr($foroTema);*/
 					<span style='font-weight: bold;'>Comentarios:&nbsp;</span>
 					<?php echo h($comenta['users']['comentarios']);?>
 				</td>
-				<td colspan="2">
-					<?php echo nl2br(h($comenta['comentario_foro']['comentario']));?>
+				<td colspan="2" style="border-color: black;">
+					<?php echo $comenta['comentario_foro']['comentario'];?>
 					<br /><br /><hr />
-					<?php echo h($usuario['User']['firma']);?>
+					<?php echo $usuario['User']['firma'];?>
 				</td>
 			</tr>
 			<tr>
@@ -182,7 +182,7 @@ pr($foroTema);*/
 							switch (h($current_user['role'])) {
 								case 1:
 									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
-									echo $this->Html->link(__('| Eliminar |'), array(
+									echo $this->Form->postLink(__('| Eliminar |'), array(
 										'controller' => 'comentarioForos', 'action' => 'delete',
 										h($comenta['comentario_foro']['id'])
 									));

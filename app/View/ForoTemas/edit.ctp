@@ -31,7 +31,7 @@
 				echo $this->Form->input('id_subforo', array('type'=>'hidden'));
 			endif;
 			echo $this->Form->input('titulo', array('label' => 'Titulo: '));
-			echo $this->Form->input('contenido', array('type' => 'textarea', 'label' => 'Contenido: '));
+			echo $this->Form->input('contenido', array('type' => 'textarea','class'=>'ckeditor', 'label' => 'Contenido: '));
 			echo $this->Form->input('fecha', array(
 				'type'=>'text',
 				'style'=>'width:100px;',

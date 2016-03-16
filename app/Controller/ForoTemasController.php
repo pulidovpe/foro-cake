@@ -92,7 +92,7 @@ class ForoTemasController extends AppController {
 		$idtema = $foroTema['ForoTema']['id'];
 		$idusuario = $foroTema['ForoTema']['id_usuario'];
 		$comentarios = $this->ComentarioForo->query(
-			"SELECT comentario_foro.*,users.id,users.username,users.role,users.fecharegistro,users.temas,users.comentarios,users.avatar
+			"SELECT comentario_foro.*,users.id,users.username,users.role,users.fecharegistro,users.temas,users.comentarios,users.firma,users.foto,users.foto_dir
 			 FROM comentario_foro JOIN users ON 
 			comentario_foro.id_usuario = users.id AND 
 			comentario_foro.id_tema = '$idtema'; "
@@ -279,6 +279,6 @@ class ForoTemasController extends AppController {
 		} else {
 			$this->Session->setFlash(__('No se pudo eliminar la publicacion'),'msg',array('type' => 'danger'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
 	}
 }

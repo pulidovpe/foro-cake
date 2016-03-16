@@ -63,8 +63,8 @@ class AppController extends Controller {
 		if ((isset($user['activo'])) && ($user['activo']=='S') && ($this->Session->started())) {
 			return true;
 		}
-		$this->Auth->logout();
-		$this->redirect(array('controller' => 'users', 'action' => 'login'));
+		/*$this->Auth->logout();
+		$this->redirect(array('controller' => 'users', 'action' => 'login'));*/
 		// Negado por defecto false
 		return false;
 	}

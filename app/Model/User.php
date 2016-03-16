@@ -38,6 +38,23 @@ class User extends AppModel {
  *
  * @var string
  */
+	public $actsAs = array(
+			'Upload.Upload' => array(
+				'foto' => array(
+					'fields' => array(
+						'dir' => 'foto_dir'
+					),
+					'thumbnailMethod' => 'php',
+					'thumbnailSizes' => array(
+						'vga' => '640x480',
+						'thumb' => '150x150'
+					),
+					'deleteOnUpdate' => true,
+					'deleteFolderOnDelete' => true
+				)
+			)
+		);
+	
 	public $validate = array(
 		'username' => array(
 			'notempty' => array(
@@ -98,7 +115,49 @@ class User extends AppModel {
 						'rule' => 'isUnique',
 						'message' => '¡Esta dirección de correo ya está registrada!'
 				)
+		),
+		'foto' => array(
+			'uploadError' => array(
+				'rule' => 'uploadError',
+				'message' => '¡Algo anda mal, intente de nuevo!',
+				'on' => 'create'
+			),
+			'isUnderPhpSizeLimit' => array(
+				'rule' => 'isUnderPhpSizeLimit',
+				'message' => '¡Archivo excede el límite del tamaño permitido!'
+			),
+			'isValidMimeType' => array(
+				'rule' => array('isValidMimeType', array('image/jpeg','image/png'), false),
+				'message' => '¡Sólo se permiten imagenes JPG o PNG!'
+			),
+			'isBelowMaxSize' => array(
+				'rule' => array('isBelowMaxSize', 1048576),
+				'message' => '¡La imagen es demasiado grande!'
+			),
+			'isValidExtension' => array(
+				'rule' => array('isValidExtension', array('jpg','jpeg','png'), false),
+				'message' => '¡La imagen no tiene la extensión JPG o PNG!'
+			),
+			'checkUniqueName' => array(
+				'rule' => array('checkUniqueName'),
+				'message' => '¡La imagen ya se encuentra registrada!',
+				'on' => 'update'
+			),
 		)
 	);
+
+	function checkUniqueName($data) {
+		$isUnique = $this->find('first', array(
+			'fields' => array('User.foto'), 
+			'conditions' => array(
+				'User.foto' => $data['foto']
+		)));
+
+		if(!empty($isUnique)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 }

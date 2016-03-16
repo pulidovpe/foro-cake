@@ -11,7 +11,7 @@
 	<?php
 		echo $this->Form->input('id_foro_categoria',array('label'=>'Categoria','options'=>array($opciones)));
 		echo $this->Form->input('subforo', array('label'=>'Foro'));
-		echo $this->Form->input('descripcion', array('type' => 'textarea', 'label' => 'Descripción'));
+		echo $this->Form->input('descripcion', array('type' => 'textarea','class'=>'ckeditor', 'label' => 'Descripción'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Publicar')); ?>

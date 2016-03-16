@@ -1,4 +1,11 @@
-<?php //pr($subforo); ?>
+<?php 
+	/*echo "logged_in <br />";
+	pr($logged_in);
+	echo "current_user['role'] <br />";
+	pr($current_user['role']);
+	echo "subforo['ForoSubforo']['id'] <br />";
+	pr($subforo['ForoSubforo']['id']);*/
+?>
 <div style="clear: both;">  
 	<div style="text-align: center;margin: 0 auto;width: 98%;">	
 		<table cellpadding="0" cellspacing="0">
@@ -16,12 +23,14 @@
 		</tr>
 		<tr>
 			<th colspan="4" style="background-color: lightgray;">
-				<?php if(($logged_in)&&($current_user['role']<3)&&($subforo['ForoSubforo']['id']>1)): ?>
+				<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)): ?>
 					<?php if(isset($foroTema)): ?>
 						<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$subforo['ForoSubforo']['id'])); ?></li>
 					<?php else: ?>
 						<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$foro)); ?></li>
 					<?php endif; ?>
+				<?php elseif(($logged_in)&&($current_user['role']<3)): ?>
+					<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$foro)); ?></li>
 				<?php endif; ?>
 			</th>
 		</tr>
@@ -52,7 +61,7 @@
 		<?php endforeach; ?>
 			<tr>
 				<th colspan="4" style="background-color: lightgray;">
-					<?php if(($logged_in)&&($current_user['role']<3)&&($subforo['ForoSubforo']['id']>1)): ?>
+					<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)): ?>
 						<?php if(isset($foroTema)): ?>
 							<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;">
 								<?php 
@@ -76,6 +85,8 @@
 								?>
 							</li>
 						<?php endif; ?>
+					<?php elseif(($logged_in)&&($current_user['role']<3)): ?>
+						<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$foro)); ?></li>
 					<?php endif; ?>
 				</th>
 			</tr>
@@ -83,16 +94,20 @@
 		</table>
 		<p>
 			<?php
-			echo $this->Paginator->counter(array(
-			'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-			));
+				echo $this->Paginator->counter(array(
+				'format' => __('Página {:page} de {:pages}, 
+				mostrando {:current} registros de {:count} en total, 
+				empezando en el {:start}, terminando en {:end}')
+				));
 			?>
 		</p>
 		<div class="paging">
 		<?php
-			echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+			echo $this->Paginator->first(__('Primero', true), array(), null, array('class' => 'first disabled'));
+			echo $this->Paginator->prev('< ' . __('Anterior'), array(), null, array('class' => 'prev disabled'));
 			echo $this->Paginator->numbers(array('separator' => ''));
-			echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+			echo $this->Paginator->next(__('Siguiente') . ' >', array(), null, array('class' => 'next disabled'));
+			echo $this->Paginator->last(__('Último', true), array(), null, array('class' => 'last disabled'));
 		?>
 		</div>
 	</div>

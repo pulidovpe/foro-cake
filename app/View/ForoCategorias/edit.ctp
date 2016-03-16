@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('categoria');
-		echo $this->Form->input('descripcion', array('type' => 'textarea', 'label' => 'Descripción'));
+		echo $this->Form->input('descripcion', array('type' => 'textarea','class'=>'ckeditor', 'label' => 'Descripción'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

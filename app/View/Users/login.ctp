@@ -1,14 +1,5 @@
 <div class="center-block" style="width:300px">
 	<div class="login-panel panel panel-default">
-		<div class="lock-box text-center">
-
-			<!-- <div id="contenido">
-				< ?php echo $this->Session->flash(); ? >
-				< ?php echo $this->fetch('content'); ? >
-			</div> -->
-
-		</div>
-
 		<div class="panel-heading">
 			<h4 class="panel-title">Inicio de Sesión</h4>
 		</div>
@@ -25,6 +16,10 @@
 					<!-- Change this to a button or input when using this as a form -->
 					<?php
 						echo $this->Form->submit('Conectar', array('class' => 'btn btn-md btn-success btn-block'));
+					?>
+
+					<?php 
+						echo "<span style='font-weight: bold;font-size: 1.1em;'>CAPTCHA Aun no disponible</span>"; 
 					?>
 				</div>
 				<!-- <table border="0" align="center" width="100%">

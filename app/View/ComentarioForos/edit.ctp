@@ -28,7 +28,7 @@
 				echo $this->Form->input('id_tema', array('type'=>'hidden'));
 			endif;
 			echo $this->Form->input('id_usuario', array('type'=>'hidden'));
-			echo $this->Form->input('comentario', array('type' => 'textarea', 'label' => 'Comentario: '));
+			echo $this->Form->input('comentario', array('type' => 'textarea','class'=>'ckeditor', 'label' => 'Comentario: '));
 			echo $this->Form->input('created', array(
 				'type'=>'text',
 				'style'=>'width:100px;',
