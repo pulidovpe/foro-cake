@@ -48,6 +48,12 @@ class ForoCategoriasController extends AppController {
 		$this->set('foroCategorias', $this->ForoCategoria->find('all', array(
 			'order' => array('ForoCategoria.id' => 'asc')))
 		);
+		$this->loadModel('User');
+		$options = array('conditions' => array('not' => array('User.ip_cliente' => null)));
+		$u_online = $this->User->find('all', $options);
+		$cuantos = sizeof($u_online);
+		$this->set('u_online', $u_online);
+		$this->set('cuantos', $cuantos);
 	}
 
 /**
@@ -62,7 +68,6 @@ class ForoCategoriasController extends AppController {
 			throw new NotFoundException(__('Invalid foro categoria'));
 		}
 		if($this->Session->read('Auth.User.role')!=1) {
-            //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
             $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
         }
@@ -105,8 +110,7 @@ class ForoCategoriasController extends AppController {
 			throw new NotFoundException(__('Invalid foro categoria'));
 		}
 		if($this->Session->read('Auth.User.role')!=1) {
-            $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
-            //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
+			$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'users', 'action' => 'index'));
         }
 
@@ -136,8 +140,7 @@ class ForoCategoriasController extends AppController {
 			throw new NotFoundException(__('Invalid foro categoria'));
 		}
 		if($this->Session->read('Auth.User.role')!=1) {
-            $this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'));
-            //$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
+			$this->Session->setFlash(__('Usted no está autorizado para realizar esa acción!'), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'users', 'action' => 'index'));
         }
         

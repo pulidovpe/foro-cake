@@ -35,7 +35,11 @@
 	<table>
 		<tr>
 			<td>
-				<?php echo $this->Html->Image('../files/user/foto/' . $foto['User']['foto_dir'] . '/' . 'thumb_' . $foto['User']['foto']); ?>
+				<?php 
+					if(isset($foto)):
+						echo $this->Html->Image('../files/user/foto/' . $foto['User']['foto_dir'] . '/' . 'thumb_' . $foto['User']['foto']);
+					endif; 
+				?>
 			</td>
 			<td>
 				<?php echo $this->Form->input('foto', array(
@@ -92,6 +96,11 @@
 			</td>
 		</tr>
 		<tr>
+			<td colspan="2">
+				<?php echo $this->Form->input('firma',array('type'=>'textarea','class'=>'ckeditor','label' => 'Firma:')); ?> 
+			</td>
+		</tr>
+		<tr>
 			<td>
 				<?php echo $this->Form->input('activo',array('label'=>'Usuario activo:','options' => array( 'N' => 'Desactivado', 'S' => 'Activado'))); ?>
 			</td>
@@ -102,12 +111,4 @@
 	</table>
 </fieldset>
 <?php echo $this->Form->end(__('Actualizar')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Borrar'), array('action' => 'delete', $this->Form->value('User.id')), array(), __('Seguro que quieres borrarlo # %s?', $this->Form->value('User.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('Listar Usuarios'), array('action' => 'index')); ?></li>
-	</ul>
 </div>

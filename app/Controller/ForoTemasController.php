@@ -61,7 +61,8 @@ class ForoTemasController extends AppController {
 			$this->set('categoria',$categoria);
 		} else {
 			$this->ForoTema->recursive = 0;
-			$this->set('foroTemas', $this->Paginator->paginate());
+			//$this->set('foroTemas', $this->Paginator->paginate());
+			$this->set('foroTemas', $this->paginate());
 		}
 	}
 
@@ -80,19 +81,17 @@ class ForoTemasController extends AppController {
 		$options = array('conditions' => array('ForoTema.id' => $id));
 		$foroTema = $this->ForoTema->find('first', $options);
 		$this->set('foroTema', $foroTema);
-		//pr($foroTema);echo "Buscamos el tema en ForoTema";
 		// Obtener los datos del usuario que creo el tema
 		$this->loadModel('User');
 		$opciones = array('conditions' => array('User.id' => $foroTema['ForoTema']['id_usuario']));
 		$usuario = $this->User->find('first', $opciones);
 		$this->set('usuario', $usuario);
-		//pr($usuario);echo "Buscamos el usuario con el id de tema";
 		// Cargar los comentarios del tema
 		$this->loadModel('ComentarioForo');		
 		$idtema = $foroTema['ForoTema']['id'];
 		$idusuario = $foroTema['ForoTema']['id_usuario'];
 		$comentarios = $this->ComentarioForo->query(
-			"SELECT comentario_foro.*,users.id,users.username,users.role,users.fecharegistro,users.temas,users.comentarios,users.firma,users.foto,users.foto_dir
+			"SELECT comentario_foro.*,users.id,users.username,users.role,users.fecharegistro,users.temas,users.comentarios,users.firma,users.foto,users.foto_dir,users.ip_cliente
 			 FROM comentario_foro JOIN users ON 
 			comentario_foro.id_usuario = users.id AND 
 			comentario_foro.id_tema = '$idtema'; "
@@ -100,26 +99,6 @@ class ForoTemasController extends AppController {
 		$this->set('comentarios', $comentarios);
 		$this->set('foro', $foro);
 		$this->set('categoria',$categoria);
-		/*// Limit widgets shown to only those owned by the user.
-		SELECT comentario_foro.* FROM comentario_foro 
-		INNER JOIN users ON ComentarioForo.id_usuario = users.id 
-		WHERE users.id = {current user id}
-		$this->paginate = array(
-		    'conditions' => array('User.id' => $idusuario),
-		    'joins' => array(
-		        array(
-		            'alias' => 'User',
-		            'table' => 'users',
-		            'type' => 'INNER',
-		            'conditions' => '`User`.`id` = `ComentarioForo`.`id_usuario`'
-		        )
-		    ),
-		    'limit' => 20,
-		    'order' => array(
-		        'created' => 'desc'
-		    )
-		);
-		$this->set( 'comentarios', $this->paginate( $this->ComentarioForo ) );*/
 	}
 
 /**
@@ -155,15 +134,6 @@ class ForoTemasController extends AppController {
 				$this->User->id = $this->Session->read('Auth.User.id');
 				$this->User->saveField('temas', $temas);
 				
-				// Se copia el tema en la tabla comentarios
-				/*$this->loadModel('ComentarioForo');
-				$this->request->data['ComentarioForo']['id_tema']    = $this->ForoTema->getLastInsertId();
-				$this->request->data['ComentarioForo']['id_usuario'] = $this->Session->read('Auth.User.id');
-				$this->request->data['ComentarioForo']['comentario'] = $contenido; 
-				$this->request->data['ComentarioForo']['activo']     = 'S';
-				$this->request->data['ComentarioForo']['created']    = date("Y-m-d H:i:s");
-				$this->ComentarioForo->saveAll($this->request->data);*/
-				//
 				$this->Session->setFlash(__('El nuevo tema ha sido publicado'),'msg',array('type' => 'success'));
 				return $this->redirect(array(
 					'action' => 'view',
@@ -209,7 +179,6 @@ class ForoTemasController extends AppController {
 					'conditions' => array(
 						'ForoSubforo.id' => $idforo
 				)));
-				//pr($idforo);die();
 				if($subforo1['ForoSubforo']['id'] != $this->request->data['ForoTema']['id_subforo']):
 					$this->ForoSubforo->id = $subforo1['ForoSubforo']['id'];
 					$temas1 = $subforo1['ForoSubforo']['temas'] - 1;
@@ -280,5 +249,47 @@ class ForoTemasController extends AppController {
 			$this->Session->setFlash(__('No se pudo eliminar la publicacion'),'msg',array('type' => 'danger'));
 		}
 		return $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
+	}
+
+	public function buscar() {
+
+        if ($this->request->is('post')) {
+            $buscar = $this->request->data['ForoTema']['titulo'];
+            $this->loadModel('ForoTema');
+            $this->Paginator->settings = array(
+            'conditions' => array(
+                'or' => array('ForoTema.titulo LIKE' => '%'.$buscar.'%', 
+                'or' => array('ForoTema.contenido LIKE' => '%'.$buscar.'%' ))),
+                'limit' => 10
+                );
+            //$busca = $this->ForoTema->query("SELECT * FROM foro_temas WHERE titulo LIKE '%$buscar%' ");
+            $temas = $this->Paginator->paginate($busca);
+            if ($temas):                     
+                //$this->set(compact('ForoTema'));
+                $this->set('foroTemas', $this->paginate());
+                $this->render('index_result');
+            else:
+                $this->Session->setFlash('No se encontró ningún tema relacionado','msg',array('type' => 'danger'));
+            endif;
+        } 
+    }
+
+    public function index_result() {
+		/*if($id!=NULL) {
+			$this->ForoTema->recursive = 0;
+			$this->Paginator->settings = array('conditions' => array('ForoTema.id_subforo' => $id));
+			$foroTemas = $this->Paginator->paginate('ForoTema');
+			$this->set('foro',$id);
+			$this->set(compact('foroTemas'));
+			// Buscamos el tema
+			$this->loadModel('ForoSubforo');
+			$options = array('conditions' => array( 'ForoSubforo.id' => $id));
+			$subforo = $this->ForoSubforo->find('first', $options);
+			$this->set('subforo', $subforo);
+			$this->set('categoria',$categoria);
+		} else {*/
+			$this->ForoTema->recursive = 0;
+            $this->set('foroTemas', $this->paginate());
+		//}
 	}
 }

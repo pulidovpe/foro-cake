@@ -1,11 +1,3 @@
-<?php 
-/*echo "comentarios <br />";
-pr($comentarios[0]);
-echo "usuario <br />";
-pr($usuario);
-echo "foroTema <br />";
-pr($foroTema);*/
-?>
 <div style="clear: both;">
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
 		<!-- IR A INICIO - CATEGORIA -->
@@ -52,24 +44,20 @@ pr($foroTema);*/
 				<th style="background-color: orange;">
 					<span style="float: left;display: inline-block;font-size: 1em;">
 						<?php echo h($usuario['User']['username']);?>
-					</span>				
+					</span>
 					<span style="float: left;display: inline-block;font-size: 1em;">
 					</span>
 				</th><th style="background-color: orange;">
-					<span style="float: left;display: inline-block;font-size: 1em;">
-						<?php echo h($foroTema['ForoTema']['created']); ?>
+					<span style="float: left;font-size: 1em;">
+						<?php echo "| Publicado |"; ?>
+						<?php echo h($foroTema['ForoTema']['modified']); ?>
 					</span>
 				</th><th style="background-color: orange;">
-					<span style="float: right;font-size: 1em;">
-						<?php echo h($foroTema['ForoTema']['created']); ?>
-					</span>
+					
 				</th>
 			</tr>
 			<tr class="altrow">
-				<td width="20%" style="border-color: black;">
-					<div style="background-color: gray;width: 150px;height: 150px;">
-						<?php echo $this->Html->Image('../files/user/foto/' . $usuario['User']['foto_dir'] . '/' . 'thumb_' . $usuario['User']['foto']); ?>
-					</div>
+				<td width="20%" style="font-size: 0.8em;">					
 					<span style="font-weight: bold;">
 						<?php
 							if(h($usuario['User']['role'])==1):
@@ -80,18 +68,27 @@ pr($foroTema);*/
 								echo $op_role = 'Usuario';
 							endif;
 						?>
-					</span><br />
+					</span>
+					<div style="background-color: gray;width: 150px;height: 150px;">
+						<?php echo $this->Html->Image('../files/user/foto/' . $usuario['User']['foto_dir'] . '/' . 'thumb_' . $usuario['User']['foto']); ?>
+					</div>
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>
 					<?php echo h($usuario['User']['fecharegistro']);?><br />
 					<span style='font-weight: bold;'>Temas:&nbsp;</span>
 					<?php echo h($usuario['User']['temas']);?><br />
 					<span style='font-weight: bold;'>Comentarios:&nbsp;</span>
-					<?php echo h($usuario['User']['comentarios']);?>
+					<?php echo h($usuario['User']['comentarios']);?><br />
+					<?php if(h($usuario['User']['ip_cliente'])!=NULL): ?>
+						<span style="color: green;font-weight: bold;">En Linea</span>
+					<?php else: ?>
+						<span style="color: red;font-weight: bold;">Desconectado</span>
+					<?php endif; ?>
+					</span>
 				</td>
-				<td colspan="2" style="border-color: black;">
-					<?php echo $foroTema['ForoTema']['contenido'];?>
-					<br /><br /><hr />
-					<?php echo $usuario['User']['firma'];?>
+				<td colspan="2" style="font-size: 0.9em;">
+					<span><?php echo $foroTema['ForoTema']['contenido'];?></span>
+					<hr />
+					<span><?php echo $usuario['User']['firma'];?></span>
 				</td>
 			</tr>
 			<tr>
@@ -109,7 +106,7 @@ pr($foroTema);*/
 									
 								case 2:
 									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
-									echo $this->Html->link(__('| Moderar |'), array(
+									echo $this->Html->link(__('| Editar/Moderar |'), array(
 										'controller' => 'foroTemas', 
 										'action' => 'edit',
 										h($categoria),
@@ -138,6 +135,7 @@ pr($foroTema);*/
 			</tr>
 			<?php 
 				$i = 0;
+				sort($comentarios);
 				foreach ($comentarios as $comenta):  
 					$class = null;
 					if ($i++ %2 == 0) {
@@ -145,12 +143,24 @@ pr($foroTema);*/
 					}
 					//Para cambiar la clase segun el tr
 			?>
+			<tr>
+				<th style="background-color: lightgray;">
+					<span style="float: left;display: inline-block;font-size: 1em;">
+						<?php echo h($comenta['users']['username']);?>
+					</span>
+					<span style="float: left;display: inline-block;font-size: 1em;">
+					</span>
+				</th><th style="background-color: lightgray;">
+					<span style="float: left;font-size: 1em;">
+						<?php echo "| Publicado |"; ?>
+						<?php echo h($comenta['comentario_foro']['modified']); ?>
+					</span>
+				</th><th style="background-color: lightgray;">
+					
+				</th>
+			</tr>
 			<tr<?php echo $class; ?>>
-				<td>
-					<span style="font-weight: bold;"><?php echo h($comenta['users']['username']);?></span><br />
-					<div style="background-color: gray;width: 150px;height: 150px;">
-						<?php echo $this->Html->Image('../files/user/foto/' . $comenta['users']['foto_dir'] . '/' . 'thumb_' . $comenta['users']['foto']); ?>
-					</div>
+				<td style="font-size: 0.8em;">					
 					<span style="font-weight: bold;">
 						<?php
 							if(($comenta['users']['role'])==1):
@@ -161,21 +171,30 @@ pr($foroTema);*/
 								echo $op_role = 'Usuario';
 							endif;
 						?>
-					</span><br />
+					</span>
+					<div style="background-color: gray;width: 150px;height: 150px;">
+						<?php echo $this->Html->Image('../files/user/foto/' . $comenta['users']['foto_dir'] . '/' . 'thumb_' . $comenta['users']['foto']); ?>
+					</div>
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>
 					<?php echo h($comenta['users']['fecharegistro']);?><br />
 					<span style='font-weight: bold;'>Temas:&nbsp;</span>
 					<?php echo h($comenta['users']['temas']);?><br />
 					<span style='font-weight: bold;'>Comentarios:&nbsp;</span>
-					<?php echo h($comenta['users']['comentarios']);?>
+					<?php echo h($comenta['users']['comentarios']);?><br />
+					<?php if(h($comenta['users']['ip_cliente'])!=NULL): ?>
+						<span style="color: green;font-weight: bold;">En Linea</span>
+					<?php else: ?>
+						<span style="color: red;font-weight: bold;">Desconectado</span>
+					<?php endif; ?>
+					</span>
 				</td>
-				<td colspan="2" style="border-color: black;">
-					<?php echo $comenta['comentario_foro']['comentario'];?>
-					<br /><br /><hr />
-					<?php echo $usuario['User']['firma'];?>
+				<td colspan="2" style="font-size: 0.9em;">
+					<span><?php echo $comenta['comentario_foro']['comentario'];?></span>
+					<hr />
+					<span><?php echo $comenta['users']['firma'];?></span>
 				</td>
 			</tr>
-			<tr>
+			<tr>				
 				<th colspan="3" style="background-color: lightgray;">
 					<?php if ($logged_in): ?>
 						<?php
@@ -213,8 +232,6 @@ pr($foroTema);*/
 									endif;
 									break;								
 							}
-							/*echo "comenta[users][id]: ".h($comenta['users']['id']). "<br />";
-							echo "current_user[id]: ".$current_user['id'];*/
 						?>		
 					<?php endif; ?>
 				</th>

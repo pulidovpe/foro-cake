@@ -1,4 +1,3 @@
-<?php //pr($subforos); ?>
 <div style="clear: both;">
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
 		<table cellpadding="0" cellspacing="0">
@@ -97,9 +96,21 @@
 						</tr>
 					<?php endforeach; ?>
 					</tbody>
-				</tr>
-			</tbody>
+				</tr>				
+			</tbody>			
 		</table>
+		<hr />
+		<div colspan="3" style="float:left;text-align: left;font-size: 0.8em;">
+			<label>Usuarios registrados conectados: <?php echo $cuantos; ?></label><br />
+			<label>Conectados: </label>
+			<span style="color:green;">
+			<?php 
+				for($i=0;$i<$cuantos;$i++) {
+					echo $u_online[$i]['User']['username'] . ", ";
+				}
+				echo " ...";
+			?>
+			</span>			
+		</div>
 	</div>
 </div>
-

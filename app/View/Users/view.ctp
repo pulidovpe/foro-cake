@@ -60,10 +60,6 @@
 			<td><strong><?php echo __('Comentarios'); ?></strong></td>
 			<td><?php echo h($users['User']['comentarios']); ?></td>
 		</tr>
-		<tr>
-			<td><strong><?php echo __('Temas Publicados'); ?></strong></td>
-			<td><?php echo h($users['User']['temas']); ?></td>
-		</tr>
 	</table>
 </div>
 <div class="actions">
@@ -74,12 +70,12 @@
 				$id = $current_user['id'];
 			else:
 				$id = $users['User']['id'];
+				echo "<li>".$this->Html->link(__('Listar Usuarios'),array('action' => 'index'))."</li>";
 				echo "<li>".$this->Html->link(__('Nuevo Usuario'), array('action' => 'add'))."</li>";
-				echo "<li>".$this->Form->postLink(__('Eliminar Cuenta'), array('action' => 'delete', $id), array(), __('Seguro que desea eliminar a # %s?', $users['User']['username']))."</li>";
+				echo "<li>".$this->Form->postLink(__('Eliminar Cuenta'), array('action' => 'delete', $id), array(), __('Seguro que desea eliminar al usuario %s?', $users['User']['username']))."</li>";
 			endif; 
 		?>
 		<li><?php echo $this->Html->link(__('Editar Perfil'), array('action' => 'edit', $id)); ?></li>
 		<li><?php echo $this->Html->link(__('Cambiar Clave'), array('action' => 'edit_clave', $id)); ?></li>
-		<li><?php echo $this->Html->link(__('Cargar Imagen'), array('action' => 'cargar_foto')); ?></li>
 	</ul>
 </div>

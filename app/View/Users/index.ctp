@@ -6,8 +6,7 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
 			<th><?php echo $this->Paginator->sort('nombre'); ?></th>
-			<th><?php echo $this->Paginator->sort('role'); ?></th>
-			<!-- <th>< ?php echo $this->Paginator->sort('foto'); ? ></th> -->			
+			<th><?php echo $this->Paginator->sort('role'); ?></th>			
 			<th><?php echo $this->Paginator->sort('fecharegistro'); ?></th>
 			<th><?php echo $this->Paginator->sort('ultimoacceso'); ?></th>
 			<th><?php echo $this->Paginator->sort('activo'); ?></th>
@@ -22,7 +21,6 @@
 		<td><?php echo h($usuario['User']['username']); ?>&nbsp;</td>
 		<td><?php echo h($usuario['User']['nombre']); ?>&nbsp;</td>
 		<td><?php echo h($usuario['User']['role']); ?>&nbsp;</td>
-		<!-- <td>< ?php echo $this->Html->Image('../files/user/foto/' . $usuario['User']['foto_dir'] . '/' . 'thumb_' . $usuario['User']['foto']); ? ></td> -->
 		<td><?php echo h($usuario['User']['fecharegistro']); ?>&nbsp;</td>
 		<td><?php echo h($usuario['User']['ultimoacceso']); ?>&nbsp;</td>
 		<td><?php echo h($usuario['User']['activo']); ?>&nbsp;</td>
@@ -30,7 +28,22 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('Ver'), array('action' => 'view', $usuario['User']['id'])); ?>
 			<?php echo $this->Html->link(__('Editar'), array('action' => 'edit', $usuario['User']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Borrar'), array('action' => 'delete', $usuario['User']['id']), array(), __('Seguro que desea borrar a # %s?', $usuario['User']['id'])); ?>
+			<?php echo $this->Form->postLink(__('Borrar'), array(
+				'action' => 'delete', 
+				$usuario['User']['id']), 
+				array(), 
+				__('Seguro que desea borrar a %s?', $usuario['User']['username'])); 
+			?>
+			<?php
+				if ((!empty($usuario['User']['ip_cliente'])) && ($current_user['id'] != $usuario['User']['id'])):
+					echo $this->Form->postLink(__('Desconectar'), array(
+						'action' => 'desconectar', 
+						$usuario['User']['id']
+					),
+					array(),
+					__('¿Desea desconectar a %s?', $usuario['User']['username']));
+				endif; 
+			?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -62,6 +75,7 @@
 		<li><?php echo $this->Html->link(__('Nueva Categoria'), array('controller' => 'foroCategorias','action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Nuevo Subforo'), array('controller' => 'foroSubforos','action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Listar Categorias'), array('controller' => 'foroCategorias', 'action' => 'index')); ?></li>
+		<!-- <li>< ?php echo $this->Html->link(__('Listar Temas'), array('controller' => 'foroCategorias','action' => 'index')); ?> </li> -->
 		
 	</ul>
 </div>

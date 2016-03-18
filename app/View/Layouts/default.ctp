@@ -42,7 +42,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->Html->link(
 					$this->Html->image('titulo.jpg', array('alt' => 'BANNER', 'border' => '0', 'width' => '100%', 'height' => '150px')), '', array('target' => '', 'escape' => false),'http://quiensoy-pulidovpe.c9.io');
 			?>
-			<!-- <h1>< ?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ? ></h1> -->
 		</div>
 		<div style="background: lightgray;margin: 0 auto;width: 98%">
 			<article style="display: inline-block;text-align: left;">
@@ -50,11 +49,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					<li style="display: inline-block;text-decoration:none;">
 						<?php echo $this->Html->link(__('Inicio'), array('controller' => 'foroCategorias', 'action' => 'index')); ?>
 					</li>
+					<?php if(($logged_in) && ($current_user['role']==1)): ?>
 					<li style="display: inline-block;text-decoration:none;">
-						<?php echo $this->Html->link('Usuarios', array('controller' => 'users', 'action' => 'index')); ?>
+						<?php echo $this->Html->link('Administrar', array('controller' => 'users', 'action' => 'index')); ?>
 					</li>
+					<?php endif; ?>
 					<li style="display: inline-block;text-decoration:none;">
-						<?php echo $this->Html->link('Buscar', array('controller' => 'users', 'action' => 'index')); ?>
+						<?php echo $this->Html->link('Buscar', array('controller' => 'foroTemas', 'action' => 'buscar')); ?>
 					</li>		
 				</ul>
 			</article>

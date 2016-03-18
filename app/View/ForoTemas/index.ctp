@@ -3,8 +3,12 @@
 	pr($logged_in);
 	echo "current_user['role'] <br />";
 	pr($current_user['role']);
+	echo "Categoria <br />";
+	pr($categoria);
 	echo "subforo['ForoSubforo']['id'] <br />";
-	pr($subforo['ForoSubforo']['id']);*/
+	pr($subforo['ForoSubforo']['id']);
+	echo "Foro <br />";
+	pr($foro);*/
 ?>
 <div style="clear: both;">  
 	<div style="text-align: center;margin: 0 auto;width: 98%;">	
@@ -16,8 +20,7 @@
 					<!-- IR A INICIO - CATEGORIAS -->
 					<span style="float: left;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__($categoria), array('controller' => 'foroCategorias', 'action' => 'index')); ?></span>
 					<!-- IR A UN FORO - FOROTEMAS -->
-					<span style="float: left;font-weight: bold;font-size: 0.9em;"><?php echo "- -> ".$subforo['ForoSubforo']['subforo']; ?></span>
-					<!-- <span style="float: left;font-weight: bold;font-size: 1.0.9em;">< ?php echo "- -> ".h($foroTema['0']['ForoTema']['titulo']); ? ></span> -->					
+					<span style="float: left;font-weight: bold;font-size: 0.9em;"><?php echo "- -> ".$subforo['ForoSubforo']['subforo']; ?></span>					
 				</div>
 			</th>
 		</tr>

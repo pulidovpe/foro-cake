@@ -29,11 +29,11 @@
 	</dl>
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Foro Categoria'), array('action' => 'edit', $foroCategoria['ForoCategoria']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Foro Categoria'), array('action' => 'delete', $foroCategoria['ForoCategoria']['id']), array(), __('Are you sure you want to delete # %s?', $foroCategoria['ForoCategoria']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Foro Categorias'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Foro Categoria'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Categoria'), array('action' => 'edit', $foroCategoria['ForoCategoria']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Borrar Categoria'), array('action' => 'delete', $foroCategoria['ForoCategoria']['id']), array(), __('Seguro que desea borrarla # %s?', $foroCategoria['ForoCategoria']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Listar Categorias'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nueva Categoria'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
