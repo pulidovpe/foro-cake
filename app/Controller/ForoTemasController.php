@@ -251,7 +251,14 @@ class ForoTemasController extends AppController {
 		return $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
 	}
 
-	public function buscar() {
+	public function buscar($accion = null) {		
+		$this->loadModel('ForoCategoria');
+		$this->ForoCategoria->recursive = 0;
+		$descripciones = $this->ForoCategoria->find('list', array(
+			'fields' => array('id','categoria')));
+		array_unshift($descripciones, "Seleccione...");
+		//$descripciones['0'] = "Seleccione...";
+		$this->set('categoria', $descripciones);
 
         if ($this->request->is('post')) {
             $buscar = $this->request->data['ForoTema']['titulo'];
@@ -263,7 +270,7 @@ class ForoTemasController extends AppController {
                 'limit' => 10
                 );
             //$busca = $this->ForoTema->query("SELECT * FROM foro_temas WHERE titulo LIKE '%$buscar%' ");
-            $temas = $this->Paginator->paginate($busca);
+            $temas = $this->Paginator->paginate('ForoTema');
             if ($temas):                     
                 //$this->set(compact('ForoTema'));
                 $this->set('foroTemas', $this->paginate());

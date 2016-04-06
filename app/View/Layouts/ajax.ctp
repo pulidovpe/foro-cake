@@ -1,3 +1,20 @@
+<head>
+
+	<?php 
+	
+		
+
+		echo $this->Html->css(array('jquery.toastmessage'));
+		echo $this->Html->script(array('jquery.min','funciones','jquery.toastmessage'));
+
+		echo $this->fetch('meta');
+		echo $this->fetch('css');
+		echo $this->fetch('script');
+
+
+	?>
+	
+</head>
 <?php
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
