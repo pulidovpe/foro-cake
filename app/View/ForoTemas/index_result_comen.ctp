@@ -8,8 +8,8 @@
 	echo "subforo['ForoSubforo']['id'] <br />";
 	pr($subforo['ForoSubforo']['id']);
 	echo "Foro <br />";
-	echo "foroTemas <br />";
-	pr($foroTemas);*/
+	echo "comentarios <br />";
+	pr($comentarios);*/
 ?>
 <div style="clear: both;">  
 	<div style="text-align: center;margin: 0 auto;width: 98%;">	
@@ -29,15 +29,15 @@
 		</thead>
 		<tbody>
 		<?php
-			foreach ($foroTemas as $foroTema): ?>
+			foreach ($comentarios as $comentario): ?>
 			<tr>
 				<td>
-					<?php echo $this->Html->link(__(h($foroTema['ForoTema']['titulo'])), array('action' => 'view',h($categoria),h($subforo['ForoSubforo']['subforo']),h($foroTema['ForoTema']['id']))); ?>			
+					<?php echo $this->Html->link(__(h($comentario['ComentarioForo']['titulo'])), array('action' => 'view',h($categoria),h($subforo['ForoSubforo']['subforo']),h($comentario['ComentarioForo']['id']))); ?>			
 				</td>
-				<td><?php echo h($foroTema['ForoTema']['fecha']); ?>&nbsp;</td>
-				<td><?php echo h($foroTema['ForoTema']['activo']); ?>&nbsp;</td>
+				<td><?php echo h($comentario['ComentarioForo']['created']); ?>&nbsp;</td>
+				<td><?php echo h($comentario['ComentarioForo']['activo']); ?>&nbsp;</td>
 				<td class="actions">
-					<?php echo $foroTema['ForoTema']['comentarios']; ?>
+					<?php echo $comentario['ComentarioForo']['comentarios']; ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>

@@ -242,9 +242,13 @@ class ForoTemasController extends AppController {
             $this->Session->setFlash(__($msg_conectate), 'msg', array('type' => 'warning'));
             $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
         }
+        $idtema = $id;
 		$this->request->allowMethod('post', 'delete');
 		if ($this->ForoTema->delete()) {
-			$this->Session->setFlash(__('La publicacion fue eliminada'),'msg',array('type' => 'success'));
+			// Al borrar el tema borro todos sus comentarios
+			$this->loadModel('ComentarioForo');
+			$borrar = $this->ComentarioForo->query("DELETE * FROM comentario_foro WHERE comentario_foro.id_tema = '$idtema'; ");
+			$this->Session->setFlash(__('La publicacion fue eliminada junto con sus comentarios'),'msg',array('type' => 'success'));
 		} else {
 			$this->Session->setFlash(__('No se pudo eliminar la publicacion'),'msg',array('type' => 'danger'));
 		}
@@ -256,47 +260,71 @@ class ForoTemasController extends AppController {
 		$this->ForoCategoria->recursive = 0;
 		$descripciones = $this->ForoCategoria->find('list', array(
 			'fields' => array('id','categoria')));
-		array_unshift($descripciones, "Seleccione...");
-		//$descripciones['0'] = "Seleccione...";
 		$this->set('categoria', $descripciones);
 
         if ($this->request->is('post')) {
-            $buscar = $this->request->data['ForoTema']['titulo'];
-            $this->loadModel('ForoTema');
+        	//pr($this->request->data);die();
+        	$this->loadModel('ForoTema');
+            $buscar_texto = $this->request->data['titulo'];
+            $buscar_id = $this->request->data['tema'];
             $this->Paginator->settings = array(
-            'conditions' => array(
-                'or' => array('ForoTema.titulo LIKE' => '%'.$buscar.'%', 
-                'or' => array('ForoTema.contenido LIKE' => '%'.$buscar.'%' ))),
-                'limit' => 10
-                );
-            //$busca = $this->ForoTema->query("SELECT * FROM foro_temas WHERE titulo LIKE '%$buscar%' ");
-            $temas = $this->Paginator->paginate('ForoTema');
-            if ($temas):                     
-                //$this->set(compact('ForoTema'));
-                $this->set('foroTemas', $this->paginate());
-                $this->render('index_result');
-            else:
-                $this->Session->setFlash('No se encontró ningún tema relacionado','msg',array('type' => 'danger'));
-            endif;
-        } 
-    }
-
-    public function index_result() {
-		/*if($id!=NULL) {
-			$this->ForoTema->recursive = 0;
-			$this->Paginator->settings = array('conditions' => array('ForoTema.id_subforo' => $id));
-			$foroTemas = $this->Paginator->paginate('ForoTema');
-			$this->set('foro',$id);
-			$this->set(compact('foroTemas'));
-			// Buscamos el tema
+            	'conditions' => array(
+            		'AND' => array('ForoTema.id' => $buscar_id), 
+                	'OR' => array(
+                		'ForoTema.titulo LIKE' => '%'.$buscar_texto.'%', 
+                		'ForoTema.contenido LIKE' => '%'.$buscar_texto.'%'
+                	)
+                ),
+                'LIMIT' => 10,
+                'recursive' => 1
+            );
+            //$busca = $this->ForoTema->query("SELECT * FROM foro_temas WHERE titulo LIKE '%$buscar_texto%' ");
+            // Buscamos el tema  id_subforo
+            /*
 			$this->loadModel('ForoSubforo');
 			$options = array('conditions' => array( 'ForoSubforo.id' => $id));
 			$subforo = $this->ForoSubforo->find('first', $options);
 			$this->set('subforo', $subforo);
 			$this->set('categoria',$categoria);
-		} else {*/
-			$this->ForoTema->recursive = 0;
-            $this->set('foroTemas', $this->paginate());
-		//}
+			*/
+            $temas = $this->Paginator->paginate('ForoTema');
+            if ($temas):
+            	$this->Session->setFlash('Resultados encontrados.1','msg',array('type' => 'notice'));
+                $this->set('foroTemas', $this->paginate());
+                $this->render('index_result_tema');
+            else:
+            	$this->Paginator->settings = array('conditions' => null);            	
+            	$this->loadModel('ComentarioForo');
+                $this->Paginator->settings = array(
+                	'model' => 'ComentarioForo',
+	            	'conditions' => array(
+	            		'AND' => array('ComentarioForo.id_tema' => $buscar_id), 
+	                	'AND' => array(
+	                		'ComentarioForo.comentario LIKE' => '%'.$buscar_texto.'%'
+	                	)
+	                ),          		
+	                'LIMIT' => 10,
+	                'recursive' => 1
+	            );	            
+            	$comentarios = $this->Paginator->paginate('ComentarioForo');
+            	if ($comentarios):
+            		$this->Session->setFlash('Resultados encontrados.2','msg',array('type' => 'notice'));
+	                $this->set('comentarios', $this->paginate('ComentarioForo'));
+	                $this->render('index_result_comen');
+	            else:
+	            	$this->Session->setFlash('No se encontró ningún tema relacionado','msg',array('type' => 'danger'));
+	            endif;
+            endif;
+        } 
+    }
+
+    public function index_result_tema() {
+		$this->ForoTema->recursive = 0;
+        $this->set('foroTemas', $this->paginate());
+	}
+
+	public function index_result_comen() {
+		$this->ComentarioForo->recursive = 0;
+        $this->set('comentarios', $this->paginate());
 	}
 }

@@ -13,10 +13,15 @@
 	<fieldset>
 		<legend><?php echo __($titulo); ?></legend>
 	<?php
-		//pr($id_comentario['coment']['temas']);
+		//pr($id_comentario);
 		$comentarios = $id_comentario['ForoTema']['comentarios']+1;
 		echo $this->Form->input('id_tema', array('type'=>'hidden','value' => $id_comentario['ForoTema']['id']));
 		echo $this->Form->input('id_usuario', array('type'=>'hidden','value' => $usuario));
+		echo $this->Form->input('titulo', array(
+			'style' => 'width:90%;', 
+			'label' => 'Titulo: ',
+			'value' => $id_comentario['ForoTema']['titulo']
+		));
 		echo $this->Form->input('comentario', array('type' => 'textarea','class'=>'ckeditor', 'label' => 'Comentario'));
 		echo $this->Form->input('activo', array('type'=>'hidden','value' => 'S'));
 		echo $this->Form->input('comentarios', array('type'=>'hidden','value' => $comentarios));

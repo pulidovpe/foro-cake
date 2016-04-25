@@ -5,7 +5,7 @@
 		<!-- IR AL SUBFORO DE DONDE VENIMOS -->
 		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".$this->Html->link(__($foro), array('controller' => 'foroTemas','action' => 'index',h($categoria),h($foroTema['ForoTema']['id_subforo']))); ?></span>
 		<!-- EL TEMA ACTUAL -->
-		<span style="float: left;font-weight: bold;font-size: 1em;"><?php echo "- >> ".h($foroTema['ForoTema']['titulo']); ?></span>
+		<span style="float: left;font-weight: bold;font-size: 1em;"><!-- < ?php echo "- >> ".h($foroTema['ForoTema']['titulo']); ? > --></span>
 		<table>
 			<tr>
 				<th colspan="3" style="background-color: lightgray;">
@@ -48,12 +48,15 @@
 					<span style="float: left;display: inline-block;font-size: 1em;">
 					</span>
 				</th><th style="background-color: orange;">
+					<!-- EL TEMA ACTUAL -->
 					<span style="float: left;font-size: 1em;">
+						<?php echo h($foroTema['ForoTema']['titulo']); ?>
+					</span>
+				</th><th style="background-color: orange;">
+					<span style="float: right;font-size: 1em;">
 						<?php echo "| Publicado |"; ?>
 						<?php echo h($foroTema['ForoTema']['modified']); ?>
 					</span>
-				</th><th style="background-color: orange;">
-					
 				</th>
 			</tr>
 			<tr class="altrow">
@@ -69,7 +72,7 @@
 							endif;
 						?>
 					</span>
-					<div style="background-color: gray;width: 150px;height: 150px;">
+					<div style="background-color: gray;width: 100px;height: 100px;overflow: hidden;">
 						<?php echo $this->Html->Image('../files/user/foto/' . $usuario['User']['foto_dir'] . '/' . 'thumb_' . $usuario['User']['foto']); ?>
 					</div>
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>
@@ -99,11 +102,13 @@
 								case 1:
 									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
 									echo $this->Form->postLink(__('| Eliminar |'), array(
-										'controller' => 'foroTemas', 'action' => 'delete',
-										h($foroTema['ForoTema']['id'])
-									));
-									echo "</span>";
-									
+											'controller' => 'foroTemas',
+											'action' => 'delete',
+											h($foroTema['ForoTema']['id'])),
+											null,
+											__('Seguro que desea eliminar el tema?')
+										);
+									echo "</span>";									
 								case 2:
 									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
 									echo $this->Html->link(__('| Editar/Moderar |'), array(
@@ -116,7 +121,7 @@
 									echo "</span>";
 									break;
 								case 3:
-									if(h($usuario['User']['id'])==$current_user['id']):
+									if($usuario['User']['id']==$current_user['id'] AND $foroTema['ForoTema']['activo']=='S'):
 										echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
 										echo $this->Html->link(__('| Editar |'), array(
 											'controller' => 'foroTemas', 
@@ -126,11 +131,20 @@
 											h($foroTema['ForoTema']['id'])
 										));
 										echo "</span>";
+										echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+										echo $this->Form->postLink(__('| Eliminar |'), array(
+											'controller' => 'foroTemas',
+											'action' => 'delete',
+											h($foroTema['ForoTema']['id'])),
+											null,
+											__('Seguro que desea eliminar el tema?')
+										);
+										echo "</span>";
 									endif;
 									break;								
 							}
 						?>		
-					<?php endif; ?>
+					<?php endif; //echo " ForoTema-id==>".h($foroTema['ForoTema']['id']);?>
 				</th>
 			</tr>
 			<?php 
@@ -152,11 +166,13 @@
 					</span>
 				</th><th style="background-color: lightgray;">
 					<span style="float: left;font-size: 1em;">
+						<?php echo h($comenta['comentario_foro']['titulo']); ?>
+					</span>
+				</th><th style="background-color: lightgray;">
+					<span style="float: right;font-size: 1em;">
 						<?php echo "| Publicado |"; ?>
 						<?php echo h($comenta['comentario_foro']['modified']); ?>
 					</span>
-				</th><th style="background-color: lightgray;">
-					
 				</th>
 			</tr>
 			<tr<?php echo $class; ?>>
@@ -202,11 +218,14 @@
 								case 1:
 									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
 									echo $this->Form->postLink(__('| Eliminar |'), array(
-										'controller' => 'comentarioForos', 'action' => 'delete',
-										h($comenta['comentario_foro']['id'])
-									));
-									echo "</span>";
-									
+										'controller' => 'comentarioForos', 
+										'action' => 'delete',
+										h($comenta['comentario_foro']['id']),
+										h($comenta['comentario_foro']['id_tema'])),
+										null,
+									    __('Seguro que desea eliminar el comentario?')
+									);
+									echo "</span>";									
 								case 2:
 									echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
 									echo $this->Html->link(__('| Moderar |'), array(
@@ -219,7 +238,7 @@
 									echo "</span>";
 									break;
 								case 3:
-									if(h($comenta['users']['id'])==$current_user['id']):
+									if($comenta['users']['id']==$current_user['id'] AND $comenta['comentario_foro']['activo']=='S'):
 										echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
 										echo $this->Html->link(__('| Editar |'), array(
 											'controller' => 'comentarioForos', 
@@ -229,11 +248,23 @@
 											h($comenta['comentario_foro']['id'])
 										));
 										echo "</span>";
+										echo "<span style='float: right;display: inline-block;font-size: 0.9em;'>";
+										echo $this->Form->postLink(__('| Eliminar |'), array(
+											'controller' => 'comentarioForos', 
+											'action' => 'delete',
+											h($comenta['comentario_foro']['id']),
+											h($comenta['comentario_foro']['id_tema'])),
+											null,
+										    __('Seguro que desea eliminar el comentario?')
+										);
+										echo "</span>";
 									endif;
 									break;								
 							}
 						?>		
-					<?php endif; ?>
+					<?php endif; //echo " comentario_foro-id==>".h($comenta['comentario_foro']['id']).
+					//" --- comentario_foro-id_tema==>".h($comenta['comentario_foro']['id_tema']);
+					?>
 				</th>
 			</tr>
 			<?php endforeach; ?>

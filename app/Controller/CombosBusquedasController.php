@@ -6,7 +6,6 @@ App::uses('AppController', 'Controller');
 class CombosBusquedasController extends AppController {
 
     public function cargarsubforos($id_busca = null) {
-    	//$this->autoRender = false;
         $this->layout = 'ajax';
         $this->loadModel('ForoSubforo');
         $descripciones = $this->ForoSubforo->find('list', array(
@@ -15,12 +14,10 @@ class CombosBusquedasController extends AppController {
         	'fields' => array('id','subforo'),
         	'order' => 'ForoSubforo.created ASC'
         ));
-        array_unshift($descripciones, "Seleccione...");
         $this->set('subforos', $descripciones);
     }
 
     public function cargartemas($id_busca = null) {
-    	//$this->autoRender = false;
         $this->loadModel('ForoTema');
         $this->layout = 'ajax';
         $descripciones = $this->ForoTema->find('list', array(
@@ -29,12 +26,11 @@ class CombosBusquedasController extends AppController {
         	'fields' => array('id','titulo'), 
         	'order' => 'ForoTema.created ASC'
         ));
-        array_unshift($descripciones, "Seleccione...");
         $this->set('temas', $descripciones);
+        $this->set('id_tema',$id_busca);
     }
 
     public function cargarcomentarios($id_busca = null) {
-    	//$this->autoRender = false;
         $this->loadModel('ComentarioForo');
         $this->layout = 'ajax';
         $descripciones = $this->ComentarioForo->find('list', array(
@@ -43,9 +39,8 @@ class CombosBusquedasController extends AppController {
         	'fields' => array('id','comentario'), 
         	'order' => 'ComentarioForo.created ASC'
         ));
-        //array_unshift($descripciones, "Seleccione...");
-        pr($descripciones);
-        $this->set('comentarios', $descripciones);
+        $this->set('id_tema',$id_busca);
+        //$this->set('comentarios', $descripciones);
     }
 
 }

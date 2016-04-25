@@ -207,17 +207,23 @@ class ComentarioForosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function delete($id = null,$tema = null) {
 		$this->ComentarioForo->id = $id;
 		if (!$this->ComentarioForo->exists()) {
-			throw new NotFoundException(__('Invalid comentario foro'));
+			throw new NotFoundException(__('Comentario incorrecto'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->ComentarioForo->delete()) {
+			// Al borrar le resto el numero de comentarios al tema
+			$this->loadModel('ForoTema');
+			$this->ForoTema->id = $tema;
+			$comen = $this->ForoTema->read('comentarios');
+			$comen--;
+			$this->ForoTema->saveField('comentarios',$comen);
 			$this->Session->setFlash(__('La publicacion fue eliminada'),'msg',array('type' => 'success'));
 		} else {
 			$this->Session->setFlash(__('No se pudo eliminar la publicacion'),'msg',array('type' => 'danger'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
 	}
 }

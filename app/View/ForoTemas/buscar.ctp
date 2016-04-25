@@ -3,7 +3,7 @@
 		<?php echo $this->Form->create('ForoTema'); ?>
 		<fieldset>
 			<legend><?php echo __('Buscar Temas'); ?></legend>
-			<div style="width:350px;">
+			<div style="width:40%;overflow: visible;">
 				<?php
 					echo $this->Form->input('id', array(
 						'name'=>'data[ForoCategoria][id]',
@@ -12,13 +12,13 @@
 						'onchange'=>"return actualiza(
 							'../CombosBusquedas/cargarsubforos',
 							'capasubforos',this.value);", 
-						'options' => $categoria //,'default' => $categoria['0']
+						'options' => $categoria,
+						'empty' => array(0 => 'Seleccione...')
 					));
 				?>
-			</div>
-			<div id="capasubforos" style="width:350px;">
-				<?php 
-					if(!isset($subforos)):
+				<?php echo $this->Form->create('ForoTema'); ?>
+				<div id="capasubforos" style="width:50%;">
+					<?php 
 						echo $this->Form->input('id', array(
 							'name'=>'data[ForoSubforo][id]',
 							'label'=>'Sub-Foros: ',
@@ -26,29 +26,41 @@
 							'onchange'=>"return actualiza(
 								'../CombosBusquedas/cargartemas',
 								'capatemas',this.value );", 
-							'options' => array('Seleccione...' => 'Seleccione...')
+							'options' => array('...' => '...')
 						));
-					endif;
+					?>
+					<div id="capatemas" style="width:50%;">
+						<?php
+							echo $this->Form->input('id', array(
+								'name'=>'data[ForoTema][id]',
+								'label'=>'Temas: ',
+								'maxlength'=>'40',
+								'style'=>'width:300px;', 
+								'onchange'=>"return actualiza(
+									'../CombosBusquedas/cargarcomentarios',
+									'capacomentarios', this.value );", 
+								'options' => array('...' => '...')
+							));
+						?>
+						<div id="capacomentarios" style="width:50%;">
+							<?php
+								echo $this->Form->input('titulo', array('type' => 'hidden'));
+								echo $this->Form->input('tema', array('type' => 'hidden'));
+							?>
+						</div>
+					</div>
+				</div>
+				<?php 
+					echo $this->Form->end(__('Buscar')); 
+					echo $this->Form->button('Another Button', array(
+						'type'=>'submit',
+						'onclick'=>"return actualiza(
+							'../ForoTemas/cargarcomentarios',
+							'capacomentarios', this.value );"
+					));
 				?>
-			</div>
-			<div id="capatemas" style="width:350px;">
-				<?php
-					if(!isset($temas)):
-						echo $this->Form->input('id', array(
-							'name'=>'data[ForoTema][id]',
-							'label'=>'Temas: ',
-							'style'=>'width:300px;',
-							'onchange'=>"return actualiza(
-								'../CombosBusquedas/cargarcomentarios',
-								'comentarios',this.value );", 
-							'options' => array('Seleccione...' => 'Seleccione...')
-						));
-					endif;
-				?>
-			</div>
-			<div id="capacomentarios" style="width:350px;">
-			</div>
+			</div>			
 		</fieldset>
-		<?php echo $this->Form->end(__('Buscar')); ?>
+		<!-- < ?php echo $this->Form->end(__('Buscar')); ? > -->
 	</div>
 </div>

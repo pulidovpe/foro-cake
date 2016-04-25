@@ -70,7 +70,15 @@ class AppController extends Controller {
 	}
 	
 	public function beforeFilter() {
-		$this->Auth->allow('login', 'logout', 'add', 'buscar', 'CargarSubForos', 'CargarTemas');
+		$this->Auth->allow(
+			'login', 
+			'logout', 
+			'add', 
+			'buscar', 
+			'CargarSubForos', 
+			'CargarTemas',
+			'cargarcomentarios'
+		);
 		$this->set('logged_in', $this->Auth->loggedIn());
 		$this->set('current_user', $this->Auth->user());
 	}
