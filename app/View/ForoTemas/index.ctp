@@ -7,8 +7,8 @@
 	pr($categoria);
 	echo "subforo['ForoSubforo']['id'] <br />";
 	pr($subforo['ForoSubforo']['id']);
-	echo "Foro <br />";
-	pr($foro);*/
+	echo "forotemas <br />";
+	pr($foroTemas);*/
 ?>
 <div style="clear: both;">  
 	<div style="text-align: center;margin: 0 auto;width: 98%;">	
@@ -25,7 +25,7 @@
 			</th>
 		</tr>
 		<tr>
-			<th colspan="4" style="background-color: lightgray;">
+			<th colspan="5" style="background-color: lightgray;">
 				<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)): ?>
 					<?php if(isset($foroTema)): ?>
 						<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$subforo['ForoSubforo']['id'])); ?></li>
@@ -41,9 +41,14 @@
 			<th style="width: 40%;background: orange;"><?php echo $this->Paginator->sort('titulo'); ?></th>
 			<th style="background: orange;"><?php echo $this->Paginator->sort('fecha'); ?></th>
 			<th style="background: orange;"><?php echo $this->Paginator->sort('activo'); ?></th>
-			<th style="text-align: center;margin: 0 auto;background: orange;width: 30%;">
+			<th style="text-align: center;margin: 0 auto;background: orange;width: 20%;">
 				<span style="font-size: 0.8em;">
-					<?php echo __('- Respuestas - '); /*Visitas - Último mensaje');*/ ?>
+					<?php echo __('- Autor - '); ?>
+				</span>
+			</th>
+			<th style="text-align: center;margin: 0 auto;background: orange;width: 10%;">
+				<span style="font-size: 0.8em;">
+					<?php echo __('- Respuestas - '); ?>
 				</span>
 			</th>
 		</tr>
@@ -57,13 +62,16 @@
 				</td>
 				<td><?php echo h($foroTema['ForoTema']['fecha']); ?>&nbsp;</td>
 				<td><?php echo h($foroTema['ForoTema']['activo']); ?>&nbsp;</td>
+				<td style="text-align: center;">
+					<?php echo $foroTema['User']['username']; ?>
+				</td>
 				<td class="actions">
 					<?php echo $foroTema['ForoTema']['comentarios']; ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>
 			<tr>
-				<th colspan="4" style="background-color: lightgray;">
+				<th colspan="5" style="background-color: lightgray;">
 					<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)): ?>
 						<?php if(isset($foroTema)): ?>
 							<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;">

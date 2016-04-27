@@ -4,9 +4,9 @@
 	echo "current_user['role'] <br />";
 	pr($current_user['role']);
 	echo "Categoria <br />";
-	pr($categoria);
+	pr($categorias);
 	echo "subforo['ForoSubforo']['id'] <br />";
-	pr($subforo['ForoSubforo']['id']);
+	pr($subforos['ForoSubforo']['id']);
 	echo "Foro <br />";
 	echo "foroTemas <br />";
 	pr($foroTemas);*/
@@ -20,7 +20,12 @@
 			<th style="width: 40%;background: orange;"><?php echo $this->Paginator->sort('titulo'); ?></th>
 			<th style="background: orange;"><?php echo $this->Paginator->sort('fecha'); ?></th>
 			<th style="background: orange;"><?php echo $this->Paginator->sort('activo'); ?></th>
-			<th style="text-align: center;margin: 0 auto;background: orange;width: 30%;">
+			<th style="text-align: center;margin: 0 auto;background: orange;width: 10%;">
+				<span style="font-size: 0.8em;">
+					<?php echo __('- Autor - '); ?>
+				</span>
+			</th>
+			<th style="text-align: center;margin: 0 auto;background: orange;width: 20%;">
 				<span style="font-size: 0.8em;">
 					<?php echo __('- Respuestas - '); /*Visitas - Último mensaje');*/ ?>
 				</span>
@@ -32,10 +37,13 @@
 			foreach ($foroTemas as $foroTema): ?>
 			<tr>
 				<td>
-					<?php echo $this->Html->link(__(h($foroTema['ForoTema']['titulo'])), array('action' => 'view',h($categoria),h($subforo['ForoSubforo']['subforo']),h($foroTema['ForoTema']['id']))); ?>			
+					<?php echo $this->Html->link(__(h($foroTema['ForoTema']['titulo'])), array('action' => 'view',h($categorias['ForoCategoria']['categoria']),h($subforos['ForoSubforo']['subforo']),h($foroTema['ForoTema']['id']))); ?>			
 				</td>
 				<td><?php echo h($foroTema['ForoTema']['fecha']); ?>&nbsp;</td>
 				<td><?php echo h($foroTema['ForoTema']['activo']); ?>&nbsp;</td>
+				<td style="text-align: center;">
+					<?php echo $foroTema['User']['username']; ?>
+				</td>
 				<td class="actions">
 					<?php echo $foroTema['ForoTema']['comentarios']; ?>
 				</td>

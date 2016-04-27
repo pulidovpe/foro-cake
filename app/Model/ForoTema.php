@@ -13,4 +13,12 @@ class ForoTema extends AppModel {
  */
 	public $displayField = 'id';
 
+    public $belongsTo = array(
+        'User' => array(
+            'className' => 'User',
+            'foreignKey' => 'id_usuario'
+        )
+    );
+
+
 }

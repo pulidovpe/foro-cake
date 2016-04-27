@@ -15,6 +15,7 @@ class CombosBusquedasController extends AppController {
         	'order' => 'ForoSubforo.created ASC'
         ));
         $this->set('subforos', $descripciones);
+        $this->set('id_categ',$id_busca);
     }
 
     public function cargartemas($id_busca = null) {
@@ -27,7 +28,7 @@ class CombosBusquedasController extends AppController {
         	'order' => 'ForoTema.created ASC'
         ));
         $this->set('temas', $descripciones);
-        $this->set('id_tema',$id_busca);
+        $this->set('id_foro',$id_busca);
     }
 
     public function cargarcomentarios($id_busca = null) {
@@ -40,7 +41,6 @@ class CombosBusquedasController extends AppController {
         	'order' => 'ComentarioForo.created ASC'
         ));
         $this->set('id_tema',$id_busca);
-        //$this->set('comentarios', $descripciones);
     }
 
 }

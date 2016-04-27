@@ -1,3 +1,7 @@
+<?php
+	/*echo "comentarios <br />";
+	pr($comentarios);*/
+?>
 <div style="clear: both;">
 	<div style="text-align: center;margin: 0 auto;width: 98%;">
 		<!-- IR A INICIO - CATEGORIA -->
@@ -72,7 +76,7 @@
 							endif;
 						?>
 					</span>
-					<div style="background-color: gray;width: 100px;height: 100px;overflow: hidden;">
+					<div style="background-color: gray;width: 150px;height: 150px;overflow: hidden;">
 						<?php echo $this->Html->Image('../files/user/foto/' . $usuario['User']['foto_dir'] . '/' . 'thumb_' . $usuario['User']['foto']); ?>
 					</div>
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>
@@ -188,7 +192,7 @@
 							endif;
 						?>
 					</span>
-					<div style="background-color: gray;width: 150px;height: 150px;">
+					<div style="background-color: gray;width: 100px;height: 100px;overflow: hidden;">
 						<?php echo $this->Html->Image('../files/user/foto/' . $comenta['users']['foto_dir'] . '/' . 'thumb_' . $comenta['users']['foto']); ?>
 					</div>
 					<span style='font-weight: bold;'>Desde:&nbsp;</span>

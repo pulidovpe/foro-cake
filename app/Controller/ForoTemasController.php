@@ -46,16 +46,30 @@ class ForoTemasController extends AppController {
  *
  * @return void
  */
-	public function index($categoria = null,$id = null) {
-		if($id!=NULL) {
+	public function index($categoria = null,$id_foro = null) {
+		if($id_foro!=NULL) {
+			$this->loadModel('User');
+			$this->loadModel('foroTemas');
 			$this->ForoTema->recursive = 0;
-			$this->Paginator->settings = array('conditions' => array('ForoTema.id_subforo' => $id));
+			$this->Paginator->settings = array('conditions' => array('ForoTema.id_subforo' => $id_foro));
 			$foroTemas = $this->Paginator->paginate('ForoTema');
-			$this->set('foro',$id);
 			$this->set(compact('foroTemas'));
+			$this->set('foro',$id_foro);
+			//////////////////////////////////////
+			
+			//////////////////////////////////////
+			/*$this->loadModel('foroTemas');
+			$temas_users = $this->foroTemas->query(
+				"SELECT foroTemas.id,foroTemas.titulo,foroTemas.comentarios, user.username
+				FROM foro_temas AS foroTemas JOIN users AS user ON 
+				id_subforo = '$id_foro' AND 
+				id_usuario = user.id;"
+			);
+			$this->set('foroTemas', $this->paginate());*/
+			////////////////////////////////////////
 			// Buscamos el tema
 			$this->loadModel('ForoSubforo');
-			$options = array('conditions' => array( 'ForoSubforo.id' => $id));
+			$options = array('conditions' => array( 'ForoSubforo.id' => $id_foro));
 			$subforo = $this->ForoSubforo->find('first', $options);
 			$this->set('subforo', $subforo);
 			$this->set('categoria',$categoria);
@@ -76,14 +90,17 @@ class ForoTemasController extends AppController {
 	public function view($categoria = null,$foro = null,$id = null) {
 		if (!$this->ForoTema->exists($id)) {
 			throw new NotFoundException(__('Tema Incorrecto'));
+			// Significa que ...
 		}
 		// Buscamos el tema
+		$this->loadModel('ForoTema');
 		$options = array('conditions' => array('ForoTema.id' => $id));
 		$foroTema = $this->ForoTema->find('first', $options);
 		$this->set('foroTema', $foroTema);
+
 		// Obtener los datos del usuario que creo el tema
-		$this->loadModel('User');
 		$opciones = array('conditions' => array('User.id' => $foroTema['ForoTema']['id_usuario']));
+		$this->loadModel('User');
 		$usuario = $this->User->find('first', $opciones);
 		$this->set('usuario', $usuario);
 		// Cargar los comentarios del tema
@@ -255,18 +272,18 @@ class ForoTemasController extends AppController {
 		return $this->redirect(array('controller' => 'foroCategorias', 'action' => 'index'));
 	}
 
-	public function buscar($accion = null) {		
+	public function buscar() {	//$accion = null
 		$this->loadModel('ForoCategoria');
 		$this->ForoCategoria->recursive = 0;
-		$descripciones = $this->ForoCategoria->find('list', array(
-			'fields' => array('id','categoria')));
+		$descripciones = $this->ForoCategoria->find('list', array('fields' => array('id','categoria')));
 		$this->set('categoria', $descripciones);
 
         if ($this->request->is('post')) {
-        	//pr($this->request->data);die();
         	$this->loadModel('ForoTema');
+        	$categ = $this->request->data['categ'];
+        	$foro  = $this->request->data['foro'];
             $buscar_texto = $this->request->data['titulo'];
-            $buscar_id = $this->request->data['tema'];
+            $buscar_id    = $this->request->data['tema'];
             $this->Paginator->settings = array(
             	'conditions' => array(
             		'AND' => array('ForoTema.id' => $buscar_id), 
@@ -278,19 +295,20 @@ class ForoTemasController extends AppController {
                 'LIMIT' => 10,
                 'recursive' => 1
             );
-            //$busca = $this->ForoTema->query("SELECT * FROM foro_temas WHERE titulo LIKE '%$buscar_texto%' ");
-            // Buscamos el tema  id_subforo
-            /*
+            $this->loadModel('ForoCategoria');
+			$this->ForoCategoria->id = $categ;
+			$categoria = $this->ForoCategoria->read('categoria');
+			$this->set('categorias',$categoria);
 			$this->loadModel('ForoSubforo');
-			$options = array('conditions' => array( 'ForoSubforo.id' => $id));
-			$subforo = $this->ForoSubforo->find('first', $options);
-			$this->set('subforo', $subforo);
-			$this->set('categoria',$categoria);
-			*/
+			$this->ForoSubforo->id = $foro;
+			$subforo = $this->ForoSubforo->read('subforo');
+			$this->set('subforos', $subforo);
+
             $temas = $this->Paginator->paginate('ForoTema');
             if ($temas):
-            	$this->Session->setFlash('Resultados encontrados.1','msg',array('type' => 'notice'));
+            	$this->Session->setFlash('Temas encontrados.','msg',array('type' => 'notice'));
                 $this->set('foroTemas', $this->paginate());
+				
                 $this->render('index_result_tema');
             else:
             	$this->Paginator->settings = array('conditions' => null);            	
@@ -308,8 +326,9 @@ class ForoTemasController extends AppController {
 	            );	            
             	$comentarios = $this->Paginator->paginate('ComentarioForo');
             	if ($comentarios):
-            		$this->Session->setFlash('Resultados encontrados.2','msg',array('type' => 'notice'));
+            		$this->Session->setFlash('Comentarios encontrados.','msg',array('type' => 'notice'));
 	                $this->set('comentarios', $this->paginate('ComentarioForo'));
+	                $this->set('id_tema', $buscar_id);
 	                $this->render('index_result_comen');
 	            else:
 	            	$this->Session->setFlash('No se encontró ningún tema relacionado','msg',array('type' => 'danger'));
