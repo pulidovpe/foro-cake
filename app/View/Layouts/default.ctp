@@ -61,9 +61,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</article>
 			<article style="float: right;display: inline-block;text-align: right;">
 				<?php if ($logged_in): ?>
+					<?php if($current_user['username'] != 'Invitado'): ?>
 					<li style='display: inline-block;text-decoration:none;'>
 						<span><b style="color:red;"><?php echo $this->Html->link('Perfil', array('controller' => 'users', 'action' => 'view',h($current_user['id']))); ?></b></span>
 					</li>
+					<?php endif; ?>
 					<li style='display: inline-block;text-decoration:none;'>
 						<span><b style="color:red;"><?php echo $current_user['username']; ?></b></span>
 					</li>

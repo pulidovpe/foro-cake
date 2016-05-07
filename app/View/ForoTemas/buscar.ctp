@@ -55,16 +55,9 @@
 					</div>
 				</div>
 				<?php 
-					echo $this->Form->end(__('Buscar')); 
-					/*echo $this->Form->button('Another Button', array(
-						'type'=>'submit',
-						'onclick'=>"return actualiza(
-							'../ForoTemas/cargarcomentarios',
-							'capacomentarios', this.value );"
-					));*/
+					echo $this->Form->end(__('Buscar'));
 				?>
 			</div>			
 		</fieldset>
-		<!-- < ?php echo $this->Form->end(__('Buscar')); ? > -->
 	</div>
 </div>

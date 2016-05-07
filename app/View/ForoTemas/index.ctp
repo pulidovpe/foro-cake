@@ -26,7 +26,7 @@
 		</tr>
 		<tr>
 			<th colspan="5" style="background-color: lightgray;">
-				<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)): ?>
+				<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)&&($current_user['username'] != 'Invitado')): ?>
 					<?php if(isset($foroTema)): ?>
 						<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;"><?php echo $this->Html->link(__('Publicar nuevo tema'), array('action' => 'add',$categoria,$subforo['ForoSubforo']['subforo'],$subforo['ForoSubforo']['id'])); ?></li>
 					<?php else: ?>
@@ -72,7 +72,7 @@
 		<?php endforeach; ?>
 			<tr>
 				<th colspan="5" style="background-color: lightgray;">
-					<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)): ?>
+					<?php if(($logged_in)&&($subforo['ForoSubforo']['id']>1)&&($current_user['username'] != 'Invitado')): ?>
 						<?php if(isset($foroTema)): ?>
 							<li style="float: right;display: inline-block;font-weight: bold;font-size: 0.9em;">
 								<?php 

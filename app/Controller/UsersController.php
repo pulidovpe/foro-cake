@@ -1,4 +1,4 @@
-<?php
+ <?php
 App::uses('AppController', 'Controller', 'SimplePasswordHasher');
 /**
  * Usuarios Controller
@@ -158,7 +158,8 @@ class UsersController extends AppController {
                     $this->request->data['User']['password_confirmation'] = '';
                     $this->Session->setFlash(__('Clave anterior incorrecta!'), 'msg', array('type' => 'warning'));
                     // Si las claves no coinciden
-                } elseif (strcmp($this->request->data['User']['password_confirmation'], $this->request->data['User']['password']) !== 0) {
+                } else
+                if (strcmp($this->request->data['User']['password_confirmation'], $this->request->data['User']['password']) !== 0) {
                     $this->request->data['User']['password_anterior'] = '';
                     $this->request->data['User']['password'] = '';
                     $this->request->data['User']['password_confirmation'] = '';
@@ -250,39 +251,56 @@ class UsersController extends AppController {
         }
 	}
 
-	public function login() {            
-        if ($this->request->is('post')) {
-			// Verificar sesion abierta en otro lado
+	public function login() {
+        if (($this->request->is('post'))&&(!empty($this->request->data['User']['username']))&&(!empty($this->request->data['User']['password']))) {
+            //pr($this->request->data);die();                
+            // Verificar sesion abierta en otro lado
             $nueva_conexion = $this->request->data['User']['username'];
             //$this->loadModel('User');
-            $este_usuario = $this->User->query("SELECT ip_cliente FROM users WHERE username = '$nueva_conexion' ");
+            $este_usuario = $this->User->query("SELECT ip_cliente,temas FROM users WHERE username = '$nueva_conexion' ");
             //pr($este_usuario);exit();
             $ahora = date("Y-m-d H:i:s");
-            // Obtener Ip del cliente
-            $cliente_ip = $this->request->clientIp();
-            if (!empty($este_usuario[0]['User']['cliente_ip'])) {
-                pr($este_usuario);die();
-                $tiempo_transcurrido = (strtotime($ahora) - strtotime($este_usuario[0]['User']['modified']));
-                // Si la ip existe entonces no cerro la sesion al irse
-                if ($este_usuario[0]['ip_cliente']!=NULL) {
-                	//Eliminamos la sesion para crear una nueva
-                    $this->loadModel('cake_session');
-                    $hay_conexion = $this->cake_session->query("DELETE FROM cake_sessions WHERE data ILIKE '%$nueva_conexion%' ");
-                	// Si se esta conectando desde otra ip
-                	if(strcmp($cliente_ip,$este_usuario[0]['ip_cliente'])!==0) { 
-                        $this->Session->setFlash(__('Existia otra sesión abierta, se elimino para permitir su nueva sesion.'), 'msg', array('type' => 'notice'));
-                    }
-                } 
-            }
+            if($this->request->data['User']['Invitado']==0) {
+                /*$this->Session->setFlash(__('Indique su nombre de usuario y clave.'), 'msg', array('type' => 'warning'));
+                return $this->redirect($this->Auth->logout());*/
+                // Obtener Ip del cliente
+                $cliente_ip = $this->request->clientIp();
+                // Preguntamos si existe un IP guardada
+                if (!empty($este_usuario[0]['User']['cliente_ip'])) {
+                    //pr($este_usuario);die();
+                    $tiempo_transcurrido = (strtotime($ahora) - strtotime($este_usuario[0]['User']['modified']));
+                    // Si la ip existe entonces no cerro la sesion al irse
+                    if ($este_usuario[0]['ip_cliente']!=NULL) {
+                        //Eliminamos la sesion para crear una nueva
+                        $this->loadModel('cake_session');
+                        $hay_conexion = $this->cake_session->query("DELETE FROM cake_sessions WHERE data ILIKE '%$nueva_conexion%' ");
+                        // Si se esta conectando desde otra ip
+                        if(strcmp($cliente_ip,$este_usuario[0]['ip_cliente'])!==0) { 
+                            $this->Session->setFlash(__('Existia otra sesión abierta, se elimino para permitir su nueva sesion.'), 'msg', array('type' => 'notice'));
+                        }
+                    } 
+                }
+            } else {
+                // Llenar campo ip
+                $cliente_ip = 'I.n.v.i.t.a.d.o';
+                // Llevar la cuenta
+                $cuantos = $este_usuario[0]['users']['temas'] + 1;
+            }  
+            //pr($this->request->data);die();
             if ($this->Auth->login()) {
                 $id = $this->Session->read('Auth.User.id');
-                $mensaje = 'Bienvenido ' . $this->Session->read('Auth.User.username');
-                $this->request->data = $this->User->read(null, $id);
-                // Dejamos constancia en la base de datos de que estas conectado
-                $this->request->data['User']['ip_cliente'] = $cliente_ip;
-
+                $mensaje = 'Bienvenido usuario: ' . $this->Session->read('Auth.User.username');
+                //$this->request->data = $this->User->read(null, $id);                
                 if($this->Session->read('Auth.User.activo')=='S') {
-                    if ($this->User->saveField('ip_cliente', $this->request->data['User']['ip_cliente'])) {
+                    // Dejamos constancia en la base de datos de que estas conectado
+                    $this->loadModel('User');
+                    $this->User->id = $id;
+                    $this->request->data['User']['ip_cliente'] = $cliente_ip;
+                    if($this->request->data['User']['Invitado']==1):
+                        $this->request->data['User']['temas'] = $cuantos;
+                        $this->User->saveField('temas',$cuantos);
+                    endif;
+                    if ($this->User->saveField('ip_cliente',$cliente_ip)) {
                         $this->Session->setFlash(__($mensaje), 'msg', array('type' => 'success'));
                         return $this->redirect($this->Auth->redirect());
                     } else {
@@ -293,8 +311,10 @@ class UsersController extends AppController {
                 } else {
                     $this->redirect($this->Auth->logout());
                 }
-			} else {                    
+            } else {
+                //pr($this->Auth);die();
                 $this->Session->setFlash(__('Usuario y/o clave incorrecta, INTENTE DE NUEVO!'), 'msg', array('type' => 'danger'));
+                $this->request->data['User']['username'] = '';
                 $this->request->data['User']['password'] = '';
             }
         }
@@ -303,8 +323,14 @@ class UsersController extends AppController {
     public function logout() {
         if ($this->Auth->login()) {
             $id = $this->Session->read('Auth.User.id');
+            $invitado = $this->Session->read('Auth.User.username');
             $this->request->data = $this->User->read(null, $id);
             $this->User->id = $id;
+            if($invitado=='Invitado'):
+                $cuantos = $this->Session->read('Auth.User.temas') - 1;
+                $this->request->data['User']['temas'] = $cuantos;
+                $this->User->saveField('temas', $this->request->data['User']['temas']);
+            endif;            
             $this->request->data['User']['ip_cliente'] = null;
             // Dejar constancia en la BD que nos desconectamos
             if ($this->User->saveField('ip_cliente', $this->request->data['User']['ip_cliente'])) {
@@ -316,7 +342,7 @@ class UsersController extends AppController {
                 return false;
             }
         } else {
-            $this->Session->setFlash(__('Debe iniciar sesión primero!'), 'msg', array('type' => 'danger'));
+            $this->Session->setFlash(__('Debe iniciar sesión primero!'), 'msg', array('type' => 'warning'));
             return $this->redirect(array('controller' => 'users', 'action' => 'login'));
         }
     }

@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<th colspan="3" style="background-color: lightgray;">
-					<?php if($logged_in): ?>
+					<?php if(($logged_in)&&($current_user['username'] != 'Invitado')): ?>
 						<?php if($foroTema['ForoTema']['activo']=='S'): ?>
 							<span style="float: right;font-weight: bold;font-size: 1em;">
 								<?php echo $this->Html->link(__('Responder al Tema'), array(
@@ -274,7 +274,7 @@
 			<?php endforeach; ?>
 			<tr>
 				<th colspan="3" style="background-color: lightgray;">
-					<?php if($logged_in): ?>
+					<?php if(($logged_in)&&($current_user['username'] != 'Invitado')): ?>
 						<?php if($foroTema['ForoTema']['activo']=='S'): ?>
 							<span style="float: right;font-weight: bold;font-size: 1em;">
 								<?php echo $this->Html->link(__('Responder al Tema'), array(

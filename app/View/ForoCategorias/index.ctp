@@ -109,8 +109,11 @@
 					echo $u_online[$i]['User']['username'] . ", ";
 				}
 				echo " ...";
+				//pr($invitados);
 			?>
-			</span>			
+			</span>
+			<br />			
+			<label>Usuarios invitados: <?php echo $invitados; ?></label>		
 		</div>
 	</div>
 </div>

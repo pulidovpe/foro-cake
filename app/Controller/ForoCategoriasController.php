@@ -39,21 +39,37 @@ class ForoCategoriasController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->loadModel('ForoSubforo');
-		$this->ForoSubforo->recursive = 0;
+		if ($this->Auth->login()) {
+			$this->loadModel('ForoSubforo');
+			$this->ForoSubforo->recursive = 0;
 
-		$this->set('subforos', $this->ForoSubforo->find('all'));
+			$this->set('subforos', $this->ForoSubforo->find('all'));
 
-		$this->ForoCategoria->recursive = 0;
-		$this->set('foroCategorias', $this->ForoCategoria->find('all', array(
-			'order' => array('ForoCategoria.id' => 'asc')))
-		);
-		$this->loadModel('User');
-		$options = array('conditions' => array('not' => array('User.ip_cliente' => null)));
-		$u_online = $this->User->find('all', $options);
-		$cuantos = sizeof($u_online);
-		$this->set('u_online', $u_online);
-		$this->set('cuantos', $cuantos);
+			$this->ForoCategoria->recursive = 0;
+			$this->set('foroCategorias', $this->ForoCategoria->find('all', array(
+				'order' => array('ForoCategoria.id' => 'asc')))
+			);
+			$this->loadModel('User');
+			$options1 = array('conditions' => array(
+				'not' => array(
+					'User.ip_cliente' => null,
+					'User.username' => 'Invitado'
+			)));
+			$options2 = array('conditions' => array(
+					'User.username' => 'Invitado'
+					),
+					'fields' => 'temas'
+			);
+			$u_online = $this->User->find('all', $options1);
+			$invitados = $this->User->find('first',$options2);
+			$cuantos = sizeof($u_online);
+			$this->set('u_online', $u_online);
+			$this->set('cuantos', $cuantos);			
+			$this->set('invitados', $invitados['User']['temas']);
+
+		} else {
+			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
+		}
 	}
 
 /**

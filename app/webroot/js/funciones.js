@@ -1,3 +1,20 @@
+function invitado(cual) {
+    switch(cual) {
+        case 'S':
+            document.getElementById("UserUsername").value = "Invitado";
+            document.getElementById("UserUsername").style.display = "none";
+            document.getElementById("UserPassword").value = "invitado";
+            document.getElementById("UserPassword").style.display = "none";
+            break;
+        case 'N':
+            document.getElementById("UserUsername").value = "";
+            document.getElementById("UserUsername").style.display = "block";
+            document.getElementById("UserPassword").value = "";
+            document.getElementById("UserPassword").style.display = "block";
+            break;
+    }
+}
+
 function actualiza(Url, Capa, valor) {
     //var $q = jQuery.noConflict();
 

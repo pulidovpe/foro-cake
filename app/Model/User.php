@@ -143,7 +143,11 @@ class User extends AppModel {
 				'message' => '¡La imagen ya se encuentra registrada!',
 				'on' => 'update'
 			),
-		)
+		),
+		'Invitado' => array(
+	        'rule' => 'numeric',
+	        'message' => 'Solo valores numericos.'
+    	)
 	);
 
 	function checkUniqueName($data) {
