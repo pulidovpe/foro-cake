@@ -284,17 +284,30 @@ class ForoTemasController extends AppController {
         	$foro  = $this->request->data['foro'];
             $buscar_texto = $this->request->data['titulo'];
             $buscar_id    = $this->request->data['tema'];
-            $this->Paginator->settings = array(
-            	'conditions' => array(
-            		'AND' => array('ForoTema.id' => $buscar_id), 
-                	'OR' => array(
-                		'ForoTema.titulo LIKE' => '%'.$buscar_texto.'%', 
-                		'ForoTema.contenido LIKE' => '%'.$buscar_texto.'%'
-                	)
-                ),
-                'LIMIT' => 10,
-                'recursive' => 1
-            );
+            if($buscar_id > 0) {
+	            $this->Paginator->settings = array(
+	            	'conditions' => array(
+	            		'AND' => array('ForoTema.id' => $buscar_id), 
+	                	'OR' => array(
+	                		'ForoTema.titulo LIKE' => '%'.$buscar_texto.'%', 
+	                		'ForoTema.contenido LIKE' => '%'.$buscar_texto.'%'
+	                	)
+	                ),
+	                'LIMIT' => 10,
+	                'RECURSIVE' => 1
+	            );
+	        } else {
+	        	$this->Paginator->settings = array(
+	            	'conditions' => array(
+	                	'OR' => array(
+	                		'ForoTema.titulo LIKE' => '%'.$buscar_texto.'%', 
+	                		'ForoTema.contenido LIKE' => '%'.$buscar_texto.'%'
+	                	)
+	                ),
+	                'LIMIT' => 10,
+	                'RECURSIVE' => 1
+	            );
+	        }
             $this->loadModel('ForoCategoria');
 			$this->ForoCategoria->id = $categ;
 			$categoria = $this->ForoCategoria->read('categoria');
@@ -308,7 +321,7 @@ class ForoTemasController extends AppController {
             if ($temas):
             	$this->Session->setFlash('Temas encontrados.','msg',array('type' => 'notice'));
                 $this->set('foroTemas', $this->paginate());
-				
+				//pr($temas);die();
                 $this->render('index_result_tema');
             else:
             	$this->Paginator->settings = array('conditions' => null);            	
@@ -328,6 +341,7 @@ class ForoTemasController extends AppController {
             	if ($comentarios):
             		$this->Session->setFlash('Comentarios encontrados.','msg',array('type' => 'notice'));
 	                $this->set('comentarios', $this->paginate('ComentarioForo'));
+	                //$buscar_id = $comentarios[0]['ComentarioForo']['id_tema'];
 	                $this->set('id_tema', $buscar_id);
 	                $this->render('index_result_comen');
 	            else:

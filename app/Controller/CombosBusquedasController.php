@@ -29,6 +29,7 @@ class CombosBusquedasController extends AppController {
         ));
         $this->set('temas', $descripciones);
         $this->set('id_foro',$id_busca);
+        $this->set('id_tema',0);
     }
 
     public function cargarcomentarios($id_busca = null) {

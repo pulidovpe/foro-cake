@@ -24,7 +24,11 @@ class ComentarioForo extends AppModel {
         'User' => array(
             'className' => 'User',
             'foreignKey' => 'id_usuario'
-        )
+        )/*,
+        'ForoTema' => array(
+        	'className' => 'ForoTema',
+            'foreignKey' => 'id_tema'	
+        )*/
     );
 
 }

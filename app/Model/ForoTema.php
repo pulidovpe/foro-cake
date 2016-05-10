@@ -19,6 +19,11 @@ class ForoTema extends AppModel {
             'foreignKey' => 'id_usuario'
         )
     );
-
+    public $hasMany = array(
+    	'ComentarioForo' => array(
+    		'className' => 'ComentarioForo',
+            'foreignKey' => 'id_tema'	
+    	)
+    );
 
 }

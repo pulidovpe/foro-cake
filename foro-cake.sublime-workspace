@@ -304,18 +304,74 @@
 	"buffers":
 	[
 		{
-			"file": "app/Model/User.php",
-			"settings":
-			{
-				"buffer_size": 4414,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/Controller/UsersController.php",
 			"settings":
 			{
 				"buffer_size": 16445,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Controller/ForoTemasController.php",
+			"settings":
+			{
+				"buffer_size": 13318,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Model/ComentarioForo.php",
+			"settings":
+			{
+				"buffer_size": 554,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Model/ForoTema.php",
+			"settings":
+			{
+				"buffer_size": 481,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Controller/CombosBusquedasController.php",
+			"settings":
+			{
+				"buffer_size": 1520,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/ForoTemas/buscar.ctp",
+			"settings":
+			{
+				"buffer_size": 1988,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/CombosBusquedas/cargarsubforos.ctp",
+			"settings":
+			{
+				"buffer_size": 1142,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/CombosBusquedas/cargartemas.ctp",
+			"settings":
+			{
+				"buffer_size": 1073,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/View/CombosBusquedas/cargarcomentarios.ctp",
+			"settings":
+			{
+				"buffer_size": 251,
 				"line_ending": "Unix"
 			}
 		},
@@ -344,22 +400,6 @@
 			}
 		},
 		{
-			"file": "app/webroot/js/funciones.js",
-			"settings":
-			{
-				"buffer_size": 8724,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/View/CombosBusquedas/cargarsubforos.ctp",
-			"settings":
-			{
-				"buffer_size": 1142,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/Controller/ForoCategoriasController.php",
 			"settings":
 			{
@@ -376,10 +416,10 @@
 			}
 		},
 		{
-			"file": "app/View/ForoTemas/buscar.ctp",
+			"file": "app/webroot/js/funciones.js",
 			"settings":
 			{
-				"buffer_size": 1988,
+				"buffer_size": 8724,
 				"line_ending": "Unix"
 			}
 		},
@@ -427,7 +467,7 @@
 			"file": "/var/www/html/unefa_ce/app/Controller/UsersController.php",
 			"settings":
 			{
-				"buffer_size": 58258,
+				"buffer_size": 58152,
 				"line_ending": "Unix"
 			}
 		},
@@ -552,18 +592,37 @@
 			}
 		},
 		{
-			"file": "/var/www/html/unefa_ce/app/Controller/AppController.php",
+			"file": "/var/www/html/unefa_ce/app/View/Eventos/view.ctp",
 			"settings":
 			{
-				"buffer_size": 2107,
+				"buffer_size": 6344,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/var/www/html/unefa_ce/app/View/Eventos/view.ctp",
+			"contents": "Registro de Commits\n-------------------\nPrimer y Segundo Commit. 21/01/2014\nVersion hasta actualizacion de datos. Con control de usuarios incompleto, pero usable.\n\nTercer Commit. 21/01/2014\nModificacion de prueba del archivo app/Config/database.php\n\nCuarto Commit. 22/01/2014\nEsta disponible los modulos de mantenimiento de datos,configuracion de parametros para\ninscripcion y funcionamiento del sistema, la sesion de los estudiantes esta disponible\ncon los modulos de actualizar datos y se esta desarrollando el modulo de inscripcion.\nBY JOSUE BOLIVAR.\n\nQuinto Commit. 22/01/2014\nSe actualizaron las vistas que cargan los combos dependiente en la actualizacion de datos\nde los alumnos.\nBY JOSUE BOLIVAR.\n\nSexto Commit. 23/01/2014\nEsta disponible el modulo de inscripcion en el cual ya se pueden agregar materias a la base\nde datos, falta las validaciones correspondientes al proceso de inscripcion.\nBY JOSUE BOLIVAR.\n\nSeptimo Commit. 23/01/2014\nSe realizaron las validaciones necesarios en el modulo de secciones del cinu.\nBY JOSUE BOLIVAR.\n\nOctavo Commit. 24/01/2014\nSe realizaron validaciones en el modulo de inscripcion en el proceso de agregar y eliminar materias.\nBY JOSUE BOLIVAR.\n\nNoveno Commit. 27/01/2014\nSe incluyeron las clases FPDF en en Vendor app se habilito en boton documentos del menu perincipal de estudiantes el cual genera un reporte pdf con los datos del estudiante en un 40% de desarrollo.\nBY JOSUE BOLIVAR.\n  \nDecimo Commit. 28/01/2014\nSe modifico core.php para aceptar cookies, tambien appcontroller y usercontroller.\nSi un usuario, a excepcion del administrador cierra el navegador sin cerrar sesion,\nqueda conectado en la base de datos. Esta pendiente resolver eso.\nBy Pablo E. Pulido\n\n---Verios commits para resolucion de conflictos---\n\nDecimo Primer Commit 28/01/2014\nResolucion de problema al hacer login. Redireccion al elegir V,E,P.\nPendiente por pruebas.\nBy Pablo E. Pulido\n\nDecimo Segundo Commit 28/01/2014\nSolucion al problema de redireccion al menu sino tenias permiso.\nBy Pablo E. Pulido\n\nDecimo tercer Commit 28/01/2014\nsolucion al problema de logeo de estudiantes sin ingreso.\nBY JOSUE BOLIVAR.\n\nDecimo cuarto Commit 28/01/2014\nsolucion al problema que permitia registrar ingresos de estudiantes con correos de usuarios registrados.\nBY JOSUE BOLIVAR.\n\nDecimo quinto Commit 28/01/2014\nBlanqueo de campos en formulario login cuando hay error.\nBy Pablo E. Pulido\n\nDecimo sexto Commit 28/01/2014\nDesactivar edicion de nombre de usuario en las vistas edit y edit_clave.\nBy Pablo E. Pulido\n\nDecimo septimo Commit 29/01/2014\nactualizacion de las vistas.\nBY JOSUE BOLIVAR.\n\nDecimo octavo Commit 04/02/2014\nActivacion de control de permisos en los controladores de Mantenimiento\nGeneral. Como de Ubicacion Geografica, Datos de Interes y Academico.\nY en las vistas del menu y el layout default.\nBy Pablo E. Pulido\n\nDecimo Noveno Commit 04/02/2014\nActualizacion de las vistas de datos personales y combo select.\nby Javier Fonseca.\n\nCommit-20 04/02/2014\nModificacion de vista de usuarios para poder ordenar por conectado.\nBy Pablo E. Pulido\n\nCommit-21 05/02/2014\nModificacion de los controladores de users y ingres para activar el paginador.\nBy Javier Fonseca\n\nCommit-22 07/02/2014\nSe agrego la opcion de configuracion de activacion automatica de las secciones cinu, se agrego la opcion de configuracion de las materias que estaran disponibles en el proceso de inscripcion\nBy JOSUE BOLIVAR.\n\nCommit-23 19/02/2014\nSe agrego la opcion de registro de documentos consignados por el estudiante para la creación del expediente en el Dpto de Archivo.\nBy KATIUSKA OJEDA.\n\nCommit-24 19/02/2014\nmodificacion de las vistas de ingres,tipo_ingres,carrera,periodo y inicios.\nBy javier fonseca.\n\nCommit-25 25/02/2014\nSe agrego la opcion de registro de documentos consignados por el estudiante para la creación del expediente en el Dpto de Archivo. OTRA VEZ. PORQUE NO APARECIA\nBy KATIUSKA OJEDA.\n\nCommit-26 25/02/2014\nesta disponible la opcion de generar listados de alumnos inscritos en cinu, esta disponible la opcion enviar email desde el index de ingres\nBy JOSUE BOLIVAR.\n\nCommit-27 26/02/2014\nse pueden generar las actas de inscripcion, este proceso esta en fase de desarrollo en un 20%\nBy JOSUE BOLIVAR.\n\nCommit-28 26/02/2014\nSe agrego la opcion de condiciones de las notas para mostrar al emitir el record en el renglon de observaciones\nBy KATIUSKA OJEDA.\n\nCommit-29 26/02/2014\nSe modifico las vistas de carrera, tipo ingreso, periodo, ingres, pemsums.\nBy Javier Fonseca.\n\nCommit-30 10/03/2014\nse encuentra disponible la opcion de consulta e impresion de constancia de inscripcion. \nBy JOSUE BOLIVAR.\n\nCommit-001 12/03/2014\nse elimino repositorio y se incio con uno nuevo, se encuentra disponible la opcion de generar listados de alumnos inscritos en cinu y se pueden descargar los docuemtos.\nBy JOSUE BOLIVAR.\n\nCommit-002 12/03/2014\nActualizacion del modulo configuracion. Se agrego .gitignore\nBy KATIUSKA OJEDA.\n\nCommit-003 12/03/2014\nse agregaron las carpetas que corresponden a cada carrera para guardar los archivos que se generan del sistema.\nBy JOSUE BOLIVAR.\n\nCommit-004 12/03/2014\nse agregaron archivos a las carpetas vacias para que puedan ser subidas al servidor.\nBy JOSUE BOLIVAR.\n\nCommit-005 13/03/2014\nCorreccion de la ruta regresar en agregar pensum e inhabilitar oferta academica regular\nBy KATIUSKA OJEDA.\n\nCommit-006 13/03/2014\nmodificacion de las carpetas calida servicios, programas academicos, plan academico, condiciones notas, etnias, discapacidades, carreras, tipoingreso, periodo, pemsuns, condiciones fisicas residencias, condicion residencias y hijo de militares.\nBy Javier Fonseca.\n\nCommit-007 13/03/2014\nmodificacion de la carpeta pensums.\nBy Javier Fonseca.\n\nCommit-008 13/03/2014\nmodificacion de la carpeta pensums.\nBy Javier Fonseca.\n\nCommit-009 13/03/2014\nCorreccion en el controlador ConfigurarInscripciones Controller\nBy KATIUSKA OJEDA.\n\nCommit-010 14/03/2014\nSe agrego linea de configuracion del gitignore en archivo .git/config\nBy Pablo E. Pulido\n\nCommit-011 14/03/2014\nPor instrucciones de Pablo se agrega un archivo empty a la carpeta tmp y se eliminaron los archivos existentes.\nBy KATIUSKA OJEDA.\n\nCommit-012 14/03/2014\nmodificacion de las carpetas calida servicios, programas academicos, plan academico, condiciones notas, etnias, discapacidades, carreras, tipoingreso, periodo, pemsuns, condiciones fisicas residencias, condicion residencias y hijo de militares,paises,municipios,parroquias,localidades,nivel de instruccion.\nBy Javier Fonseca.\n\nCommit-013 14/03/2014\nse pueden crear listados de alumnos inscritos y actas de notas\nBy JOSUE BOLIVAR.\n\nCommit-014 18/03/2014\nse pueden descargar los listados de alumnos inscritos y actas de notas\nBy JOSUE BOLIVAR.\n\nCommit-015 20/03/2014\nModificacion de las vistas y controladores del modulo de mantenimiento.\nBy Javier Fonseca.\n\nCommit-016 20/03/2014\nModificacion de las vistas y controladores de paises, estados, municipios, parroquias y localidades del modulo de mantenimiento.\nBy Javier Fonseca.\n\nCommit-017 20/03/2014\nse creo la opcion que valida la inscripcion de los estudiantes y se actualizaron algunas vistas.\nBy Javier Fonseca.\n\nCommit-018 21/03/2014\nse creo la opcion RRHH en modulo mantenimiento. MVC Empleados y Tipos de Empleados\nBy KATIUSKA OJEDA.\n\nCommit-019 21/03/2014\nesta disponible la opcion de validar inscripcion dentro del modulo procesos\nBy JOSUE BOLIVAR.\n\nCommit-020 21/03/2014\nesta disponible la opcion de empleados\nBy KATIUSKA OJEDA.\n\nCommit-021 26/03/2014\nse relizaron arreglos en el manejo de los directorios para crear los listados de notas\nBy JOSUE BOLIVAR.\n\nCommit-022 27/03/2014\nse realizo el arreglo de la opcion editar en la carpeta localidad.\nBy Javier Fonseca.\n\nCommit-023 27/03/2014\nSe modifico la opcion empleados (MVC) y se agrego Profesiones al menu Mantenimiento/Datos de Interes (Vistasubs/index)\nBy KATIUSKA OJEDA.\n\nCommit-024 27/03/2014\nSe modifico las vistas de tipo de empleado y archivo.\nBy Javier Fonseca.\n\nCommit-025 28/03/2014\nValida que las profesiones no se repitan al agregar, se corrigieron las vistas asociadas a esta opcion.\nBy KATIUSKA OJEDA.\n\nCommit-026 28/03/2014\nModificacion del menu  configuraciones importantes/ inscripcion para desactivar la opcion pensum actual ya que esta se va a hacer al activar cada carrera. Archivo indexconfig de vistasub\nBy KATIUSKA OJEDA.\n\nCommit-027 31/03/2014\nse relizaron arreglos en el manejo de los directorios para crear las actas de notas\nBy JOSUE BOLIVAR.\n\nCommit-028 31/03/2014\nSe modifico las vistas de tipo de empleado en mantenimiento.\nBy Javier Fonseca.\n\nCommit-029 31/03/2014\nSe modifico las vistas de tipo de empleado en mantenimiento.\nBy Javier Fonseca.\n\nCommit-030 04/04/2014\nSe agregaron validaciones y campos nuevos en el formulario de registro de datos personales de los estudiantes\nBy JOSUE BOLIVAR.\n\nCommit-031 04/04/2014\nSe agrego la opcion Tipo Becas en el Menu Mantenimiento/Datos de Interes.\nBy KATIUSKA OJEDA.\n\nCommit-032 07/04/2014\nSe agrego tabla Bitacoras y registro de eventos. De momento solo registra\ninicio de sesion exitoso, fallido y cierre de sesion.\nArchivo creado: Bitacora.php\nArchivo modificado: UsersController.php\nBy PABLO PULIDO.\n\nCommit-033 07/04/2014\nActualizacion del registro de eventos. Ahora registra ademas de inicio de sesion exitoso, \nfallido y cierre de sesion; tambien creacion de usuario, modificacion de datos y \ncambio de clave.\nArchivos modificado: UsersController.php edit_clave.ctp\nBy PABLO PULIDO.\n\nCommit-034 08/04/2014\nSe agregaron los modelos, controladores y vistas de talento cultural y las vistas de tipo de becas.\nBy Javier Fonseca.\n\nCommit-035 23/04/2014\nActualizacion del registro de eventos. Corregido registro de modificacion de datos y \neliminacion de usuarios. Tambien eliminacion de titulo Movimientos Pendientes en el menu principal.\nArchivos modificado: UsersController.php index2.ctp\nBy PABLO PULIDO.\n\nCommit-036 24/04/2014\nSe agregaron las tablas grado academico y status permanencia y sus respectivas vistas modelos y controladores.\nBy Javier Fonseca\n\nCommit-037 24/04/2014\nSe agrego el formulario para registro de los datos de los estudiantes de postgrado\nBy JOSUE BOLIVAR\n\nCommit-038 24/04/2014\nSe agrego el formulario para registro de universidades de los estudiantes de postgrado.\nBy KATIUSKA OJEDA.\n\nCommit-039 25/04/2014\nSe agregaron validaciones a los formulario para registro de los datos de los estudiantes de postgrado\nBy JOSUE BOLIVAR\n\nCommit-040 25/04/2014\nActualizacion de modulo de usuarios. Se agrego una busqueda por nombre de usuario. Y se agrego a la bitacora\nal desconectar a un usuario desde la vista view.\nArchivos modificado/creado: UsersController.php buscar.ctp view.ctp\nBy PABLO PULIDO.\n\nCommit-041 25/04/2014\nActualizacion del registro de eventos. Ahora registra los ingresos, add, ingre,\nedit y delete; aun falta por probar si se borra el usuario ademas del estudiante.\nArchivo modificado: IngresController.php\nBy PABLO PULIDO.\n\nCommit-042 25/04/2014\nActualizacion del registro de eventos. Correccion en redireccion al buscar un nombre de usuario que no exista.\nArchivo modificado: UsersController.php\nBy PABLO PULIDO.\n\nCommit-043 28/04/2014\nSe integraron las opciones para la sesion de estudiantes de postgrado\nBy JOSUE BOLIVAR\n\nCommit-044 28/04/2014\n Se realizo el menu asobies y las bases de datos de bancos conceptos ingresos y cuentas con sus vistas, modelos y controladores.\nBy Javier Fonseca.\n\nCommit-045 29/04/2014\nSe organizo el menu principal y se esta realizando el proceso de carga de notas\nBy JOSUE BOLIVAR\n\nCommit-046 30/04/2014\nSe arreglaron las vistas del menu mantenimiento hasta calidad de servicios.\nBy KATIUSKA OJEDA.\n\nCommit-047 05/05/2014\nSe agrego la opcion para cargar las notas.\nBy JOSUE BOLIVAR\n\nCommit-048 05/05/2014\nSe finalizo la actualizacion de vistas del menu mantenimiento\nBy KATIUSKA OJEDA.\n\nCommit-049 05/05/2014\nActualizacion del registro de eventos. Creación de módulo de consulta para la Bitácora. Indice y búsqueda por fecha.\nInclusión de opción Bitácora en el Menú. Se le colocaron los nombres a los permisos de los módulos en las vistas de usuario.\nArchivos creado para Bitácora: BitacorasController.php Bitacora.php buscar.ctp index.ctp index2.ctp view.ctp\nArchivos modificados para User: add.ctp edit.ctp\nArchivos modificados para Inicios: index2.ctp \nBy PABLO PULIDO.\n\nCommit-050 05/05/2014\nActualizacion de vistas en menu configuración\nBy KATIUSKA OJEDA.\n\nCommit-051 05/05/2014\nCorrección de la opción Borrar en Users. Para que un usuario no pueda borrar usuarios-estudiantes, ni a si mismo.\nArchivos modificados para User: index.ctp view.ctp\nBy PABLO PULIDO.\n\nCommit-052 06/05/2014\nContinuación de la seguridad en los módulos. Específicamente el módulo PROCESOS y\ntodas sus opciones de menú.\nArchivos modificados: \nIngresController.php NotasController.php HistoricoActasController.php\nAlumnosDatosAcademicosController.php\nBy PABLO PULIDO.\n\nCommit-053 06/05/2014\nSE ESTA ELABORANDO EL MODULO PARA CARGAR EL PLAN DE ESTUDIO\nBy JOSUE BOLIVAR.\n\nCommit-054 08/05/2014\nActualizacion de las vistas de menu asobies.\nBy Javier Fonseca\n\nCommit-055 08/05/2014\nActualizacion de las vistas de menu asobies.\nBy Javier Fonseca\n\nCommit-056 08/05/2014\nSE INCLUYERON OPCIONES PARA LA INSCRIPCION DE POSTGRADO\nBy JOSUE BOLIVAR.\n\nCommit-057 08/05/2014\nSe aplicaron los bloqueos de modulo en el modulo 03.\nArchivos modificados: SeccionsController.php\nBy PABLO PULIDO.\n\nCommit-058 09/05/2014\nSe agregaron las opciones para crear secciones para postgrado\nBy JOSUE BOLIVAR.\n\nCommit-059 09/05/2014\nActualizacion de las vistas de menu asobies y academico.\nBy Javier Fonseca\n\nCommit-060 09/05/2014\nActualizacion de las vistas de menu academico.\nBy Javier Fonseca\n\nCommit-061 09/05/2014\nSe aplicaron los bloqueos de modulo en el modulo 03 y las grabaciones de la Bitácora.\nArchivos modificados: ConfigInscripcionesController.php\nBy PABLO PULIDO.\n\nCommit-062 12/05/2014\nActualizacion vistas opcion ver y agregar pensum, Periodo, carrera, programas acdemicos, programas cinuses, tipo ingreso, condiciones notas, status permanencia, carreras.\nBy KATIUSKA OJEDA.\n\nCommit-063 12/05/2014\nSe agrego el modulo de registro de pagos pa postgrado y se incluye la opcion de verificar el pago antes de realizar la inscripcion en la session de estudiantes\nBy JOSUE BOLIVAR.\n\nCommit-064 13/05/2014\nesta disponible la opcion de activa o desactivar carreraras de la oferta acadademica del pensum de pregrado y postgrado\nBy JOSUE BOLIVAR.\n\nCommit-065 13/05/2014\nesta disponible la opcion de activa o desactivar carreraras de la oferta acadademica del pensum de pregrado y postgrado\nBy JOSUE BOLIVAR.\n\nCommit-066 13/05/2014\nActualizacion de vistas asobies.\nBy Javier Fonseca.\n\nCommit-067 14/05/2014\nActualizacion de vistas modulo procesos ingres,historico actas.\nBy KATIUSKA OJEDA.\n\nCommit-068 14/05/2014\nSe aplicaron los bloqueos de modulo en el modulo 03 y las grabaciones de la Bitácora.\nArchivos modificados: ProgramasAcademicosController.php\nBy PABLO PULIDO.\n\nCommit-069 14/05/2014\nse realizaron cambios en la opcion de ingreso de aspirantes\nBy JOSUE BOLIVAR.\n\nCommit-070 15/05/2014\nActualizacion de vistas asobies.\nBy Javier Fonseca.\n\nCommit-071 15/05/2014\nActualizacion de vistas archivo.\nBy Javier Fonseca.\n\nCommit-072 16/05/2014\nSe aplicaron los bloqueos de modulo en el modulo 03 y las grabaciones de la Bitácora.\nArchivos modificados: SeccionsController.php\nBy PABLO PULIDO.\n\nCommit-073 16/05/2014\nSe agregaron opciones de consultas de status de proceso de inscripcion y estado de la carrera antes de abrirla para la inscripcion.\nBy JOSUE BOLIVAR.\n\nCommit-074 19/05/2014\nSe actualizaron las vistas empleados, tipo de empleados, historicoactas.\nBy KATIUSKA OJEDA.\n\nCommit-075 19/05/2014\nSe agrego la opcion de activar secciones de postgrado.\nBy JOSUE BOLIVAR.\n\nCommit-076 22/05/2014\nSe actualizaron vistas de municipio por importacion de data de municipios completa.\nBy KATIUSKA OJEDA.\n\nCommit-077 22/05/2014\nSe corrigieron detalles en las opciones de consultas de status de proceso de inscripcion y inscripcion de postgrado\nBy JOSUE BOLIVAR.\n\nCommit-078 26/05/2014\nSe agregaron opciones para agregar prelaciones de materias(AUN EXISTEN DETALLES).\nBy JOSUE BOLIVAR.\n\nCommit-079 27/05/2014\nSe aplicaron los bloqueos de modulo en el modulo 05 y las grabaciones de la Bitácora.\nArchivos modificados: AlumnosDatosAcademicosController.php, AlumnosDatosImportantesPostController.php, AlumnosDatosImportantesController.php\nBy PABLO PULIDO.\n\nCommit-080 27/05/2014\nCorreccion de las grabaciones de la Bitácora.\nArchivos modificados: \nDatosPersonalesController.php\nAlumnosDatosAcademicosController.php\nAlumnosDatosImportantesController.php\nAlumnosDatosImportantesPostController.php\nBy PABLO PULIDO.\n\nCommit-081 27/05/2014\nSe agregaron validacion de prelaciones para la inscripcion de materias.\nBy JOSUE BOLIVAR.\n\nCommit-082 28/05/2014\ncorreccion de problemas en el formulario de alumnosdatosacademicos y bitacora.\nBy JOSUE BOLIVAR.\n\nCommit-083 28/05/2014\nCorreccion de las grabaciones de la Bitácora.\nArchivos modificados: \nAlumnosDatosAcademicosController.php\nBy PABLO PULIDO.\n\nCommit-084 28/05/2014\nse corrigieron detalles en reportes y proceso de carga de notas.\nBy JOSUE BOLIVAR.\n\nCommit-085 29/05/2014\nSe aplicaron los bloqueos de modulo 05 y las grabaciones de la Bitácora.\nArchivos modificados: \nInsnotasController.php\nBy PABLO PULIDO.\n\nCommit-086 29/05/2014\nse corrigieron detalles en reportes y proceso de inscripcion.\nBy JOSUE BOLIVAR.\n\nCommit-087 02/06/2014\nse corrigieron detalles en el proceso de inscripcion y registro de datos.\nBy JOSUE BOLIVAR.\n\nCommit-088 03/06/2014\nse corrigieron detalles en el proceso de inscripcion, registro de datos y reporte de inscripcion.\nBy JOSUE BOLIVAR.\n\nCommit-089 06/06/2014\nse corrigieron detalles en el proceso de inscripcion y reportes para el estudiante.\nBy JOSUE BOLIVAR.\n\nCommit-090 06/06/2014\nSe aplicaron modificaciones a las grabaciones de la Bitácora.\nArchivos modificados: \nInsnotasController.php\nBy PABLO PULIDO.\n\nCommit-091 06/06/2014\nCorrecciones a las grabaciones de la Bitácora.\nArchivos modificados: \nInsnotasController.php\nBy PABLO PULIDO.\n\nCommit-092 25/06/2014\nCreacion de modulo para cambio de clave propia y enlace para su acceso.\nArchivos modificados: \nUsersController.php\nUser.php\nedit_clave2.php\ndefault.ctp (layaout)\nindex.ctp (VistaSub)\nindexacad.ctp (VistaSub)\nindexconfig.ctp (VistaSub)\nindexasobies.ctp (VistaSub)\nindexsec.ctp (VistaSub)\nindexarchivo1.ctp (VistaSub)\nindexempleado.ctp (VistaSub)\nindexreportes.ctp (VistaSub)\nBy PABLO PULIDO.\n\nCommit-093 26/06/2014\nRedireccion de la vista para cambio de clave propia y enlace de retorno.\nArchivos modificados: \nedit_clave2.php\nindex.ctp \nBy PABLO PULIDO.\n\nCommit-094 26/06/2014\nse corrigieron detalles en el proceso de inscripcion y registro de datos.\nBy JOSUE BOLIVAR.\n\nCommit-095 02/07/2014\nse agrego la opcion para veridicar y editar los datos personales de los alumnos.\nBy JOSUE BOLIVAR.\n\nCommit-096 03/07/2014\nse corrigieron detalles.\nBy JOSUE BOLIVAR.\n\nCommit-097 08/07/2014\nSe agregó la opcion expedientes al menu archivo\nBy KATIUSKA OJEDA.\n\nCommit-098 10/07/2014\nSe agrego la opcion de calculo de estadistica en el proceso de ingreso\nBy JOSUE BOLIVAR.\n\nCommit-099 10/07/2014\nSe soluciono problema en el momento de guardar los datos academicos del alumno\nBy JOSUE BOLIVAR.\n\nCommit-100 11/07/2014\nSe agregaron campos a la opcion Documentos\nBy KATIUSKA OJEDA.\n\nCommit-101 11/07/2014\nse agrego la opcion para incluir las autoridas del nucleo y calculos de estadisticas del proceso de ingreso\nBy JOSUE BOLIVAR.\n\nCommit-102 15/07/2014\nSe modificaron las vistas de documentos y profesiones\nBy KATIUSKA OJEDA.\n\nCommit-103 17/07/2014\nse agrego el modulo de biblioteca con la opcion para registrar los alumnos morosos, ademas se incluye dentro del menu configuracion la opcion de asignar a los profesores en las diferentes secciones correspondientes a una materia.\nBy JOSUE BOLIVAR.\n\nCommit-104 17/07/2014\nmejoras en la opcion de asignar a los profesores en las diferentes secciones correspondientes a una materia.\nBy JOSUE BOLIVAR.\n\nCommit-105 22/07/2014\nse agrego la opcion para identificar los alumnos que no realizaron el registro de forma correcta.\nBy JOSUE BOLIVAR.\n\nCommit-106 28/07/2014\nse agrego la opcion para mostrar estadistica de postgrado.\nBy JOSUE BOLIVAR.\n\nCommit-107 01/08/2014\nmejoras en procesos.\nBy JOSUE BOLIVAR.\n\nCommit-108 25/09/2014\nse creo el reporte de matricula de inscripcion de cinu, reporte de d.f, becarios, embarazadas y asistencia.\nBy JOSUE BOLIVAR.\n\nCommit-109 30/09/2014\nse crearon reportes y el proceso de cambio de carreras.\nBy JOSUE BOLIVAR.\n\nCommit-110 30/09/2014\nse creo la opcion para ampliar secciones y hacer cambio de secciones.\nBy JOSUE BOLIVAR.\n\nCommit-111 01/10/2014\nSe modifico el control de sesiones por uno mas eficiente.\nAhora es por Base de Datos. Sin cookies. Y dura 5 minutos.\nArchivos modificados:\ncore.php \nAppController.php\nUsersController.php\ncake_sessions.php (Model)\nindex.ctp (Users)\nview.ctp (Users)\nBy PABLO PULIDO.\n\nCommit-112 02/10/2014\nSe modifico el control de sesiones para que pueda regenerar la sesion\nsi el usuario se mantiene activo y alargarla mas de 5 minutos.\nArchivos modificados:\ncore.php \nBy PABLO PULIDO.\n\nCommit-113 02/10/2014\nse creo la opcion para editar datos academicos el cual esta asegurado con clave especial.\nBy JOSUE BOLIVAR.\n\nCommit-114 03/10/2014\nesta en proceso la opcion de agregar materias.\nBy JOSUE BOLIVAR.\n\nCommit-115 07/10/2014\nel proceso de agregar materias funciona, faltan validar algunas acciones.\nBy JOSUE BOLIVAR.\n\nCommit-116 13/10/2014\nla sesion de los docentes esta en construccion.\nBy JOSUE BOLIVAR.\n\nCommit-117 13/10/2014\nCorreccion en el inicio de sesion cuando el usuario no existe.\nArchivos modificados:\nUserController.php \nBy PABLO PULIDO.\n\nCommit-118 17/10/2014\nse agrego la opcion para configurar los cortes.\nBy JOSUE BOLIVAR.\n\nCommit-119 21/10/2014\nse agrego la opcion para iniciar sesion con usuarios con varios roles.\nBy JOSUE BOLIVAR.\n\nCommit-120 22/10/2014\nse agrego la opcion para editar la evaluaciones en la session de los profesores.\nBy JOSUE BOLIVAR.\n\nCommit-121 24/10/2014\nCorreccion en la edicion de roles de usuario y de los permisos de lectura y escritura.\nArchivos modificados:\nAppController.php\nUserController.php\nindex.ctp (Users)\nadd.ctp (Users)\nedit.ctp (Users)\nedit_roll.ctp (Users)\ntipo_sesion.ctp (Inicios)\nBy PABLO PULIDO.\n\nCommit-122 30/10/2014\nse corrigio el proceso de carga de notas.\nBy JOSUE BOLIVAR.\n\nCommit-123 30/10/2014\nCorreccion en la edicion de roles cuando tienen 1 o 3 roles. Se agrego la opcion de roles a la vista View.\nArchivos modificados:\nUserController.php\nview.ctp (vista)\nBy PABLO PULIDO.\n\nCommit-124 30/10/2014\nCorreccion a la vista View.\nArchivos modificados:\nview.ctp (vista)\nBy PABLO PULIDO.\n\nCommit-125 30/10/2014\nse cambio la forma como se configuran los modulares.\nBy JOSUE BOLIVAR.\n\nCommit-126 07/11/2014\nse agrego la opcion para imprimir el listado de asistencia de los alumnos en la sesion de los docentes.\nBy JOSUE BOLIVAR.\n\nCommit-127 11/11/2014\nse creo la opcion para ver las estadisticas de notas por asignaturas y se elabora la notificacion de no aprobado cinu\nBy JOSUE BOLIVAR.\n\nCommit-128 12/11/2014\nse agregaron validaciones en el proceso de registro de plan de avaluacion de los docentes\nBy JOSUE BOLIVAR.\n\nCommit-129 13/11/2014\nfue mejorado la opcion de agregar asignaturas\nBy JOSUE BOLIVAR.\n\nCommit-130 14/11/2014\nmejoras en el menu principal\nBy JOSUE BOLIVAR.\n\nCommit-131 14/11/2014\nse agrego la opcion de editar notas en el modulo de docentes\nBy JOSUE BOLIVAR.\n\nCommit-132 17/11/2014\nse agrego la opcion de confirmar notas en la sesion de docentes\nBy JOSUE BOLIVAR.\n\nCommit-133 18/11/2014\nse agrego la opcion para cargar porcentaje de inasistencias y generar el acta de notas esta en proceso\nBy JOSUE BOLIVAR.\n\nCommit-134 20/11/2014\nmejoras en el acta de notas definitivas\nBy JOSUE BOLIVAR.\n\nCommit-135 25/11/2014\nse incluye el reporte de inasistencias y estadisticas de notas en el acta definitiva. se incluye la opcion para registrar la inasistencias de los alumnos por semanas.\nBy JOSUE BOLIVAR.\n\nCommit-136 28/11/2014\nse incluye el reporte de inasistencias y estadisticas de notas en el acta definitiva. se incluye la opcion para registrar la inasistencias de los alumnos por semanas con validaciones.\nBy JOSUE BOLIVAR.\n\nCommit-137 04/12/2014\nse incluye la opcion para verificar la carga de notas de los docentes dentro del menu academico.\nBy JOSUE BOLIVAR.\n\nCommit-138 12/12/2014\nrespaldo xq voy idoooooooooooooo.\nBy JOSUE BOLIVAR.\n\nCommit-139 15/01/2015\nsolucion de detalles en la configuracion de cortes.\nBy JOSUE BOLIVAR.\n\nCommit-140 16/01/2015\nCorreccion de generacion de actas de notas\nBy JOSUE BOLIVAR.\n\nCommit-141 16/01/2015\nMas correcciones de generacion de actas de notas\nBy JOSUE BOLIVAR.\n\nCommit-142 23/01/2015\nCorrecciones del proceso de inscripcion\nBy JOSUE BOLIVAR.\n\nCommit-143 29/01/2015\nCorrecciones de detalles en procesos\nBy JOSUE BOLIVAR.\n\nCommit-144 02/02/2015\nCorrecciones de detalles estadisticos, etc.\nBy JOSUE BOLIVAR.\n\nCommit-145 10/02/2015\nopcion para generar estadisticas generales de cinu, etc.\nBy JOSUE BOLIVAR.\n\nCommit-146 11/02/2015\nmejoras en reportes opsu.\nBy JOSUE BOLIVAR.\n\nCommit-147 12/02/2015\nse creo el proceso para procesar envio de traslados.\nBy JOSUE BOLIVAR.\n\nCommit-148 19/02/2015\nse soluciona el detalle de las fecha del cinu y periodo regular.\nBy JOSUE BOLIVAR.\n\nCommit-149 27/02/2015\nse esta realizando el proceso para la recepcion de alumnos de traslados.\nBy JOSUE BOLIVAR.\n\nCommit-150 02/03/2015\ncorreccion de los id de los elementos del menu principal de la sesion de unefa.\nBy JOSUE BOLIVAR.\n\nCommit-151 02/03/2015\ncorreccion de los id de los elementos del menu principal de la sesion de unefa.\nBy JOSUE BOLIVAR.\n\nCommit-152 02/03/2015\ncorreccion de detalle de permisos en el proceso de busqueda de docente para asignacion de materias.\nBy JOSUE BOLIVAR.\n\nCommit-153 03/03/2015\ncorreccion de detalle en la asignacion de docente, conteo de semanas de cortes y configuracion de cortes de modulares de pregrado.\nBy JOSUE BOLIVAR.\n\nCommit-154 03/03/2015\ncorreccion de detalle en el proceso de registro de evaluaciones y consulta de cortes en sesiones de docentes.\nBy JOSUE BOLIVAR.\n\nCommit-155 05/03/2015\nse agrego una barra de de navegacion en la sesion de los docentes.\nBy JOSUE BOLIVAR.\n\nCommit-156 06/03/2015\ncorreccion de errores al calcular el porcentaje de inasistencias.\nBy JOSUE BOLIVAR.\n\nCommit-157 06/03/2015\ncorreccion de errores.\nBy JOSUE BOLIVAR.\n\nCommit-158 09/03/2015\nse agrego la opcion de emitir reporte de estudiantes inscritos en el modulo de reportes.\nBy JOSUE BOLIVAR.\n\nCommit-159 10/03/2015\ncorreccion de error al editar una evaluacion en la sesion del docente.\nBy JOSUE BOLIVAR.\n\nCommit-160 10/03/2015\nactualizacion.\nBy JOSUE BOLIVAR.\n\nCommit-161 11/03/2015\nse agrego una opcion para registrar las materias que no se reparan.\nBy JOSUE BOLIVAR.\n\nCommit-162 11/03/2015\nSe agrego codigo para la Bitacora y registro de eventos para las evaluaciones que\nagrega, edita o eliminan los docente.\nArchivo modificado: HistoricoEvaluacionesDocentesController.php\nBy PABLO PULIDO.\n\nCommit-163 12/03/2015\nCorreccion de las vistas el menu mantenimiento, condiciones residenciales y autoridades del menu general.\nBy JAVIER FONSECA. \n\nCommit-164 13/03/2015\nse corrigieron detalles en las vistas de la sesion de docentes y se creo una funcion para generar actas solicitadas por caracas.\nBy JAVIER FONSECA. \n\nCommit-165 16/03/2015\nse agregaron mejoras a las vistas y se agrego formato a las fechas.\nBy JOSUE BOLIVAR.\n\nCommit-166 16/03/2015\nCorreccion de las vistas el menu mantenimiento, condiciones residenciales y autoridades. modificacion regularizacion de las vistas de tipo de evaluacion en el menu academico.\nBy JAVIER FONSECA. \n\nCommit-167 17/03/2015\nCorreccion de las vistas del menu academico. vistas de oferta academica y secciones. correcion de botones regresar, vista y editar.\nBy JAVIER FONSECA. \n\nCommit-168 17/03/2015\nse agrego la opcion para registrar los edificios, pisos y salones. Se creo una opcion para que una materias y seccion puedan ser impartidas por varios docentes.\nBy JOSUE BOLIVAR. \n\nCommit-169 24/03/2015\nse agrego la opcion para que las materias que se imparten por varios docentes puedan registrar las notas por separado y posteriormente se \ncalcule la definitiva integrando ambas evaluaciones.\nBy JOSUE BOLIVAR. \n\nCommit-170 24/03/2015\nSe arreglaron las vistas de edificio, pisos y aulas del modulo de mantenimiento.\nBy Javier Fonseca.\n\nCommit-171 25/03/2015\n<<<<<<< HEAD\nse agrego la opcion para que las materias que se imparten por varios docentes puedan calcular las notas definitivas.\nBy JOSUE BOLIVAR.\n=======\nSe arreglaron las vistas de pisos y aulas del modulo de mantenimiento, bloque de horas del menu configuracion y vistasSubs\nBy Javier Fonseca.\n>>>>>>> 3ac27c09a5dafecb7de1462f3f017cd549577f84\n\nCommit-172 25/03/2015\nresolver error\nBy JOSUE BOLIVAR.\n\nCommit-173 25/03/2015\nse agrego una opcion para consultar los datos de los docentes\nBy JOSUE BOLIVAR.\n\n***************************************************************\n\nCommit-001 14-04-2015\nRecuperacion del proyecto.\nPor PulidoVPE.\n\nCommit-174 16-04-2015\nse agrego la opcion para registrar la fecha final de cada corte.\nPor JOSUE BOLIVAR.\n\nCommit-175 17-04-2015\nSe agrego codigo para la Bitacora y registro de eventos para el caso de un estudiante que elimine una materia.\nArchivo modificado: InsnotasController.php\nPor PABLO PULIDO.\n\nCommit-176 24-04-2015\nSe agrego codigo para resetear la clave, encriptarla y enviarla al correo.\nArchivos modificados:\nemail.php \nbootstrap.ctp\nUser.php\nUserController.php\nlogin.ctp\nedit_clave.ctp\njquery-min.js\nbootstrap-min.css\nbootstrap-min.js\nPor PABLO PULIDO.\n\nCommit-177 27-04-2015\nSe modifico codigo para resetear la clave, en la vista login.\nArchivos modificados:\nlogin.ctp\nPor PABLO PULIDO.\n\nCommit-178 29-04-2015\nSe modifico codigo para resetear la clave, en la vista login.\nArchivos modificados:\nlogin.ctp\naaaa.css\nPor PABLO PULIDO.\n\nCommit-179 29-04-2015\nSe limpio el codigo en la vista login.\nArchivos modificados:\nlogin.ctp\nPor PABLO PULIDO.\n\nCommit-180 04-05-2015\nSe agrego la opcion para registrar el aulario, se puede emitir un reporte pdf de los bloques de horas registrados en el aulario.\nPor JOSUE BOLIVAR.\n\nCommit-181 05-05-2015\nSe agrego la opcion para emitir un reporte pdf de los bloques de horas registrados en el aulario por secciones.\nPor JOSUE BOLIVAR.\n\nCommit-182 05-05-2015\nSe agrego monitorizacion por Bitacora a los cortes. \nPendiente detalle al grabar en la base de datos.\nArchivos modificados:\nConfigCortesController.php\nPor PABLO PULIDO.\n\nCommit-183 05-05-2015\nCorreccion de detalles en la monitorizacion por Bitacora a los cortes. \nPendiente detalle al grabar en la base de datos en metodo add.\nArchivos modificados:\nConfigCortesController.php\nPor PABLO PULIDO.\n\nCommit-184 08-05-2015\nReemplazo de carpeta app desde la maquina de Josue para resolver conflictos.\nPor PABLO PULIDO.\n\nCommit-185 08-05-2015\nCorreccion. Reemplazo de carpeta app desde la maquina de Josue para resolver conflictos.\nPor PABLO PULIDO.\n\nCommit-186 14-05-2015\nse soluciono detalle en el registro de cortes modulares y detalles de la solicitudes de retiros.\nPor JOSUE BOLIVAR.\n\nCommit-187 14-05-2015\nse agrego una opcion para generar actas de notas en las tablas de control docente de academico.\nPor JOSUE BOLIVAR.\n\nCommit-188 14-05-2015\nse modificaron opciones de rutas.\nPor JOSUE BOLIVAR.\n\nCommit-189 15-05-2015\nse solucionaron detalles en el proceso de carga de notas.\nPor JOSUE BOLIVAR.\n\nCommit-190 18-05-2015\nCorreccion de mensaje en Bitacora. Confirmación: Docente confirmó evaluación, SI.\nArchivos modificados:\nHistoricoEvaluacionesDocentesController.php\nPor PABLO PULIDO.\n\nCommit-191 18-05-2015\nCorreción de boton regresar en postgrado del menu academico.\nPor JOSUE BOLIVAR.\n\nCommit-192 19-05-2015\nse esta agregando la opcion para carga de notas en secretaria definitivas y reparaciones, se mejoro el tiempo de respuesta para generar actas definitivas.\nPor JOSUE BOLIVAR.\n\nCommit-193 20-05-2015\nNueva busqueda en Bitacora. Por usuario. Pendiente por operacion\nArchivos modificados:\nBitacorasController.php\nBitacora.php\nUser.php\nbuscar_usuario.ctp\nPor PABLO PULIDO.\n\nCommit-194 21-05-2015\nNueva busqueda en Bitacora. Por operacion. Pendiente paginacion\nArchivos modificados:\nBitacorasController.php\nBitacora.php\nbuscar_operacion.ctp\nindex.ctp\nPor PABLO PULIDO.\n\nCommit-195 22-05-2015\nse mejoro el proceso de carga de notas de pregrado, se coloco una opcion para generar acta definitiva y acta con notas definitivas registradas en el sistema\nPor JOSUE BOLIVAR.\n\nCommit-196 26-05-2015\nse mejoro el proceso de carga de notas de pregrado, se cambio el tammaño de la fuente  de los menu\nPor JOSUE BOLIVAR.\n\nCommit-197 29-05-2015\nse organizo el menu de academico y secretaria se crea una cadena de prelacion cuando se agregan materias manuales por el modulo de secretaria\nPor JOSUE BOLIVAR.\n\nCommit-198 29-05-2015\nCorreccion de creacion de plantilla de excel 2007 para listado de discapacidad en Social.\nArchivos modificados:\nlistado_discapacidad.ctp\nplantilla_diversidad_funcional.xlsx\nPor PABLO PULIDO.\n\nCommit-199 01-06-2015\nse agrego una regla para garantizar que cuando se carguen las notas de reparacion secretaria tenga cargadas las actas definitivas\nPor JOSUE BOLIVAR.\n\nCommit-200 01-06-2015\nse soluciono detalle con la emision de acta de reparacion definitiva\nPor JOSUE BOLIVAR.\n\nCommit-201 01-06-2015\nse soluciono detalle en la carga de notas de materias cinu\nPor JOSUE BOLIVAR.\n\nCommit-202 02-06-2015\nse mejoro el modulo de carga de notas de reparaciones para secretaria, se soluciono detalle de acta de reparaciones y se soluciono detalle en la planilla de datos personales\nPor JOSUE BOLIVAR.\n\nCommit-203 03-06-2015\nse agrego la opcion para registrar las secciones sin definir un periodo y se mejoro el proceso de prelaciones\nPor JOSUE BOLIVAR.\n\nCommit-204 03-06-2015\ncorrecion de detalles en el proceso de inscripcion\nPor JOSUE BOLIVAR.\n\nCommit-205 03-06-2015\ncorrecion de detalles en el proceso de inscripcion de alumnos con cambios de carrera\nPor JOSUE BOLIVAR.\n\nCommit-206 03-06-2015\nCorreccion de la comparacion de fecha en el metodo Olvide mi clave.\nArchivos modificados:\nUserController.php\nPor PABLO PULIDO.\n\nCommit-207 04-06-2015\ncorreccion de de detalles en el proceso de traslado, inscripcion, mejoras en la carga de notas de reparacion, se adelanto el formato del record academicos\nPor JOSUE BOLIVAR.\n\nCommit-208 05-06-2015\ncorreccion de de detalles en el proceso de inscripcion\nPor JOSUE BOLIVAR.\n\nCommit-209 06-06-2015\ncorreccion de error en el proceso de carga de notas de reparaciones (condiciones de notas)\nPor JOSUE BOLIVAR.\n\nCommit-210 06-06-2015\nse esta creando el proceso de registro de secciones de repitencias y se incluyen en el proceso de inscripcion\nPor JOSUE BOLIVAR.\n\nCommit-211 07-06-2015\nse creo un proceso para identificar los causales academicos y se creo un modulo para inscribir materias por coprelaciones\nPor JOSUE BOLIVAR.\n\nCommit-212 08-06-2015\nmejoras en el procesa de inscripcion para restringir el numero de repitencias y uc, se creo una opcion para inscribir materias modulares\nPor JOSUE BOLIVAR.\n\nCommit-213 08-06-2015\nmejora en la consulta de secciones para las materias copreladas y repitencias\nPor JOSUE BOLIVAR.\n\nCommit-214 09-06-2015\nse mejoro la consulta de la matricula, esta disponible de forma general y por semestre\nPor JOSUE BOLIVAR.\n\nCommit-215 09-06-2015\nmejoras de procesos\nPor JOSUE BOLIVAR.\n\nCommit-216 11-06-2015\nmejoras de la consulta de inscritos por secciones de repitencias, se creo la estadistica de alumnos reprobado y reprobados por asignatura.\nPor JOSUE BOLIVAR.\n\nCommit-217 12-06-2015\nse agrego condicion en el combo de agregar asignaturas manuales\nPor JOSUE BOLIVAR.\n\nCommit-218 15-06-2015\nmejoras realizadas el fin de semana\nPor JOSUE BOLIVAR.\n\nCommit-219 16-06-2015\nmejoras en la sesion del docente y generar las actas de alumnos de repitencia\nPor JOSUE BOLIVAR.\n\nCommit-220 16-06-2015\nmejoras en la sesion del docente para generar las actas de lab y mejoras para el proceso de postgrado y permisos\nPor JOSUE BOLIVAR.\n\nCommit-221 17-06-2015\nmejoras\nPor JOSUE BOLIVAR.\n\nCommit-222 17-06-2015\nproceso para calcular los alumnos con causales academicos y que no formalizaron inscripcion\nPor JOSUE BOLIVAR.\n\nCommit-223 17-06-2015\nSe agrego opcion de desconectar en vista de usuario\nview.ctp\nPor PULIDOVPE\n\nCommit-224 23-06-2015\nproceso para generar reportes por ca.ac,nfi,rps,rpv\nPor JOSUE BOLIVAR.\n\nCommit-225 25-06-2015\nproceso para calculo de uc aprobadas\nPor JOSUE BOLIVAR.\n\nCommit-226 26-06-2015\nse soluciono detalle en el calculo de las semanas del corte al momento de cargar inasistencias\nPor JOSUE BOLIVAR.\n\nCommit-227 29-06-2015\nSe agrego opcion de crear usuario DOCENTE en menu academico\nmodificado: app/Controller/UsersController.php\nmodificado: app/View/Users/add.ctp\nmodificado: app/View/Users/index.ctp\nmodificado: app/View/VistasSubs/indexacad.ctp\nPor PULIDOVPE\n\nCommit-228 01-07-2015\nse soliciona detalle con permisos y error de enlaces\nPor JOSUE BOLIVAR.\n\nCommit-229 07-07-2015\nse incluye el historial del alumno en la consulta de secretaria, se hace la opcion para crear secciones del cinu por carrera y se mejora el registro de corte del cinu de forma regular\nPor JOSUE BOLIVAR.\n\nCommit-230 01-07-2015\nSe elimino opcion de listar usuario desde perfil de coordinador academico\nmodificado: app/View/Users/add.ctp\nPor PULIDOVPE\n\nCommit-231 08-07-2015\nse mejora la consulta para generar la constancia de estudios\nPor JOSUE BOLIVAR.\n\nCommit-232 09-07-2015\nSe agrego opcion de actualizar correo electronico en modulo de usuarios\nmodificado: app/Controller/UsersController.php\nnew file:   app/View/Users/edit_correo.ctp\nmodificado: app/View/Users/view.ctp\nPor PULIDOVPE\n\nCommit-233 09-07-2015\nse agrega una opcion para modificar las fechas de los periodos del cinu y se incluye una observacion en las fechas, la cual se refleja en la \nplanilla de inscripcion de ser requerida\nPor JOSUE BOLIVAR.\n\nCommit-234 09-07-2015\nse agrega una opcion para dar parametros y configurar los estudios del CINU\nPor JOSUE BOLIVAR.\n\nCommit-235 16-07-2015\nSe agrego control de errores al actualizar correo electronico en modulo de usuarios\nmodificado: app/Controller/UsersController.php\nPor PULIDOVPE\n\nCommit-236 17-07-2015\nse agrega una opcion para montar los datos anteriores de los alumnos repitientes del CINU\nPor JOSUE BOLIVAR.\n\nCommit-237 21-07-2015\nSe modifico mensaje de errores al actualizar correo electronico en modulo de usuarios\nmodificado: app/Controller/UsersController.php\nPor PULIDOVPE\n\nCommit-238 21-07-2015\nSe agrega la opcion para imprimir records de acuerdo al movimiento del estudiante\nPor JOSUE BOLIVAR\n\nCommit-239 28-07-2015\nSe agrega la opcion para imprimir actas en cada corte\nPor JOSUE BOLIVAR\n\nCommit-240 14-10-2015\nSe agrega la opcion para registrar las fechas de cada semana de cortes\nPor JOSUE BOLIVAR\n\nCommit-241 06-11-2015\nse estan haciendo adecuaciones para la carga de notas de postgrado\nPor JOSUE BOLIVAR\n\nCommit-242 10-11-2015\nsolucion de detalles en el acta de notas de materias con lab\nPor JOSUE BOLIVAR\n\nCommit-243 12-11-2015\nsolucion de detalles en la planilla de inscripcion de postgrado y crear secciones\nPor JOSUE BOLIVAR\n\nCommit-244 18-11-2015\nsolucion de detalles en la carga de notas de materias compartidas\nPor JOSUE BOLIVAR\n\nCommit-245 18-11-2015\nse crea una opcion para editar las evaluaciones y desbloquear evaluaciones\nPor JOSUE BOLIVAR\n\nCommit-246 27-11-2015\nse crea mejores opciones para la carga de notas y se corrigen detalles\nPor JOSUE BOLIVAR\n\nCommit-247 30-11-2015\nSe habilito opcion de editar y actualizar correo para modulo de secretaria\nmodified:   app/Controller/UsersController.php\nmodified:   app/View/Users/add.ctp\nmodified:   app/View/Users/buscar.ctp\nmodified:   app/View/Users/edit.ctp\nmodified:   app/View/Users/edit_clave.ctp\nmodified:   app/View/Users/edit_correo.ctp\nmodified:   app/View/Users/view.ctp\nmodified:   app/View/VistasSubs/indexsec.ctp\nPor PulidoVPE\n\nCommit-248 30-11-2015\nse soluciona detalle al generar el acta de notas compartida\nPor JOSUE BOLIVAR\n\nCommit-249 01-12-2015\nse soluciona detalle al cargar las notas de reparacion de secciones de repitencia\nPor JOSUE BOLIVAR\n\nCommit-250 01-12-2015\nse soluciona detalles en los records academicos\nPor JOSUE BOLIVAR\n\nCommit-251 02-12-2015\nSe redirigio boton retornar en actualizar correo para modulo de secretaria\nmodified:   app/Controller/UsersController.php\nmodified:   app/View/Users/buscar.ctp\nmodified:   app/View/Users/edit.ctp\nmodified:   app/View/Users/edit_correo.ctp\nmodified:   app/View/Users/view.ctp\nPor PulidoVPE\n\nCommit-252 02-12-2015\nse soluciona detalles en el proceso se agregar asignaturas de forma manual\nPor JOSUE BOLIVAR\n\nCommit-253 02-12-2015\nse soluciona en los records de alumnos que tienen movimientos\nPor JOSUE BOLIVAR\n\nCommit-254 08-12-2015\nse soluciona detalle para registrar las secciones\nPor JOSUE BOLIVAR\n\nCommit-255 09-12-2015\nse soluciona detalle para la carga de notas de reparaciones y la consulta del Record academico\nPor JOSUE BOLIVAR\n\nCommit-256 11-12-2015\nse soluciona detalle para editar secciones e inscripcion\nPor JOSUE BOLIVAR\n\nCommit-257 11-12-2015\nse agrega una mejor opcion para unificar la inscripcion de materias de otras carreras en secciones de carreras distintas\nPor JOSUE BOLIVAR\n\nCommit-258 11-12-2015\nSe corrigio error al editar correo desde usuario secretaria por campo ACTIVO no definido.\nmodified:   app/Controller/UsersController.php\nmodified:   app/View/Users/edit.ctp\nPor PulidoVPE\n\nCommit-259 11-01-2015\nse corrige un detalle para ver estadistica de inscritos por secciones del cinu\nPor JOSUE BOLIVAR\n\nCommit-260 19-01-2015\nse corrige un detalle para inscripcion y mejora de procesos en general\nPor JOSUE BOLIVAR\n\nCommit-261 19-01-2015\nse corrige un detalle para unificar secciones con codigos diferentes\nPor JOSUE BOLIVAR\n\nCommit-262 20-01-2016\nSe agregaron opciones de respaldo en la bitacora para cambios de periodo, de carrera y traslados\nmodified:   app/Controller/IniciosController.php\nmodified:   app/Controller/MovimientosController.php\nmodified:   app/Controller/PeriodosController.php\nmodified:   app/Model/User.php\nmodified:   app/View/Periodos/add.ctp\nmodified:   app/View/Periodos/addpost.ctp\nmodified:   app/View/Periodos/edit_cinu.ctp\nPor PulidoVPE\n\nCommit-263 20-01-2016\nSe agregaron opciones de verificacion de claves inseguras en el login y en el cambio de clave propio.\nmodified:   app/Controller/UsersController.php\nPor PulidoVPE\n\nCommit-264 20-01-2016\nSe modificaron opciones de verificacion de claves inseguras en el login y en el cambio de clave propio.\nmodified:   app/Controller/UsersController.php\nmodified:   app/View/Users/edit_clave2.ctp\nPor PulidoVPE\n\nCommit-265 20-01-2015\nse agrega la opcion para que se ejecute el cambio de carrera cuando los traslados vienen de otra carrera que no se dan en el nucleo\nPor JOSUE BOLIVAR\n\nCommit-266 21-01-2015\nse mejora el proceso para recibir reingresos de otros nucleos\nPor JOSUE BOLIVAR\n\nCommit-267 21-01-2016\nSe hicieron correcciones en la bitacora de los cambios de carrera y traslados\nmodified:   app/Controller/MovimientosController.php\nPor PulidoVPE\n\nCommit-268 21-01-2016\nSe hicieron correcciones en la bitacora de los cambios de carrera y traslados y correcciones en la vista de movimientos aprobados\nmodified:   app/Controller/MovimientosController.php\nmodified:   app/View/Movimientos/buscar_solicitudes.ctp\nPor PulidoVPE\n\nCommit-269 22-01-2015\nse incluye una opcion para migrar secciones\nPor JOSUE BOLIVAR\n\nCommit-270 25-01-2015\nse corrigen detalles con los permisos para migrar secciones\nPor JOSUE BOLIVAR\n\nCommit-271 25-01-2016\nSe hicieron correcciones en la bitacora de los periodos del cinu\nmodified:   app/Controller/MovimientosController.php\nPor PulidoVPE\n\nCommit-272 25-01-2016\nse corrigen detalles en los procesos de traslados\nPor JOSUE BOLIVAR\n\nCommit-273 27-01-2016\nse agregan clases librerias y funciones para mejorar las vistas con boostrap y jquery\nPor JOSUE BOLIVAR\n\nCommit-274 27-01-2016\nse modificaron las vistas de bitacora,reportes y asobies. aparte se modificaron los controladores de puntos de cuentas consejos y configinscricciones.\npor Javier Fonseca\n\nCommit-275 28-01-2016\nse mejora el reporte final del cinu\nPor JOSUE BOLIVAR\n\nCommit-276 29-01-2016\nmejoras para los calculos de los record y formato\nPor JOSUE BOLIVAR\n\nCommit-277 01-02-2016\nse corrigen errores que se daban cuando se editan datos personales de los alumnos\nPor JOSUE BOLIVAR\n\nCommit-278 01-02-2016 se modificaron y agregaron nuevos etiquetas en el menu mantenimiento. se trabajo en los controladores.\nPor Javier Fonseca\n\nCommit-279 01-02-2016\nse agrega una opcion para poder inscribir solamente alumnos del cinu\nPor JOSUE BOLIVAR\n\nCommit-280 01-02-2016 \nCambios al los controladores y vistas del menu mantenimiento.\nPor Javier Fonseca\n\nCommit-281 01-02-2016\nse corrigen detalles para generar indices academicos por lotes\nPor JOSUE BOLIVAR\n\nCommit-282 01-02-2016\nse origina un reporte de indices academicos\nPor JOSUE BOLIVAR\n\nCommit-283 04-02-2016\nse crean funciones para verificar el proceso de ingreso y se incluye la opcion para imprimir la planilla de inscripcion del alumno desde el modulo de secretaria\nPor JOSUE BOLIVAR\n\nCommit-284 16-02-2016\nse crea un modulo para defensa integral para que ellos tengan control de los estudiantes militares\nPor JOSUE BOLIVAR\n\nCommit-285 16-02-2016\nSe modifico la busqueda de usuarios para que pueda hacerse por nombre y por cedula \ny se cambio el layout a bootstrap2. Se rehizo la bitacora con el nombre eventos. \nSe crearon 2 tablas. Eventos y EventosDatos. Se hicieron busquedas por usuario, fecha, operacion\ny por tabla y Id afectado.\nmodified:   app/Controller/UsersController.php\nmodified:   app/Model/User.php\nmodified:   app/View/Users/buscar.ctp\nmodified:   app/View/Users/index.ctp\nnuevos:     app/Controller/EventosController.php\nnuevos:     app/Controller/EventosDatosController.php\nnuevos:     app/Model/Evento.php\nnuevos:     app/Model/EventosDato.php\nnuevos:     app/View/Eventos/*\nPor PULIDOVPE\n\nCommit-286 18-02-2016\nse crea boton para eliminar las secciones en cero\nPor JOSUE BOLIVAR\n\nCommit-287 18-02-2016\nSe modifico la busqueda de usuarios para que pueda hacerse por nombre y por cedula \ny se cambio el layout a bootstrap2. Se rehizo la bitacora con el nombre eventos. \nSe crearon 2 tablas. Eventos y EventosDatos. Se hicieron busquedas por usuario, fecha, operacion\ny por tabla y Id afectado.\nmodified:   app/Controller/CambiarStatusController.phpp\nmodified:   app/Controller/ConfigInscripcionesController.php\nmodified:   app/Controller/EventosController.php\nmodified:   app/Controller/EventosDatosController.php\nmodified:   app/Controller/PensumsController.php\nmodified:   app/View/Eventos/view.ctp\nPor PULIDOVPE\n\nCommit-288 26-02-2016\nsolucion de detalles\nPor JOSUE BOLIVAR\n\nCommit-289 29-02-2016\nsolucion de detalles en sesion de docente\nPor JOSUE BOLIVAR\n\nCommit-290 29-02-2016\nSe agregaron rutinas de grabacion de eventos en la bitacora.\nmodified:   app/Controller/ConfigInscripcionesController.php\nmodified:   app/Controller/EventosController.php\nmodified:   app/Controller/IngresController.php\nmodified:   app/Controller/MateriasDocentesController.php\nmodified:   app/Controller/ReportesController.php\nmodified:   app/Controller/SeccionsController.php\nmodified:   app/View/Eventos/view.ctp\nmodified:   app/View/Users/add.ctp\nPor PULIDOVPE\n\nCommit-291 09-05-2016\nintegar proyecto con pablo y correccion de bug al pedir envio de clave al correo\nPor JOSUE BOLIVAR y PULIDOVPE\n",
+			"file": "/home/pulidovpe/Escritorio/unefa_ce/commits.txt",
+			"file_size": 47720,
+			"file_write_time": 131072827120080342,
 			"settings":
 			{
-				"buffer_size": 6269,
+				"buffer_size": 47685,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/html/unefa_ce/app/View/Users/view.ctp",
+			"settings":
+			{
+				"buffer_size": 5091,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/html/unefa_ce/app/Controller/AppController.php",
+			"settings":
+			{
+				"buffer_size": 2106,
 				"line_ending": "Unix"
 			}
 		},
@@ -643,6 +702,12 @@
 	],
 	"file_history":
 	[
+		"/var/www/html/mis-proyectos/foro-cake/app/Controller/ComentarioForosController.php",
+		"/var/www/html/mis-proyectos/foro-cake/app/Model/User.php",
+		"/var/www/html/mis-proyectos/foro-cake/app/Model/ForoTema.php",
+		"/var/www/html/mis-proyectos/foro-cake/app/Model/ForoCategoria.php",
+		"/var/www/html/mis-proyectos/foro-cake/app/Model/ForoSubforo.php",
+		"/var/www/html/unefa_ce/app/View/Insnotas/historico.ctp",
 		"/var/www/html/unefa_ce_old/app/Controller/UsersController.php",
 		"/var/www/html/unefa-ce/app/Controller/UsersController.php",
 		"/var/www/html/proyectos-de-otros/abraham/Control-Alevines/js/carga_div.js",
@@ -654,7 +719,6 @@
 		"/run/user/1000/gvfs/smb-share:server=192.168.10.231,share=tic/UsersController.php",
 		"/run/user/1000/gvfs/smb-share:server=192.168.10.231,share=tic/EventosController.php",
 		"/run/user/1000/gvfs/smb-share:server=192.168.10.231,share=tic/unefa_ce/Controller/UsersController.php",
-		"/var/www/html/mis-proyectos/foro-cake/app/Controller/ComentarioForosController.php",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/ForoTemas/buscar.ctp",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/CombosBusquedas/cargarsubforos.ctp",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/CombosBusquedas/cargartemas.ctp",
@@ -664,7 +728,6 @@
 		"/var/www/html/mis-proyectos/foro-cake/app/View/ForoCategorias/index.ctp",
 		"/var/www/html/mis-proyectos/foro-cake/app/Controller/ForoCategoriasController.php",
 		"/var/www/html/mis-proyectos/foro-cake/app/Controller/ForoTemasController.php",
-		"/var/www/html/mis-proyectos/foro-cake/app/Model/ForoTema.php",
 		"/var/www/html/mis-proyectos/foro-cake/app/Model/ComentarioForo.php",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/ForoTemas/index.ctp",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/ForoTemas/index_result_comen.ctp",
@@ -683,8 +746,6 @@
 		"/var/www/html/mis-proyectos/foro-cake/app/View/Users/login.ctp",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/Users/index.ctp",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/ForoTemas/index_result.ctp",
-		"/var/www/html/mis-proyectos/foro-cake/app/Model/ForoSubforo.php",
-		"/var/www/html/mis-proyectos/foro-cake/app/Model/ForoCategoria.php",
 		"/var/www/html/unefa_ce/app/Controller/AlumnosDatosImportantesController.php",
 		"/var/www/html/unefa_ce/app/Model/Municipio.php",
 		"/var/www/html/unefa_ce/app/Model/AlumnosDatosImportante.php",
@@ -706,7 +767,6 @@
 		"/var/www/html/unefa_ce/app/View/Users/edit_clave2.ctp",
 		"/var/www/html/unefa_ce/app/View/Users/edit_clave.ctp",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/ComentarioForos/view.ctp",
-		"/var/www/html/mis-proyectos/foro-cake/app/Model/User.php",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/ComentarioForos/index.ctp",
 		"/var/www/html/unefa_ce_old/app/Controller/CarrerasController.php",
 		"/var/www/html/mis-proyectos/foro-cake/app/Config/bootstrap.php",
@@ -769,8 +829,7 @@
 		"/var/www/html/mis-proyectos/foro-cake/app/Model/AppModel.php",
 		"/var/www/html/unefa_ce/app/Controller/AlumnosDatosImportantesPostsController.php",
 		"/var/www/html/mis-proyectos/foro-cake/app/View/Usuarios/view.ctp",
-		"/var/www/html/unefa_ce/app/View/Elements/msg.ctp",
-		"/var/www/html/mis-proyectos/foro-cake/app/View/Usuarios/login.ctp"
+		"/var/www/html/unefa_ce/app/View/Elements/msg.ctp"
 	],
 	"find":
 	{
@@ -788,6 +847,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"titulo",
+			"control",
+			"Usuario Causante",
 			"password_confirmation",
 			"pr(",
 			"function edit",
@@ -912,10 +974,7 @@
 			"'add'",
 			"function edit",
 			"User",
-			"comenta",
-			"loadModel",
-			"$subforos",
-			"$foro"
+			"comenta"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1006,94 +1065,6 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/Model/User.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4140,
-								4140
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3316.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/Controller/UsersController.php",
 					"semi_transient": false,
 					"settings":
@@ -1175,7 +1146,94 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8086.0,
+						"translation.y": 8017.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/Controller/ForoTemasController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13318,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11703,
+								11703
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 7383.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1183,6 +1241,620 @@
 				},
 				{
 					"buffer": 2,
+					"file": "app/Model/ComentarioForo.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 554,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								208,
+								208
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 207.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Model/ForoTema.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 481,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 138.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/Controller/CombosBusquedasController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1067,
+								1067
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 552.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/View/ForoTemas/buscar.ctp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1988,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1239,
+								1239
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 897.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/View/CombosBusquedas/cargarsubforos.ctp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1092,
+								1092
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 276.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/View/CombosBusquedas/cargartemas.ctp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1073,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								976,
+								976
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 518.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/View/CombosBusquedas/cargarcomentarios.ctp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 251,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								221,
+								221
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "app/View/ForoTemas/index.ctp",
 					"semi_transient": false,
 					"settings":
@@ -1266,11 +1938,11 @@
 						"translation.y": 621.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 10,
 					"file": "app/View/ForoTemas/view.ctp",
 					"semi_transient": false,
 					"settings":
@@ -1354,11 +2026,11 @@
 						"translation.y": 6555.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 11,
 					"file": "app/View/Users/login.ctp",
 					"semi_transient": false,
 					"settings":
@@ -1379,213 +2051,51 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/webroot/js/funciones.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8724,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								670,
-								670
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/View/CombosBusquedas/cargarsubforos.ctp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1142,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -1595,35 +2105,20 @@
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
+								"bh_c_define_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 138.0,
+						"translation.y": 483.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 12,
 					"file": "app/Controller/ForoCategoriasController.php",
 					"semi_transient": false,
 					"settings":
@@ -1707,11 +2202,11 @@
 						"translation.y": 1244.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 13,
 					"file": "app/View/ForoCategorias/index.ctp",
 					"semi_transient": false,
 					"settings":
@@ -1795,95 +2290,7 @@
 						"translation.y": 2564.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/View/ForoTemas/buscar.ctp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1988,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1939,
-								1939
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1035.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
@@ -1893,7 +2300,96 @@
 			"sheets":
 			[
 				{
-					"buffer": 10,
+					"buffer": 14,
+					"file": "app/webroot/js/funciones.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								670,
+								670
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
 					"file": "app/View/Layouts/default.ctp",
 					"semi_transient": false,
 					"settings":
@@ -1977,11 +2473,11 @@
 						"translation.y": 1468.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 16,
 					"file": "app/View/Layouts/ajax.ctp",
 					"semi_transient": false,
 					"settings":
@@ -2065,11 +2561,11 @@
 						"translation.y": 138.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 33,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 17,
 					"file": "app/Controller/AppController.php",
 					"semi_transient": false,
 					"settings":
@@ -2153,11 +2649,11 @@
 						"translation.y": 1579.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 30,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 18,
 					"file": "/var/www/html/unefa_ce/app/View/AlumnosDatosImportantes/add.ctp",
 					"semi_transient": false,
 					"settings":
@@ -2242,11 +2738,11 @@
 						"translation.y": 696.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 32,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 19,
 					"file": "/var/www/html/unefa_ce/app/View/CombosDependientes/cargar_municipios_alumnos.ctp",
 					"semi_transient": false,
 					"settings":
@@ -2329,24 +2825,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 31,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 20,
 					"file": "/var/www/html/unefa_ce/app/Controller/UsersController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 58258,
+						"buffer_size": 58152,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								36379,
-								36379
+								36275,
+								36275
 							]
 						],
 						"settings":
@@ -2354,36 +2850,26 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -2394,35 +2880,45 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
 								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 17335.0,
+						"translation.y": 4622.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 21,
 					"file": "/var/www/html/unefa_ce/app/Model/User.php",
 					"semi_transient": false,
 					"settings":
@@ -2506,11 +3002,11 @@
 						"translation.y": 2001.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 22,
 					"file": "/var/www/html/unefa_ce_old/app/Controller/UsersController.php",
 					"semi_transient": false,
 					"settings":
@@ -2595,11 +3091,11 @@
 						"translation.y": 14985.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 23,
 					"file": "/var/www/html/unefa_ce/app/Controller/EventosController.php",
 					"semi_transient": false,
 					"settings":
@@ -2683,11 +3179,11 @@
 						"translation.y": 2839.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 24,
 					"file": "/var/www/html/unefa_ce/app/View/Layouts/bootstrap2.ctp",
 					"semi_transient": false,
 					"settings":
@@ -2771,11 +3267,11 @@
 						"translation.y": 414.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 27,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 25,
 					"file": "/var/www/html/unefa_ce/app/View/Layouts/bootstrap.ctp",
 					"semi_transient": false,
 					"settings":
@@ -2859,11 +3355,11 @@
 						"translation.y": 483.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 26,
 					"file": "/var/www/html/unefa_ce/app/Config/database.php",
 					"semi_transient": false,
 					"settings":
@@ -2947,11 +3443,11 @@
 						"translation.y": 1311.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 28,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 27,
 					"file": "app/webroot/js/ckeditor/config.js",
 					"semi_transient": false,
 					"settings":
@@ -3035,11 +3531,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 27,
+					"stack_index": 36,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 28,
 					"file": "app/webroot/js/kcfinder/conf/config.php",
 					"semi_transient": false,
 					"settings":
@@ -3124,11 +3620,11 @@
 						"translation.y": 805.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 34,
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 29,
 					"file": "/var/www/html/unefa_ce/app/View/Users/index.ctp",
 					"semi_transient": false,
 					"settings":
@@ -3140,8 +3636,8 @@
 						"selection":
 						[
 							[
-								2076,
-								2076
+								935,
+								935
 							]
 						],
 						"settings":
@@ -3149,21 +3645,6 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -3174,21 +3655,6 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
@@ -3199,24 +3665,54 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content"
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1104.0,
+						"translation.y": 552.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 30,
 					"file": "/var/www/html/unefa_ce/app/View/Users/buscar.ctp",
 					"semi_transient": false,
 					"settings":
@@ -3300,11 +3796,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 35,
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 31,
 					"file": "foro-cake.sql",
 					"semi_transient": false,
 					"settings":
@@ -3389,11 +3885,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 28,
+					"stack_index": 37,
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 32,
 					"file": "app/webroot/js/kcfinder/core/autoload.php",
 					"semi_transient": false,
 					"settings":
@@ -3478,11 +3974,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 31,
+					"stack_index": 39,
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 33,
 					"file": "/home/pulidovpe/Dropbox/Trabajo/Manuales y Tips/GIT - comandos e instalacion.txt",
 					"semi_transient": false,
 					"settings":
@@ -3567,11 +4063,11 @@
 						"translation.y": 480.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 29,
+					"stack_index": 38,
 					"type": "text"
 				},
 				{
-					"buffer": 29,
+					"buffer": 34,
 					"file": "/home/pulidovpe/Dropbox/Trabajo/Manuales y Tips/phpmyadmin - TIPS.txt",
 					"semi_transient": false,
 					"settings":
@@ -3654,11 +4150,11 @@
 						"translation.y": 2415.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 34,
+					"stack_index": 41,
 					"type": "text"
 				},
 				{
-					"buffer": 30,
+					"buffer": 35,
 					"file": "app/Config/routes.php",
 					"semi_transient": false,
 					"settings":
@@ -3741,16 +4237,279 @@
 						"translation.y": 552.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 29,
 					"type": "text"
 				},
 				{
-					"buffer": 31,
+					"buffer": 36,
+					"file": "/var/www/html/unefa_ce/app/View/Eventos/view.ctp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6344,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1604,
+								1604
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 37,
+					"file": "/home/pulidovpe/Escritorio/unefa_ce/commits.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 47685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								47552,
+								47552
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 36386.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 38,
+					"file": "/var/www/html/unefa_ce/app/View/Users/view.ctp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4196,
+								4196
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2449.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 39,
 					"file": "/var/www/html/unefa_ce/app/Controller/AppController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2107,
+						"buffer_size": 2106,
 						"regions":
 						{
 						},
@@ -3829,99 +4588,11 @@
 						"translation.y": 854.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 30,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 32,
-					"file": "/var/www/html/unefa_ce/app/View/Eventos/view.ctp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6269,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								209,
-								209
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 32,
-					"type": "text"
-				},
-				{
-					"buffer": 33,
+					"buffer": 40,
 					"file": "/var/www/html/unefa_ce/app/View/Users/edit.ctp",
 					"semi_transient": false,
 					"settings":
@@ -4005,11 +4676,11 @@
 						"translation.y": 361.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 33,
+					"stack_index": 40,
 					"type": "text"
 				},
 				{
-					"buffer": 34,
+					"buffer": 41,
 					"file": "/var/www/html/unefa_ce/app/View/Layouts/menu_horizontal.ctp",
 					"semi_transient": false,
 					"settings":
@@ -4093,7 +4764,7 @@
 						"translation.y": 1449.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 23,
 					"type": "text"
 				}
 			]
@@ -4132,7 +4803,7 @@
 		"rows":
 		[
 			0.0,
-			0.92125984252,
+			0.925816023739,
 			1.0
 		]
 	},
